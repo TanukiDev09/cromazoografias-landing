@@ -36,6 +36,7 @@ export default function PurchaseModal({ isOpen, onClose, product }: PurchaseModa
         address: formData.get('address') as string,
         city: formData.get('city') as string,
         state: formData.get('state') as string,
+        postcode: formData.get('postcode') as string,
         productId: product.productId,
       };
 
@@ -134,6 +135,18 @@ export default function PurchaseModal({ isOpen, onClose, product }: PurchaseModa
               <label className="form__label">Departamento *</label>
               <input type="text" name="state" className="form__input" required disabled={loading} />
             </div>
+          </div>
+
+          <div className="form__field">
+            <label className="form__label">Código Postal *</label>
+            <input
+              type="text"
+              name="postcode"
+              className="form__input"
+              required
+              disabled={loading}
+              placeholder="e.g. 110111"
+            />
           </div>
 
           <div className="form__note">Entrega a compradores: 1-7 de marzo.</div>
