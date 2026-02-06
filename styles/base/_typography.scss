@@ -1,0 +1,13 @@
+@import 'variables';
+
+.u-serif {
+  font-family: $font-primary;
+}
+
+.u-uppercase {
+  text-transform: uppercase;
+}
+
+.u-letter-spacing {
+  letter-spacing: 0.15em;
+}

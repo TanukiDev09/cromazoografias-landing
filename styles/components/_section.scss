@@ -1,0 +1,30 @@
+@import '../base/variables';
+
+.section {
+  padding: clamp(5rem, 12vw, 10rem) clamp(1.5rem, 4vw, 3rem);
+  max-width: 1600px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+  &--no-border {
+    border-top: none;
+  }
+
+  &__title {
+    font-family: $font-primary;
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 700;
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+    text-align: center;
+    line-height: 0.95;
+  }
+
+  &__intro {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 5rem;
+    font-size: clamp(1.125rem, 2.5vw, 1.75rem);
+    line-height: 1.6;
+    opacity: 0.75;
+  }
+}

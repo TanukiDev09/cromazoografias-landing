@@ -1,0 +1,39 @@
+// 1. DESIGN TOKENS
+$black: #000000;
+$white: #ffffff;
+$gray: #dadada;
+
+// The Spectrum
+$color-yellow: #e6b905;
+$color-orange: #ff6b00;
+$color-red: #e30613;
+$color-pink: #e91e8c;
+$color-purple: #9b5a9e;
+$color-blue: #2e5a99;
+$color-green: #4caf50;
+$color-gray: #dadada;
+
+// 2. TYPOGRAPHY
+$font-primary: 'Arvo', serif;
+$font-secondary: 'Lato', sans-serif;
+
+// 3. SPACING & BORDERS
+$border-thickness: 2px;
+$border-thickness-thick: 4px;
+$border-thickness-hero: 6px;
+
+// BEM Spacing System
+$space-xs: clamp(0.5rem, 1vw, 0.75rem);
+$space-sm: clamp(1rem, 2vw, 1.5rem);
+$space-md: clamp(2rem, 4vw, 3rem);
+$space-lg: clamp(4rem, 8vw, 6rem);
+$space-xl: clamp(6rem, 12vw, 10rem);
+
+// Shadows (Shifted Brutalist style)
+$shadow-offset: 8px;
+$shadow-offset-lg: 12px;
+$shadow-brutalist: $shadow-offset $shadow-offset 0 rgba($white, 0.1);
+$shadow-brutalist-hover: $shadow-offset $shadow-offset 0 rgba($white, 0.2);
+
+$transition-standard: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+$transition-fast: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);

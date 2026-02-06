@@ -1,0 +1,63 @@
+@import 'variables';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-secondary;
+  font-weight: 300;
+  background: $black;
+  color: $white;
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border: none;
+  background: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+// THE GRAIN (Global Texture)
+.grain {
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.015) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.015) 0%, transparent 50%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size:
+    800px 800px,
+    900px 900px,
+    4px 4px;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.8;
+  animation: grainMove 8s steps(1) infinite;
+}
+
+@keyframes grainMove {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-1%, -1%);
+  }
+  50% {
+    transform: translate(1%, 1%);
+  }
+  75% {
+    transform: translate(-1%, 1%);
+  }
+}
