@@ -1,0 +1,49 @@
+{
+  "name": "cromazoografias-landingpage",
+  "version": "1.0.0",
+  "description": "landing page for \"Cromazoografías\" books.",
+  "keywords": [
+    "landing",
+    "page",
+    "react"
+  ],
+  "license": "ISC",
+  "author": "Juan Camilo Orjuela",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "lint:scss": "stylelint \"styles/**/*.scss\"",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "sass": "latest"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.3",
+    "@eslint/js": "^9.39.2",
+    "@types/node": "^25.2.0",
+    "@types/react": "^19.2.11",
+    "@types/react-dom": "^19.2.3",
+    "@typescript-eslint/eslint-plugin": "^8.54.0",
+    "@typescript-eslint/parser": "^8.54.0",
+    "eslint": "^9.39.2",
+    "eslint-config-next": "^16.1.6",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-complexity": "^1.0.2",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-sonarjs": "^3.0.6",
+    "globals": "^17.3.0",
+    "prettier": "^3.8.1",
+    "stylelint": "^17.1.1",
+    "stylelint-config-prettier-scss": "^1.0.0",
+    "stylelint-config-standard-scss": "^17.0.0",
+    "stylelint-prettier": "^5.0.3",
+    "typescript": "^5.9.3"
+  }
+}
