@@ -74,6 +74,9 @@ export interface WCOrder {
 export async function getProducts(): Promise<WCProduct[]> {
   try {
     const apiUrl = process.env.NEXT_PUBLIC_WC_API_URL;
+    if (!apiUrl?.startsWith('https://')) {
+      throw new Error('API URL must be secure (HTTPS)');
+    }
     const consumerKey = process.env.WC_CONSUMER_KEY;
     const consumerSecret = process.env.WC_CONSUMER_SECRET;
 
@@ -140,6 +143,9 @@ export async function getProduct(productId: number): Promise<WCProduct> {
 export async function createOrder(orderData: CreateOrderData): Promise<WCOrder> {
   try {
     const apiUrl = process.env.NEXT_PUBLIC_WC_API_URL;
+    if (!apiUrl?.startsWith('https://')) {
+      throw new Error('API URL must be secure (HTTPS)');
+    }
     const consumerKey = process.env.WC_CONSUMER_KEY;
     const consumerSecret = process.env.WC_CONSUMER_SECRET;
 
