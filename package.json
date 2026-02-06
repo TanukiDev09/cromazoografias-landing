@@ -22,7 +22,8 @@
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "sass": "latest"
+    "sass": "latest",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.3",
