@@ -1,7 +1,6 @@
 'use client';
-import { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
-import PurchaseModal from '../PurchaseModal';
 
 interface Volume {
   id: number;
@@ -11,59 +10,51 @@ interface Volume {
   price: string;
   colors: string[];
   cover: string;
+  wcProductId: number;
 }
+
+const volumes: Volume[] = [
+  {
+    id: 1,
+    num: 'VOL 1',
+    name: 'Cromazoografías Vol. 1',
+    specs: 'Amarillo → Rosa. 96 animales · 96 poemas. 14×17cm.',
+    price: '$85.000',
+    colors: ['yellow', 'orange', 'red', 'pink'],
+    cover: '/1.png',
+    wcProductId: 3431,
+  },
+  {
+    id: 2,
+    num: 'VOL 2',
+    name: 'Cromazoografías Vol. 2',
+    specs: 'Púrpura → Blanco. 96 animales · 96 poemas. 14×17cm.',
+    price: '$85.000',
+    colors: ['purple', 'blue', 'green', 'white'],
+    cover: '/2.png',
+    wcProductId: 3432,
+  },
+];
 
 interface Product {
   name: string;
   price: string;
+  productId: number;
 }
 
-export default function ProductGrid() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+interface ProductGridProps {
+  onPurchase: (product: Product) => void;
+}
 
-  const volumes: Volume[] = [
-    {
-      id: 1,
-      num: 'VOL 1',
-      name: 'Cromazoografías Vol. 1',
-      specs: 'Amarillo → Rosa. 96 animales · 96 poemas. 14×17cm.',
-      price: '$85.000',
-      colors: ['yellow', 'orange', 'red', 'pink'],
-      cover: '/1.png',
-    },
-    {
-      id: 2,
-      num: 'VOL 2',
-      name: 'Cromazoografías Vol. 2',
-      specs: 'Morado → Gris. 96 animales · 96 poemas. 14×17cm.',
-      price: '$85.000',
-      colors: ['purple', 'blue', 'green', 'gray'],
-      cover: '/2.png',
-    },
-  ];
-
-  const openModal = (vol: Volume) => {
-    setSelectedProduct({
-      name: vol.name,
-      price: vol.price,
-    });
-    setIsModalOpen(true);
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    document.body.style.overflow = '';
-  };
-
+export default function ProductGrid({ onPurchase }: ProductGridProps) {
   return (
     <section className="section section--products" id="productos">
       <div className="products">
         <div className="products__intro">
           <h2 className="section__title">Elige tu volumen</h2>
           <p className="section__subtitle">
-            Cada libro es un viaje cromático por el reino animal. Puedes comprarlos por separado o juntos.
+            Cada libro es un viaje cromático por el reino animal. Puedes comprarlos por separado o
+            juntos.
           </p>
         </div>
 
@@ -83,14 +74,22 @@ export default function ProductGrid() {
                     />
                   </div>
                   <div className="vol-section__info">
-                    <h4 className="u-uppercase u-letter-spacing" style={{ marginBottom: '0.5rem', fontSize: '0.75rem' }}>
+                    <h4
+                      className="u-uppercase u-letter-spacing"
+                      style={{ marginBottom: '0.5rem', fontSize: '0.75rem' }}
+                    >
                       Ficha Técnica
                     </h4>
                     <p className="vol-section__text">{vol.specs}</p>
                   </div>
                   <div>
                     <div className="vol-section__price">{vol.price}</div>
-                    <button className="btn btn--buy" onClick={() => openModal(vol)}>
+                    <button
+                      className="btn btn--buy"
+                      onClick={() =>
+                        onPurchase({ name: vol.name, price: vol.price, productId: vol.wcProductId })
+                      }
+                    >
                       <span>Comprar {vol.num}</span>
                     </button>
                   </div>
@@ -105,8 +104,6 @@ export default function ProductGrid() {
           ))}
         </div>
       </div>
-
-      <PurchaseModal isOpen={isModalOpen} onClose={closeModal} product={selectedProduct} />
     </section>
   );
 }

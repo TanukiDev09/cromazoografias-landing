@@ -4,7 +4,7 @@
   padding: clamp(5rem, 12vw, 10rem) clamp(1.5rem, 4vw, 3rem);
   max-width: 1600px;
   margin: 0 auto;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgb(255 255 255 / 10%);
 
   &--no-border {
     border-top: none;

@@ -1,13 +1,38 @@
+import React from 'react';
 import Image from 'next/image';
 
 export default function IllustrationGrid() {
   const illustrations = [
-    { name: 'CANGREJO FANTASMA', src: '/illustrations/1 (1).jpg', color: 'yellow' },
-    { name: 'VÍBORA DE PESTAÑAS', src: '/illustrations/1 (2).jpg', color: 'orange' },
-    { name: 'MANTIS ORQUÍDEA', src: '/illustrations/1 (3).jpg', color: 'yellow' },
-    { name: 'CARDENAL NORTEÑO', src: '/illustrations/1 (4).jpg', color: 'red' },
-    { name: 'ERIZO VERDE', src: '/illustrations/2 (1).jpg', color: 'green' },
-    { name: 'GARCETA AZUL', src: '/illustrations/2 (2).jpg', color: 'red' },
+    {
+      name: 'CANGREJO FANTASMA',
+      src: 'https://placehold.jp/24/000000/ffffff/400x400.png?text=CANGREJO%0AFANTASMA',
+      color: 'yellow',
+    },
+    {
+      name: 'VÍBORA DE PESTAÑAS',
+      src: 'https://placehold.jp/24/000000/ffffff/400x400.png?text=VÍBORA%0ADEP_ESTAÑAS',
+      color: 'orange',
+    },
+    {
+      name: 'MANTIS ORQUÍDEA',
+      src: 'https://placehold.jp/24/000000/ffffff/400x400.png?text=MANTIS%0AORQUÍDEA',
+      color: 'yellow',
+    },
+    {
+      name: 'CARDENAL NORTEÑO',
+      src: 'https://placehold.jp/24/000000/ffffff/400x400.png?text=CARDENAL%0ANORTEÑO',
+      color: 'red',
+    },
+    {
+      name: 'ERIZO VERDE',
+      src: 'https://placehold.jp/24/000000/ffffff/400x400.png?text=ERIZO%0AVERDE',
+      color: 'green',
+    },
+    {
+      name: 'GARCETA AZUL',
+      src: 'https://placehold.jp/24/000000/ffffff/400x400.png?text=GARCETA%0AAZUL',
+      color: 'red',
+    },
   ];
 
   return (

@@ -33,9 +33,9 @@ button {
   position: fixed;
   inset: 0;
   background-image:
-    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.015) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.015) 0%, transparent 50%),
-    radial-gradient(circle, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    radial-gradient(circle at 20% 50%, rgb(255 255 255 / 1.5%) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgb(255 255 255 / 1.5%) 0%, transparent 50%),
+    radial-gradient(circle, rgb(255 255 255 / 2%) 1px, transparent 1px);
   background-size:
     800px 800px,
     900px 900px,
@@ -43,20 +43,23 @@ button {
   pointer-events: none;
   z-index: 9999;
   opacity: 0.8;
-  animation: grainMove 8s steps(1) infinite;
+  animation: grain-move 8s steps(1) infinite;
 }
 
-@keyframes grainMove {
+@keyframes grain-move {
   0%,
   100% {
     transform: translate(0, 0);
   }
+
   25% {
     transform: translate(-1%, -1%);
   }
+
   50% {
     transform: translate(1%, 1%);
   }
+
   75% {
     transform: translate(-1%, 1%);
   }

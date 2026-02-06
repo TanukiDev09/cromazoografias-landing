@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default function PoemSample() {
   return (
     <section className="section" id="muestra">

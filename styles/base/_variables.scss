@@ -1,6 +1,6 @@
 // 1. DESIGN TOKENS
-$black: #000000;
-$white: #ffffff;
+$black: #000;
+$white: #fff;
 $gray: #dadada;
 
 // The Spectrum
@@ -34,6 +34,5 @@ $shadow-offset: 8px;
 $shadow-offset-lg: 12px;
 $shadow-brutalist: $shadow-offset $shadow-offset 0 rgba($white, 0.1);
 $shadow-brutalist-hover: $shadow-offset $shadow-offset 0 rgba($white, 0.2);
-
 $transition-standard: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 $transition-fast: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);

@@ -1,8 +1,12 @@
 'use client';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-export default function Navigation() {
+interface NavigationProps {
+  onPurchase: () => void;
+}
+
+export default function Navigation({ onPurchase }: NavigationProps) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -27,10 +31,12 @@ export default function Navigation() {
         </a>
 
         <div className="nav__menu">
-          <a href="#productos" className="nav__link">Libros</a>
-          <a href="#productos" className="btn btn--buy nav__cta">
-            <span>Comprar Set</span>
+          <a href="#productos" className="nav__link">
+            Libros
           </a>
+          <button onClick={onPurchase} className="btn btn--buy nav__cta">
+            <span>Comprar Set</span>
+          </button>
         </div>
       </div>
     </nav>

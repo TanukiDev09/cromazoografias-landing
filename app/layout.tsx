@@ -1,3 +1,4 @@
+import React from 'react';
 import { Arvo, Lato } from 'next/font/google';
 import '../styles/main.scss';
 
@@ -21,7 +22,7 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${arvo.variable} ${lato.variable}`}>
+    <html lang="es" className={`${arvo.variable} ${lato.variable}`} suppressHydrationWarning>
       <body>
         <div className="grain"></div>
         {children}

@@ -1,3 +1,4 @@
+import React from 'react';
 import Image from 'next/image';
 
 export default function Footer() {
@@ -16,7 +17,8 @@ export default function Footer() {
               />
             </div>
             <p className="footer__tagline">
-              Una obra editorial que explora la taxonomía emocional de los animales a través del espectro cromático.
+              Una obra editorial que explora la taxonomía emocional de los animales a través del
+              espectro cromático.
             </p>
           </div>
 
@@ -24,25 +26,76 @@ export default function Footer() {
             <div className="footer__column">
               <h4 className="footer__title">Colección</h4>
               <ul className="footer__list">
-                <li><a href="#productos" className="footer__link">Volumen 1</a></li>
-                <li><a href="#productos" className="footer__link">Volumen 2</a></li>
-                <li><a href="#productos" className="footer__link">Set Completo</a></li>
+                <li>
+                  <a href="#productos" className="footer__link">
+                    Volumen 1
+                  </a>
+                </li>
+                <li>
+                  <a href="#productos" className="footer__link">
+                    Volumen 2
+                  </a>
+                </li>
+                <li>
+                  <a href="#productos" className="footer__link">
+                    Set Completo
+                  </a>
+                </li>
               </ul>
             </div>
             <div className="footer__column">
               <h4 className="footer__title">Compañía</h4>
               <ul className="footer__list">
-                <li><a href="https://tanukilibros.com" target="_blank" rel="noopener noreferrer" className="footer__link">Tanuki Libros</a></li>
-                <li><a href="#autor" className="footer__link">Sobre el Autor</a></li>
-                <li><a href="#faq" className="footer__link">Ayuda / FAQ</a></li>
+                <li>
+                  <a
+                    href="https://tanukilibros.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="footer__link"
+                  >
+                    Tanuki Libros
+                  </a>
+                </li>
+                <li>
+                  <a href="#autor" className="footer__link">
+                    Sobre el Autor
+                  </a>
+                </li>
+                <li>
+                  <a href="#faq" className="footer__link">
+                    Ayuda / FAQ
+                  </a>
+                </li>
               </ul>
             </div>
             <div className="footer__column">
               <h4 className="footer__title">Contacto</h4>
               <ul className="footer__list">
-                <li><a href="mailto:hola@tanukilibros.com" className="footer__link">hola@tanukilibros.com</a></li>
-                <li><a href="https://instagram.com/tanukilibros" target="_blank" rel="noopener noreferrer" className="footer__link">Instagram</a></li>
-                <li><a href="https://wa.me/573000000000" target="_blank" rel="noopener noreferrer" className="footer__link">WhatsApp</a></li>
+                <li>
+                  <a href="mailto:hola@tanukilibros.com" className="footer__link">
+                    hola@tanukilibros.com
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://instagram.com/tanukilibros"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="footer__link"
+                  >
+                    Instagram
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://wa.me/573000000000"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="footer__link"
+                  >
+                    WhatsApp
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

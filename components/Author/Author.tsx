@@ -1,3 +1,4 @@
+import React from 'react';
 import Image from 'next/image';
 
 export default function Author() {
@@ -7,7 +8,8 @@ export default function Author() {
         <div className="author__header">
           <h2 className="section__title">El autor</h2>
           <p className="section__subtitle">
-            Juan Dávila es poeta, ilustrador y diseñador editorial. Cromazoografías es su primera obra publicada.
+            Juan Dávila es poeta, ilustrador y diseñador editorial. Cromazoografías es su primera
+            obra publicada.
           </p>
         </div>
 
@@ -16,9 +18,9 @@ export default function Author() {
             <h3 className="author__name">Juan Dávila</h3>
             <p className="author__handle">@juandavila</p>
             <p className="author__bio">
-              Poeta colombiano radicado en Bogotá. Su trabajo explora la intersección entre lo humano y lo animal,
-              usando el color como taxonomía emocional. Cromazoografías es el resultado de 3 años de trabajo
-              meticuloso entre la palabra y la imagen.
+              Poeta colombiano radicado en Bogotá. Su trabajo explora la intersección entre lo
+              humano y lo animal, usando el color como taxonomía emocional. Cromazoografías es el
+              resultado de 3 años de trabajo meticuloso entre la palabra y la imagen.
             </p>
             <div className="author__credentials">
               <div className="author__credential">

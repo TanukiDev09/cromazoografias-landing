@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default function FAQ() {
   const faqs = [
     {
@@ -31,9 +33,7 @@ export default function FAQ() {
       <div className="faq">
         <div className="faq__header">
           <h2 className="section__title">Preguntas frecuentes</h2>
-          <p className="section__subtitle">
-            Todo lo que necesitas saber antes de comprar.
-          </p>
+          <p className="section__subtitle">Todo lo que necesitas saber antes de comprar.</p>
         </div>
 
         <div className="faq__list">

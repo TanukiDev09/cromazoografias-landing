@@ -1,29 +1,22 @@
 'use client';
-import { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
-import PurchaseModal from '../PurchaseModal';
 
 interface Product {
   name: string;
   price: string;
+  productId: number;
 }
 
-export default function Hero() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+interface HeroProps {
+  onPurchase: (product: Product) => void;
+}
 
+export default function Hero({ onPurchase }: HeroProps) {
   const setProduct: Product = {
     name: 'Set Completo (Vol. 1 + Vol. 2)',
     price: '$160.000',
-  };
-
-  const openModal = () => {
-    setIsModalOpen(true);
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    document.body.style.overflow = '';
+    productId: 3440,
   };
 
   return (
@@ -31,11 +24,7 @@ export default function Hero() {
       <div className="hero__impact">
         <h1 className="hero__title hero__title--text">CROMAZOOGRAFÍAS</h1>
         <div className="hero__title hero__title--svg">
-          <img
-            src="/cromazoografias-svg.svg"
-            alt="Cromazoografías"
-            className="hero__logo"
-          />
+          <img src="/cromazoografias-svg.svg" alt="Cromazoografías" className="hero__logo" />
         </div>
         <p className="hero__tagline">Los animales nos devuelven lo humano</p>
       </div>
@@ -43,7 +32,7 @@ export default function Hero() {
       <div className="hero__main-concept">
         <div className="hero__illus-box">
           <Image
-            src="/illustrations/1 (1).jpg"
+            src="https://placehold.jp/48/000000/ffffff/800x800.png?text=CROMAZOOGRAFÍA%0ADE%0AMUESTRA"
             alt="Cromazoografía de muestra"
             width={800}
             height={800}
@@ -92,14 +81,12 @@ export default function Hero() {
           <p className="hero__preorder-label">PEDIDOS PARA INICIAR PRODUCCIÓN</p>
         </div>
 
-        <button className="btn btn--hero" onClick={openModal}>
+        <button className="btn btn--hero" onClick={() => onPurchase(setProduct)}>
           <span>COMPRAR SET COMPLETO — $160.000</span>
         </button>
 
         <p className="hero__cta-note">O elige volúmenes individuales abajo ↓</p>
       </div>
-
-      <PurchaseModal isOpen={isModalOpen} onClose={closeModal} product={setProduct} />
-    </section >
+    </section>
   );
 }
