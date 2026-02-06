@@ -52,6 +52,10 @@ export interface CreateOrderData {
   payment_method?: string;
   payment_method_title?: string;
   set_paid?: boolean;
+  meta_data?: Array<{
+    key: string;
+    value: any;
+  }>;
 }
 
 // WooCommerce Order Response
