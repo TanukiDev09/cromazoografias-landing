@@ -1,0 +1,161 @@
+@import '../../styles/base/variables';
+
+.section--author {
+  background: $black;
+  border-top: 4px solid $white;
+
+  @media (max-width: 768px) {
+    border-top-width: 2px;
+  }
+}
+
+.author {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $space-md;
+
+  @media (max-width: 768px) {
+    padding: 0 $space-sm;
+  }
+
+  &__header {
+    margin-bottom: $space-lg;
+
+    @media (max-width: 768px) {
+      margin-bottom: $space-md;
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-lg;
+    align-items: start;
+
+    @media (min-width: 768px) and (max-width: 1023px) {
+      grid-template-columns: 1fr;
+      gap: $space-md;
+    }
+
+    @media (min-width: 1024px) {
+      grid-template-columns: 1.5fr 1fr;
+      gap: $space-xl;
+    }
+  }
+
+  &__bio-box {
+    border: 3px solid $white;
+    padding: $space-md;
+    background: rgba($white, 0.02);
+
+    @media (max-width: 768px) {
+      border-width: 2px;
+      padding: $space-sm;
+    }
+  }
+
+  &__name {
+    font-family: $font-primary;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 700;
+    margin-bottom: $space-xs;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+
+    @media (max-width: 768px) {
+      font-size: clamp(2rem, 8vw, 2.5rem);
+    }
+  }
+
+  &__handle {
+    font-size: clamp(0.875rem, 2vw, 1.25rem);
+    opacity: 0.4;
+    margin-bottom: $space-md;
+    font-style: italic;
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+      margin-bottom: $space-sm;
+    }
+  }
+
+  &__bio {
+    font-size: clamp(0.875rem, 1.8vw, 1.125rem);
+    line-height: 1.7;
+    opacity: 0.85;
+    margin-bottom: $space-md;
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: $space-sm;
+    }
+  }
+
+  &__credentials {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $space-sm;
+    padding-top: $space-md;
+    border-top: 2px solid rgba($white, 0.2);
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+      gap: $space-xs;
+    }
+  }
+
+  &__credential {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    @media (max-width: 480px) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__credential-label {
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    opacity: 0.4;
+    font-weight: 700;
+
+    @media (max-width: 480px) {
+      font-size: 0.75rem;
+    }
+  }
+
+  &__credential-value {
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    font-weight: 700;
+
+    @media (max-width: 480px) {
+      font-size: 1rem;
+    }
+  }
+
+  &__image-box {
+    background: $black;
+    overflow: hidden;
+    border: 3px solid $white;
+
+    @media (max-width: 1023px) {
+      aspect-ratio: 1;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      border-width: 2px;
+      max-width: 100%;
+    }
+  }
+
+  &__img {
+    filter: grayscale(1) contrast(1.1) brightness(0.95);
+  }
+}
