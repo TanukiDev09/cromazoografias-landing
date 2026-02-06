@@ -65,7 +65,7 @@ export async function createOrderAction(input: OrderInput): Promise<WCOrder> {
     return await createOrderApi(orderData);
   } catch (error) {
     if (error instanceof z.ZodError) {
-      const fieldErrors = error.errors.map((e) => e.message).join(', ');
+      const fieldErrors = error.issues.map((e) => e.message).join(', ');
       throw new Error(`Datos inválidos: ${fieldErrors}`);
     }
     console.error('Server Action Error (createOrder):', error);
