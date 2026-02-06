@@ -1,7 +1,12 @@
 'use server';
 
 import { z } from 'zod';
-import { createOrder as createOrderApi, CreateOrderData, WCOrder } from '../lib/wordpress-api';
+import {
+  createOrder as createOrderApi,
+  CreateOrderData,
+  WCOrder,
+  getPaidOrdersCount,
+} from '../lib/wordpress-api';
 
 // Schema for input validation
 const OrderSchema = z.object({
@@ -73,4 +78,12 @@ export async function createOrderAction(input: OrderInput): Promise<WCOrder> {
       'Lo sentimos, ocurrió un error procesando tu pedido. Por favor intenta más tarde.'
     );
   }
+}
+
+/**
+ * Server Action to get total sales for the main products
+ */
+export async function getTotalSalesAction(): Promise<number> {
+  const PRODUCT_IDS = [3440, 3431, 3432]; // Set, Vol 1, Vol 2
+  return await getPaidOrdersCount(PRODUCT_IDS);
 }

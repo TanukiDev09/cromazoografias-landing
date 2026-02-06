@@ -1,6 +1,7 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { getTotalSalesAction } from '../../app/actions';
 
 interface Product {
   name: string;
@@ -13,6 +14,20 @@ interface HeroProps {
 }
 
 export default function Hero({ onPurchase }: HeroProps) {
+  const [salesCount, setSalesCount] = useState<number>(42);
+
+  useEffect(() => {
+    async function fetchSales() {
+      try {
+        const total = await getTotalSalesAction();
+        setSalesCount(total);
+      } catch (error) {
+        console.error('Failed to fetch sales count:', error);
+      }
+    }
+    fetchSales();
+  }, []);
+
   const setProduct: Product = {
     name: 'Set Completo (Vol. 1 + Vol. 2)',
     price: '$160.000',
@@ -74,11 +89,11 @@ export default function Hero({ onPurchase }: HeroProps) {
 
         <div className="hero__preorder-counter">
           <div className="hero__preorder-display">
-            <span className="hero__preorder-number">042</span>
-            <span className="hero__preorder-divider">/</span>
-            <span className="hero__preorder-goal">100</span>
+            <span className="hero__preorder-number">
+              {salesCount.toString().padStart(3, '0')}
+            </span>
           </div>
-          <p className="hero__preorder-label">PEDIDOS PARA INICIAR PRODUCCIÓN</p>
+          <p className="hero__preorder-label">EJEMPLARES PEDIDOS EN PREVENTA</p>
         </div>
 
         <button className="btn btn--hero" onClick={() => onPurchase(setProduct)}>
