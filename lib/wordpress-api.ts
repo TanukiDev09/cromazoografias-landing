@@ -23,6 +23,7 @@ export interface WCProduct {
     value: any;
   }>;
   stock_status: 'instock' | 'outofstock' | 'onbackorder';
+  total_sales: number;
 }
 
 // Order Billing Information
@@ -208,5 +209,52 @@ export async function getOrder(orderId: number): Promise<WCOrder> {
   } catch (error) {
     console.error('Error fetching order:', error);
     throw error;
+  }
+}
+
+/**
+ * Get total quantity of specific products from paid orders (processing or completed)
+ */
+export async function getPaidOrdersCount(productIds: number[]): Promise<number> {
+  try {
+    const apiUrl = process.env.NEXT_PUBLIC_WC_API_URL;
+    const consumerKey = process.env.WC_CONSUMER_KEY;
+    const consumerSecret = process.env.WC_CONSUMER_SECRET;
+
+    if (!apiUrl || !consumerKey || !consumerSecret) {
+      throw new Error('Missing WooCommerce API configuration');
+    }
+
+    // Statuses that count as "paid/confirmed" in WooCommerce
+    const statuses = 'processing,completed';
+    const response = await fetch(`${apiUrl}/orders?status=${statuses}&per_page=100`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Basic ${btoa(`${consumerKey}:${consumerSecret}`)}`,
+      },
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`Failed to fetch orders: ${response.status} - ${errorText}`);
+    }
+
+    const orders: WCOrder[] = await response.json();
+
+    // Count quantities of target products in these orders
+    let totalQuantity = 0;
+    orders.forEach((order) => {
+      order.line_items.forEach((item: any) => {
+        if (productIds.includes(item.product_id)) {
+          totalQuantity += item.quantity || 0;
+        }
+      });
+    });
+
+    return totalQuantity;
+  } catch (error) {
+    console.error('Error fetching paid orders count:', error);
+    return 42; // Fallback
   }
 }
