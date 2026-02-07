@@ -82,7 +82,7 @@ export default function Hero({ onPurchase }: HeroProps) {
             <span className="hero__stat-label">Volúmenes</span>
           </div>
           <div className="hero__stat">
-            <span className="hero__stat-number">7</span>
+            <span className="hero__stat-number">8</span>
             <span className="hero__stat-label">Colores</span>
           </div>
         </div>
