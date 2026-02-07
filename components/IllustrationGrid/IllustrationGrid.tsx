@@ -5,33 +5,43 @@ export default function IllustrationGrid() {
   const illustrations = [
     {
       name: 'CANGREJO FANTASMA',
-      src: 'https://placehold.jp/24/000000/ffffff/400x400.png?text=CANGREJO%0AFANTASMA',
+      src: '/cangrejo-fantasma.jpg',
       color: 'yellow',
     },
     {
-      name: 'VÍBORA DE PESTAÑAS',
-      src: 'https://placehold.jp/24/000000/ffffff/400x400.png?text=VÍBORA%0ADEP_ESTAÑAS',
+      name: 'SERPIENTE DEL MAÍZ',
+      src: '/serpiente-maiz.jpg',
       color: 'orange',
     },
     {
-      name: 'MANTIS ORQUÍDEA',
-      src: 'https://placehold.jp/24/000000/ffffff/400x400.png?text=MANTIS%0AORQUÍDEA',
-      color: 'yellow',
-    },
-    {
-      name: 'CARDENAL NORTEÑO',
-      src: 'https://placehold.jp/24/000000/ffffff/400x400.png?text=CARDENAL%0ANORTEÑO',
+      name: 'MANZANA DE MAR',
+      src: '/manzana-mar.jpg',
       color: 'red',
     },
     {
-      name: 'ERIZO VERDE',
-      src: 'https://placehold.jp/24/000000/ffffff/400x400.png?text=ERIZO%0AVERDE',
+      name: 'CACATÚA GALAH',
+      src: '/cacatua-galah.jpg',
+      color: 'pink',
+    },
+    {
+      name: 'NUDIBRANQUIO BULLOCKII',
+      src: '/nudibranquio-bullockii.jpg',
+      color: 'purple',
+    },
+    {
+      name: 'MORFO AZUL',
+      src: '/morfo-azul.jpg',
+      color: 'blue',
+    },
+    {
+      name: 'PEZ LIMÓN',
+      src: '/pez-limon.jpg',
       color: 'green',
     },
     {
-      name: 'GARCETA AZUL',
-      src: 'https://placehold.jp/24/000000/ffffff/400x400.png?text=GARCETA%0AAZUL',
-      color: 'red',
+      name: 'ARMIÑO',
+      src: '/armino.jpg',
+      color: 'white',
     },
   ];
 
@@ -70,7 +80,7 @@ export default function IllustrationGrid() {
 
         <div className="illustrations__cta">
           <p className="illustrations__cta-text">
-            Estas son solo 6 de las 192 ilustraciones que encontrarás en la colección completa.
+            Estas son solo 8 de las 192 ilustraciones que encontrarás en la colección completa.
           </p>
           <a href="#productos" className="btn btn--secondary">
             <span>Ver volúmenes disponibles</span>

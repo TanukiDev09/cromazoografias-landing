@@ -72,28 +72,18 @@ export default function Footer() {
               <h4 className="footer__title">Contacto</h4>
               <ul className="footer__list">
                 <li>
-                  <a href="mailto:hola@tanukilibros.com" className="footer__link">
-                    hola@tanukilibros.com
+                  <a href="mailto:info@tanukilibros.com" className="footer__link">
+                    info@tanukilibros.com
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://instagram.com/tanukilibros"
+                    href="https://www.instagram.com/tanuki_libros/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="footer__link"
                   >
                     Instagram
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://wa.me/573000000000"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="footer__link"
-                  >
-                    WhatsApp
                   </a>
                 </li>
               </ul>
@@ -107,8 +97,6 @@ export default function Footer() {
           </p>
           <div className="footer__credits">
             <span>Juan Dávila × Tanuki Libros</span>
-            <span className="footer__divider">|</span>
-            <span>Diseño Brutalista Editorial</span>
           </div>
         </div>
       </div>
