@@ -16,6 +16,7 @@ const OrderSchema = z.object({
   address: z.string().min(5, 'La dirección es requerida').max(200),
   city: z.string().min(2).max(100),
   state: z.string().min(2).max(100),
+  postcode: z.string().min(3, 'El código postal es requerido').max(20),
   productId: z.number().int().positive(),
 });
 
@@ -44,6 +45,7 @@ export async function createOrderAction(input: OrderInput): Promise<WCOrder> {
         address_1: validatedData.address,
         city: validatedData.city,
         state: validatedData.state,
+        postcode: validatedData.postcode,
         country: 'CO',
       },
       line_items: [
