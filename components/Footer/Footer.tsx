@@ -93,7 +93,7 @@ export default function Footer() {
 
         <div className="footer__bottom">
           <p className="footer__copyright">
-            © 2024 Cromazoografías. Todos los derechos reservados.
+            © 2025 Cromazoografías. Todos los derechos reservados.
           </p>
           <div className="footer__credits">
             <span>Juan Dávila × Tanuki Libros</span>
