@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { getTotalSalesAction } from '../../app/actions';
+import Counter from '../Counter/Counter';
 
 interface Product {
   name: string;
@@ -90,7 +91,7 @@ export default function Hero({ onPurchase }: HeroProps) {
         <div className="hero__preorder-counter">
           <div className="hero__preorder-display">
             <span className="hero__preorder-number">
-              {salesCount.toString().padStart(3, '0')}
+              <Counter value={salesCount} />
             </span>
           </div>
           <p className="hero__preorder-label">EJEMPLARES PEDIDOS EN PREVENTA</p>
