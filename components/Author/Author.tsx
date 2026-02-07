@@ -18,7 +18,7 @@ export default function Author() {
             <h3 className="author__name">Juan Dávila</h3>
             <p className="author__handle">@juandavila</p>
             <p className="author__bio">
-              Poeta colombiano radicado en Bogotá. Su trabajo explora la intersección entre lo
+              Poeta colombiano radicado en España. Su trabajo explora la intersección entre lo
               humano y lo animal, usando el color como taxonomía emocional. Cromazoografías es el
               resultado de 3 años de trabajo meticuloso entre la palabra y la imagen.
             </p>
@@ -29,7 +29,7 @@ export default function Author() {
               </div>
               <div className="author__credential">
                 <span className="author__credential-label">Año</span>
-                <span className="author__credential-value">2024</span>
+                <span className="author__credential-value">2026</span>
               </div>
               <div className="author__credential">
                 <span className="author__credential-label">Edición</span>

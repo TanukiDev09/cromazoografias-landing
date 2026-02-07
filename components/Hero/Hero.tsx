@@ -47,8 +47,8 @@ export default function Hero({ onPurchase }: HeroProps) {
       <div className="hero__main-concept">
         <div className="hero__illus-box">
           <Image
-            src="https://placehold.jp/48/000000/ffffff/800x800.png?text=CROMAZOOGRAFÍA%0ADE%0AMUESTRA"
-            alt="Cromazoografía de muestra"
+            src="/cangrejo-fantasma.jpg"
+            alt="Cromazoografía de Cangrejo Fantasma"
             width={800}
             height={800}
             className="hero__image"
@@ -65,7 +65,7 @@ export default function Hero({ onPurchase }: HeroProps) {
             <br />y levantar otra coraza.
           </p>
           <div className="hero__poem-meta">
-            <span className="hero__poem-animal">SERPIENTE</span>
+            <span className="hero__poem-animal">CANGREJO FANTASMA</span>
             <span className="hero__poem-author">Juan Dávila</span>
           </div>
         </div>
