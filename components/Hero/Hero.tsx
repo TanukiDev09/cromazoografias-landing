@@ -97,7 +97,10 @@ export default function Hero({ onPurchase }: HeroProps) {
         </div>
 
         <button className="btn btn--hero" onClick={() => onPurchase(setProduct)}>
-          <span>COMPRAR SET COMPLETO — $160.000</span>
+          <span>CONSEGUIR LA COLECCIÓN COMPLETA — $160.000</span>
+          <span style={{ display: 'block', fontSize: '0.8em', marginTop: '0.2rem' }}>
+            (ahorra $10.000)
+          </span>
         </button>
 
         <p className="hero__cta-note">O elige volúmenes individuales abajo ↓</p>

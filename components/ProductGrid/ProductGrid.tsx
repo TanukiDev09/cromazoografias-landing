@@ -18,7 +18,7 @@ const volumes: Volume[] = [
     id: 1,
     num: 'VOL 1',
     name: 'Cromazoografías Vol. 1',
-    specs: 'Amarillo → Rosa. 96 animales · 96 poemas. 14×17cm.',
+    specs: 'Amarillo → Rosa\n96 animales · 96 poemas · 200 páginas\n14×17cm · Encuadernación rústica',
     price: '$85.000',
     colors: ['yellow', 'orange', 'red', 'pink'],
     cover: '/1.png',
@@ -28,7 +28,7 @@ const volumes: Volume[] = [
     id: 2,
     num: 'VOL 2',
     name: 'Cromazoografías Vol. 2',
-    specs: 'Púrpura → Blanco. 96 animales · 96 poemas. 14×17cm.',
+    specs: 'Púrpura → Blanco\n96 animales · 96 poemas · 200 páginas\n14×17cm · Encuadernación rústica',
     price: '$85.000',
     colors: ['purple', 'blue', 'green', 'white'],
     cover: '/2.png',
@@ -90,7 +90,7 @@ export default function ProductGrid({ onPurchase }: ProductGridProps) {
                         onPurchase({ name: vol.name, price: vol.price, productId: vol.wcProductId })
                       }
                     >
-                      <span>Comprar {vol.num}</span>
+                      <span>Conseguir {vol.num}</span>
                     </button>
                   </div>
                 </div>

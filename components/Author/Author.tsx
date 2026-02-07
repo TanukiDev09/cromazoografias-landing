@@ -15,12 +15,16 @@ export default function Author() {
 
         <div className="author__content">
           <div className="author__bio-box">
-            <h3 className="author__name">Juan Dávila</h3>
-            <p className="author__handle">@juandavila</p>
+            <h3 className="author__name">
+              Juan Dávila <span className="author__handle">(@filozoofia)</span>
+            </h3>
+            <p className="author__followers">+400,000 seguidores</p>
             <p className="author__bio">
-              Poeta colombiano radicado en España. Su trabajo explora la intersección entre lo
-              humano y lo animal, usando el color como taxonomía emocional. Cromazoografías es el
-              resultado de 3 años de trabajo meticuloso entre la palabra y la imagen.
+              Artista español-colombiano. 15 años documentando el reino animal con la mirada de un
+              poeta.
+            </p>
+            <p className="author__bio">
+              Cromazoografías es el resultado de 3 años de trabajo entre la palabra y la imagen.
             </p>
             <div className="author__credentials">
               <div className="author__credential">

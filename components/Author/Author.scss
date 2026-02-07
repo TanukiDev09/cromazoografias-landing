@@ -68,10 +68,19 @@
   }
 
   &__handle {
-    font-size: clamp(0.875rem, 2vw, 1.25rem);
+    font-size: 0.5em;
     opacity: 0.4;
-    margin-bottom: $space-md;
     font-style: italic;
+    font-weight: 400;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+
+  &__followers {
+    font-size: clamp(0.875rem, 2vw, 1.25rem);
+    font-weight: 700;
+    margin-bottom: $space-md;
+    opacity: 0.6;
 
     @media (max-width: 768px) {
       font-size: 1rem;
