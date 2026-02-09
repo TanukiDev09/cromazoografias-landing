@@ -18,6 +18,11 @@ const OrderSchema = z.object({
   state: z.string().min(2).max(100),
   postcode: z.string().min(3, 'El código postal es requerido').max(20),
   productId: z.number().int().positive(),
+  utmData: z.record(z.string(), z.string()).optional(),
+  privacyPolicy: z.boolean().refine((val) => val === true, {
+    message: 'Debes aceptar la política de privacidad',
+  }),
+  newsletter: z.boolean().default(false),
 });
 
 export type OrderInput = z.infer<typeof OrderSchema>;
@@ -58,17 +63,42 @@ export async function createOrderAction(input: OrderInput): Promise<WCOrder> {
       payment_method_title: 'MercadoPago',
       meta_data: [
         {
-          key: '_source',
-          value: 'landing-page',
-        },
-        {
           key: 'Source',
           value: 'Cromazoografías Landing Page',
+        },
+        {
+          key: 'Acepta Política de Privacidad',
+          value: validatedData.privacyPolicy ? 'Sí' : 'No',
+        },
+        {
+          key: 'Suscrito al Newsletter',
+          value: validatedData.newsletter ? 'Sí' : 'No',
         },
       ],
     };
 
-    // 4. Create in API
+    // 4. Add UTM Data to meta_data if present
+    if (validatedData.utmData) {
+      const utmLabels: Record<string, string> = {
+        utm_source: 'UTM Source',
+        utm_medium: 'UTM Medium',
+        utm_campaign: 'UTM Campaign',
+        utm_content: 'UTM Content',
+        utm_term: 'UTM Term',
+        fbclid: 'Facebook Click ID',
+      };
+
+      Object.entries(validatedData.utmData).forEach(([key, value]) => {
+        if (value) {
+          orderData.meta_data?.push({
+            key: utmLabels[key] || key,
+            value: value,
+          });
+        }
+      });
+    }
+
+    // 5. Create in API
     return await createOrderApi(orderData);
   } catch (error) {
     if (error instanceof z.ZodError) {
