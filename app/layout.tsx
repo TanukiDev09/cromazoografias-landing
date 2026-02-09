@@ -20,11 +20,14 @@ export const metadata = {
     'Los animales nos devuelven lo humano. 192 poemas e ilustraciones organizados por espectro cromático.',
 };
 
+import UTMCapture from '../components/UTMCapture/UTMCapture';
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={`${arvo.variable} ${lato.variable}`} suppressHydrationWarning>
       <body>
         <div className="grain"></div>
+        <UTMCapture />
         {children}
       </body>
     </html>

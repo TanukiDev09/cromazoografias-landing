@@ -38,6 +38,16 @@ export default function PurchaseModal({ isOpen, onClose, product }: PurchaseModa
         state: formData.get('state') as string,
         postcode: formData.get('postcode') as string,
         productId: product.productId,
+        privacyPolicy: formData.get('privacyPolicy') === 'on',
+        newsletter: formData.get('newsletter') === 'on',
+        utmData: (() => {
+          try {
+            const data = sessionStorage.getItem('utm_metadata');
+            return data ? JSON.parse(data) : undefined;
+          } catch {
+            return undefined;
+          }
+        })(),
       };
 
       // Create order in WooCommerce via Server Action (which now validates)
@@ -147,6 +157,31 @@ export default function PurchaseModal({ isOpen, onClose, product }: PurchaseModa
               disabled={loading}
               placeholder="e.g. 110111"
             />
+          </div>
+
+          <div className="form__checkbox-field">
+            <label className="form__checkbox-label">
+              <input
+                type="checkbox"
+                name="privacyPolicy"
+                className="form__checkbox"
+                required
+                disabled={loading}
+              />
+              <span>He leído y acepto la política de privacidad *</span>
+            </label>
+          </div>
+
+          <div className="form__checkbox-field">
+            <label className="form__checkbox-label">
+              <input
+                type="checkbox"
+                name="newsletter"
+                className="form__checkbox"
+                disabled={loading}
+              />
+              <span>Quiero suscribirme al newsletter</span>
+            </label>
           </div>
 
           <div className="form__note">Entrega a compradores: 1-7 de marzo.</div>
