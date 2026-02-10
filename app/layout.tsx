@@ -21,6 +21,7 @@ export const metadata = {
 };
 
 import UTMCapture from '../components/UTMCapture/UTMCapture';
+import { Analytics } from '@vercel/analytics/next';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="grain"></div>
         <UTMCapture />
         {children}
+        <Analytics />
       </body>
     </html>
   );
