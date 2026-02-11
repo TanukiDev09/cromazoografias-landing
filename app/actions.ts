@@ -80,18 +80,18 @@ export async function createOrderAction(input: OrderInput): Promise<WCOrder> {
     // 4. Add UTM Data to meta_data if present
     if (validatedData.utmData) {
       const utmLabels: Record<string, string> = {
-        utm_source: 'UTM Source',
-        utm_medium: 'UTM Medium',
-        utm_campaign: 'UTM Campaign',
-        utm_content: 'UTM Content',
-        utm_term: 'UTM Term',
+        utm_source: 'UTM: Origen (Source)',
+        utm_medium: 'UTM: Medio (Medium)',
+        utm_campaign: 'UTM: Campaña (Campaign)',
+        utm_content: 'UTM: Contenido (Content)',
+        utm_term: 'UTM: Término (Term)',
         fbclid: 'Facebook Click ID',
       };
 
       Object.entries(validatedData.utmData).forEach(([key, value]) => {
         if (value) {
           orderData.meta_data?.push({
-            key: utmLabels[key] || key,
+            key: utmLabels[key] || `UTM: ${key}`,
             value: value,
           });
         }

@@ -15,7 +15,7 @@ interface HeroProps {
 }
 
 export default function Hero({ onPurchase }: HeroProps) {
-  const [salesCount, setSalesCount] = useState<number>(42);
+  const [salesCount, setSalesCount] = useState<number>(0);
 
   useEffect(() => {
     async function fetchSales() {
