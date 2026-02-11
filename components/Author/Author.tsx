@@ -20,7 +20,7 @@ export default function Author() {
             </h3>
             <p className="author__followers">+400,000 seguidores</p>
             <p className="author__bio">
-              Artista español-colombiano. 15 años documentando el reino animal con la mirada de un
+              Artista colombiano radicado en España. 15 años documentando el reino animal con la mirada de un
               poeta.
             </p>
             <p className="author__bio">
