@@ -6,6 +6,13 @@
   overflow: hidden;
   height: clamp(3rem, 8vw, 5rem);
   // Should match or fit within .hero__preorder-number's font-size
+
+  &__limit {
+    color: $color-gray;
+    margin-left: 0.2em;
+    font-size: 0.8em;
+    opacity: 0.8;
+  }
 }
 
 .counter-digit {

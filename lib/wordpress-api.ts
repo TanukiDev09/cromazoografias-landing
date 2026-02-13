@@ -233,6 +233,7 @@ export async function getPaidOrdersCount(productIds: number[]): Promise<number> 
         'Content-Type': 'application/json',
         Authorization: `Basic ${btoa(`${consumerKey}:${consumerSecret}`)}`,
       },
+      next: { revalidate: 300 }, // Cache for 5 minutes (300 seconds)
     });
 
     if (!response.ok) {
