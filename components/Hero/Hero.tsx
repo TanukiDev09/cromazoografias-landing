@@ -12,12 +12,16 @@ interface Product {
 
 interface HeroProps {
   onPurchase: (product: Product) => void;
+  initialSalesCount?: number;
 }
 
-export default function Hero({ onPurchase }: HeroProps) {
-  const [salesCount, setSalesCount] = useState<number>(0);
+export default function Hero({ onPurchase, initialSalesCount = 0 }: HeroProps) {
+  const [salesCount, setSalesCount] = useState<number>(initialSalesCount);
 
   useEffect(() => {
+    // We can skip the fetch if we already have a likely-accurate count from SSR, 
+    // or keep it to ensure the counter animates if it changed since build/cache.
+    // For now, we'll keep it but it will start from initialSalesCount instead of 0.
     async function fetchSales() {
       try {
         const total = await getTotalSalesAction();
