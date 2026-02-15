@@ -226,7 +226,8 @@ export async function getPaidOrdersCount(productIds: number[]): Promise<number> 
     }
 
     // Statuses that count as "paid/confirmed" in WooCommerce
-    const statuses = 'processing,completed';
+    // Include standard processing/completed and ePayco specific processing status + on-hold for pre-sales
+    const statuses = 'processing,completed,epayco-processing,on-hold';
     const response = await fetch(`${apiUrl}/orders?status=${statuses}&per_page=100`, {
       method: 'GET',
       headers: {
