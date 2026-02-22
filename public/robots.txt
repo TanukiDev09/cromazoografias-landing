@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cromazoografias.tanukilibros.com/sitemap.xml

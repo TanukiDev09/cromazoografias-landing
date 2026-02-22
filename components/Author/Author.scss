@@ -1,64 +1,67 @@
-@import '../../styles/base/variables';
+@use 'sass:color';
+@use '../../styles/base/variables' as vars;
 
 .section--author {
-  background: $black;
-  border-top: 4px solid $white;
+  background: vars.$black;
+  border-top: 4px solid vars.$white;
+  padding: vars.$space-xl 0;
 
   @media (max-width: 768px) {
     border-top-width: 2px;
+    padding: vars.$space-lg 0;
   }
 }
 
 .author {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 $space-md;
+  padding: 0 vars.$space-md;
 
   @media (max-width: 768px) {
-    padding: 0 $space-sm;
+    padding: 0 vars.$space-sm;
   }
 
   &__header {
-    margin-bottom: $space-lg;
+    margin-bottom: vars.$space-lg;
 
     @media (max-width: 768px) {
-      margin-bottom: $space-md;
+      margin-bottom: vars.$space-md;
     }
   }
 
   &__content {
     display: grid;
     grid-template-columns: 1fr;
-    gap: $space-lg;
+    gap: vars.$space-lg;
     align-items: start;
 
     @media (min-width: 768px) and (max-width: 1023px) {
       grid-template-columns: 1fr;
-      gap: $space-md;
+      gap: vars.$space-md;
     }
 
     @media (min-width: 1024px) {
       grid-template-columns: 1.5fr 1fr;
-      gap: $space-xl;
+      gap: vars.$space-xl;
     }
   }
 
   &__bio-box {
-    border: 3px solid $white;
-    padding: $space-md;
-    background: rgba($white, 0.02);
+    border: 3px solid vars.$white;
+    padding: vars.$space-md;
+    background: rgba(vars.$white, 0.02);
 
     @media (max-width: 768px) {
       border-width: 2px;
-      padding: $space-sm;
+      padding: vars.$space-sm;
     }
   }
 
   &__name {
-    font-family: $font-primary;
+    font-family: vars.$font-primary;
     font-size: clamp(2rem, 5vw, 4rem);
     font-weight: 700;
-    margin-bottom: $space-xs;
+    margin-bottom: vars.$space-xs;
     line-height: 0.95;
     letter-spacing: -0.02em;
 
@@ -79,12 +82,12 @@
   &__followers {
     font-size: clamp(0.875rem, 2vw, 1.25rem);
     font-weight: 700;
-    margin-bottom: $space-md;
+    margin-bottom: vars.$space-md;
     opacity: 0.6;
 
     @media (max-width: 768px) {
       font-size: 1rem;
-      margin-bottom: $space-sm;
+      margin-bottom: vars.$space-sm;
     }
   }
 
@@ -92,25 +95,25 @@
     font-size: clamp(0.875rem, 1.8vw, 1.125rem);
     line-height: 1.7;
     opacity: 0.85;
-    margin-bottom: $space-md;
+    margin-bottom: vars.$space-md;
 
     @media (max-width: 768px) {
       font-size: 1rem;
       line-height: 1.6;
-      margin-bottom: $space-sm;
+      margin-bottom: vars.$space-sm;
     }
   }
 
   &__credentials {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: $space-sm;
-    padding-top: $space-md;
-    border-top: 2px solid rgba($white, 0.2);
+    gap: vars.$space-sm;
+    padding-top: vars.$space-md;
+    border-top: 2px solid rgba(vars.$white, 0.2);
 
     @media (max-width: 480px) {
       grid-template-columns: 1fr;
-      gap: $space-xs;
+      gap: vars.$space-xs;
     }
   }
 
@@ -148,9 +151,9 @@
   }
 
   &__image-box {
-    background: $black;
+    background: vars.$black;
     overflow: hidden;
-    border: 3px solid $white;
+    border: 3px solid vars.$white;
 
     @media (max-width: 1023px) {
       aspect-ratio: 1;

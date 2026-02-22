@@ -1,4 +1,5 @@
-@import '../../styles/base/variables';
+@use 'sass:color';
+@use '../../styles/base/variables' as vars;
 
 .strips {
   max-width: 1400px;
@@ -21,13 +22,13 @@
 
   &__header {
     padding: 2.5rem 2rem;
-    background: $black;
+    background: vars.$black;
     text-align: center;
-    border: 3px solid $white;
+    border: 3px solid vars.$white;
   }
 
   &__num {
-    font-family: $font-primary;
+    font-family: vars.$font-primary;
     font-size: clamp(2rem, 4vw, 3.5rem);
     font-weight: 700;
     margin-bottom: 0.5rem;
@@ -42,9 +43,9 @@
 
   &__item {
     padding: clamp(2.5rem, 4vw, 3.5rem) 2rem;
-    color: $black;
+    color: vars.$black;
     font-weight: 700;
-    transition: $transition-standard;
+    transition: vars.$transition-standard;
 
     &:hover {
       transform: translateX(-8px);
@@ -53,7 +54,7 @@
 
     &--purple,
     &--blue {
-      color: $white;
+      color: vars.$white;
     }
   }
 
@@ -75,26 +76,26 @@
 
 // Color modifiers
 .strip--yellow {
-  background: $color-yellow;
+  background: vars.$color-yellow;
 }
 .strip--orange {
-  background: $color-orange;
+  background: vars.$color-orange;
 }
 .strip--red {
-  background: $color-red;
+  background: vars.$color-red;
 }
 .strip--pink {
-  background: $color-pink;
+  background: vars.$color-pink;
 }
 .strip--purple {
-  background: $color-purple;
+  background: vars.$color-purple;
 }
 .strip--blue {
-  background: $color-blue;
+  background: vars.$color-blue;
 }
 .strip--green {
-  background: $color-green;
+  background: vars.$color-green;
 }
 .strip--gray {
-  background: $color-gray;
+  background: vars.$color-gray;
 }

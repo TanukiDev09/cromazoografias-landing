@@ -3,25 +3,19 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { getTotalSalesAction } from '../../app/actions';
 import Counter from '../Counter/Counter';
+import Countdown from './Countdown';
+import './Hero.scss';
 
-interface Product {
-  name: string;
-  price: string;
-  productId: number;
-}
 
 interface HeroProps {
-  onPurchase: (product: Product) => void;
   initialSalesCount?: number;
 }
 
-export default function Hero({ onPurchase, initialSalesCount = 0 }: HeroProps) {
+export default function Hero({ initialSalesCount = 0 }: HeroProps) {
   const [salesCount, setSalesCount] = useState<number>(initialSalesCount);
+  const TARGET_DATE = '2026-02-25T19:00:00-05:00'; // 25 de Febrero, 7 PM COT
 
   useEffect(() => {
-    // We can skip the fetch if we already have a likely-accurate count from SSR, 
-    // or keep it to ensure the counter animates if it changed since build/cache.
-    // For now, we'll keep it but it will start from initialSalesCount instead of 0.
     async function fetchSales() {
       try {
         const total = await getTotalSalesAction();
@@ -33,82 +27,73 @@ export default function Hero({ onPurchase, initialSalesCount = 0 }: HeroProps) {
     fetchSales();
   }, []);
 
-  const setProduct: Product = {
-    name: 'Set Completo (Vol. 1 + Vol. 2)',
-    price: '$160.000',
-    productId: 3440,
-  };
-
   return (
     <section className="hero" id="inicio">
-      <div className="hero__impact">
-        <h1 className="hero__title hero__title--text">CROMAZOOGRAFÍAS</h1>
-        <div className="hero__title hero__title--svg">
-          <img src="/cromazoografias-svg.svg" alt="Cromazoografías" className="hero__logo" />
-        </div>
-        <p className="hero__tagline">Los animales nos devuelven lo humano</p>
+      {/* 1. Visual Anchor: The Author */}
+      <div className="hero__visual">
+        <Image
+          src="/foto-autor.png"
+          alt="Juan Dávila - El Autor"
+          fill
+          className="hero__visual-img"
+          priority
+        />
+        <div className="hero__visual-overlay"></div>
       </div>
 
-      <div className="hero__main-concept">
-        <div className="hero__illus-box">
-          <Image
-            src="/cangrejo-fantasma.jpg"
-            alt="Cromazoografía de Cangrejo Fantasma"
-            width={800}
-            height={800}
-            className="hero__image"
-            style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
-          />
-        </div>
-        <div className="hero__poem-box">
-          <p className="hero__poem-text">
-            Tocar con la carne viva,
-            <br />
-            dejarse afectar,
-            <br />
-            refugiarse ante el miedo
-            <br />y levantar otra coraza.
-          </p>
-          <div className="hero__poem-meta">
-            <span className="hero__poem-animal">CANGREJO FANTASMA</span>
-            <span className="hero__poem-author">Juan Dávila</span>
-          </div>
-        </div>
-      </div>
+      {/* 2. Content Area: Guaranteed Contrast */}
+      <div className="hero__content">
+        <div className="hero__content-container">
+          <header className="hero__header">
+            <div className="hero__branding-box">
+              <img src="/cromazoografias-svg.svg" alt="Cromazoografías" className="hero__main-logo" />
+            </div>
 
-      <div className="hero__cta-zone">
-        <div className="hero__value-prop">
-          <div className="hero__stat">
-            <span className="hero__stat-number">192</span>
-            <span className="hero__stat-label">Poemas</span>
-          </div>
-          <div className="hero__stat">
-            <span className="hero__stat-number">2</span>
-            <span className="hero__stat-label">Volúmenes</span>
-          </div>
-          <div className="hero__stat">
-            <span className="hero__stat-number">8</span>
-            <span className="hero__stat-label">Colores</span>
-          </div>
+            <div className="hero__status-badge">
+              <span className="hero__live-dot"></span>
+              EN VIVO · INSTAGRAM
+            </div>
+          </header>
+
+          <main className="hero__event">
+            <h1 className="hero__title">
+              Conversación con <br />
+              <strong>Juan Dávila</strong>
+            </h1>
+
+            <div className="hero__countdown-box">
+              <Countdown targetDate={TARGET_DATE} />
+            </div>
+
+            <div className="hero__meta">
+              <div className="hero__meta-data">
+                <span className="hero__meta-label">MIE 25 FEB</span>
+                <span className="hero__meta-value">19:00 COT</span>
+              </div>
+              <div className="hero__meta-data">
+                <span className="hero__meta-label">DÓNDE</span>
+                <span className="hero__meta-value">@tanuki_libros</span>
+              </div>
+            </div>
+
+            <div className="hero__cta-group">
+              <a
+                href="https://www.instagram.com/tanuki_libros?upcoming_event_id=17929765824192906"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn--hero"
+              >
+                <span>SEGUIR @tanuki_libros</span>
+              </a>
+            </div>
+          </main>
+
+          <footer className="hero__quick-status">
+            <div className="hero__sales-mini">
+              <Counter value={salesCount} variant="hero-mini" />
+            </div>
+          </footer>
         </div>
-
-        <div className="hero__preorder-counter">
-          <div className="hero__preorder-display">
-            <span className="hero__preorder-number">
-              <Counter value={salesCount} />
-            </span>
-          </div>
-          <p className="hero__preorder-label">EJEMPLARES PEDIDOS EN PREVENTA</p>
-        </div>
-
-        <button className="btn btn--hero" onClick={() => onPurchase(setProduct)}>
-          <span>CONSEGUIR LA COLECCIÓN COMPLETA — $160.000</span>
-          <span style={{ display: 'block', fontSize: '0.8em', marginTop: '0.2rem' }}>
-            (ahorra $10.000)
-          </span>
-        </button>
-
-        <p className="hero__cta-note">O elige volúmenes individuales abajo ↓</p>
       </div>
     </section>
   );

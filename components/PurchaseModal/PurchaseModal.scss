@@ -1,4 +1,5 @@
-@import '../../styles/base/variables';
+@use 'sass:color';
+@use '../../styles/base/variables' as vars;
 
 .modal {
   display: flex;
@@ -23,14 +24,14 @@
   }
 
   &__content {
-    background: $white;
-    color: $black;
+    background: vars.$white;
+    color: vars.$black;
     max-width: 700px;
     width: 100%;
     max-height: calc(100vh - 4rem);
     padding: 3.5rem;
     position: relative;
-    border: 5px solid $black;
+    border: 5px solid vars.$black;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -40,10 +41,10 @@
       width: 8px;
     }
     &::-webkit-scrollbar-track {
-      background: $white;
+      background: vars.$white;
     }
     &::-webkit-scrollbar-thumb {
-      background: $black;
+      background: vars.$black;
     }
 
     @media (max-width: 768px) {
@@ -62,7 +63,7 @@
     top: 1.5rem;
     right: 1.5rem;
     font-size: 3.5rem;
-    color: $black;
+    color: vars.$black;
     line-height: 1;
     font-weight: 700;
     transition: transform 0.3s ease;
@@ -86,7 +87,7 @@
   &__header {
     margin-bottom: 2.5rem;
     padding-bottom: 2rem;
-    border-bottom: 4px solid $black;
+    border-bottom: 4px solid vars.$black;
 
     @media (max-width: 768px) {
       margin-bottom: 1.5rem;
@@ -104,7 +105,7 @@
   }
 
   &__price {
-    font-family: $font-primary;
+    font-family: vars.$font-primary;
     font-size: clamp(3.5rem, 6vw, 4.5rem);
     font-weight: 700;
   }
@@ -127,10 +128,10 @@
   &__input {
     width: 100%;
     padding: 1.25rem;
-    border: 3px solid $black;
-    font-family: $font-secondary;
+    border: 3px solid vars.$black;
+    font-family: vars.$font-secondary;
     font-size: 1rem;
-    background: $white;
+    background: vars.$white;
     transition: all 0.2s ease;
 
     &:focus {
@@ -165,7 +166,7 @@
     display: flex;
     align-items: flex-start;
     gap: 0.75rem;
-    font-family: $font-secondary;
+    font-family: vars.$font-secondary;
     font-size: 0.875rem;
     cursor: pointer;
     line-height: 1.4;
@@ -180,15 +181,15 @@
     -webkit-appearance: none;
     width: 1.25rem;
     height: 1.25rem;
-    border: 3px solid $black;
-    background: $white;
+    border: 3px solid vars.$black;
+    background: vars.$white;
     cursor: pointer;
     position: relative;
     flex-shrink: 0;
     margin-top: 0.1rem;
 
     &:checked {
-      background: $black;
+      background: vars.$black;
 
       &::after {
         content: '✓';
@@ -196,7 +197,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        color: $white;
+        color: vars.$white;
         font-size: 0.9rem;
         font-weight: 700;
       }

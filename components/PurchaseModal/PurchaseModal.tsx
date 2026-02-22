@@ -184,7 +184,7 @@ export default function PurchaseModal({ isOpen, onClose, product }: PurchaseModa
             </label>
           </div>
 
-          <div className="form__note">Entrega a compradores: 1-7 de marzo.</div>
+          <div className="form__note">Entrega promedio: 2 a 5 días hábiles en Colombia.</div>
 
           <button type="submit" className="btn btn--submit" disabled={loading}>
             {loading ? 'Procesando...' : 'Continuar al pago'}

@@ -36,11 +36,6 @@ export default function Footer() {
                     Volumen 2
                   </a>
                 </li>
-                <li>
-                  <a href="#productos" className="footer__link">
-                    Set Completo
-                  </a>
-                </li>
               </ul>
             </div>
             <div className="footer__column">
@@ -93,7 +88,7 @@ export default function Footer() {
 
         <div className="footer__bottom">
           <p className="footer__copyright">
-            © 2025 Cromazoografías. Todos los derechos reservados.
+            © 2026 Cromazoografías. Todos los derechos reservados.
           </p>
           <div className="footer__credits">
             <span>Juan Dávila × Tanuki Libros</span>

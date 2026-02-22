@@ -1,7 +1,7 @@
-@import 'variables';
+@use 'variables' as vars;
 
 .u-serif {
-  font-family: $font-primary;
+  font-family: vars.$font-primary;
 }
 
 .u-uppercase {

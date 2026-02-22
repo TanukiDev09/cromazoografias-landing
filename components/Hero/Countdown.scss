@@ -1,0 +1,119 @@
+@use 'sass:color';
+@use '../../styles/base/variables' as vars;
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: vars.$space-md;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    gap: vars.$space-xs;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__number {
+    font-family: vars.$font-primary;
+    font-size: clamp(2.5rem, 10vw, 5rem);
+    font-weight: 700;
+    line-height: 1;
+    color: vars.$white;
+    letter-spacing: -0.05em;
+  }
+
+  &__label {
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(vars.$white, 0.5);
+    font-weight: 700;
+    margin-top: 0.25rem;
+
+    @media (max-width: 768px) {
+      font-size: 0.55rem;
+    }
+  }
+
+  &__divider {
+    font-family: vars.$font-primary;
+    font-size: clamp(1.5rem, 6vw, 3rem);
+    font-weight: 700;
+    color: rgba(vars.$white, 0.1);
+    padding-bottom: 1.25rem;
+  }
+
+  &--live {
+    background: rgba(vars.$color-red, 0.1);
+    border: 1px solid vars.$color-red;
+    padding: vars.$space-sm;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    transition: vars.$transition-fast;
+
+    &:hover {
+      background: rgba(vars.$color-red, 0.2);
+    }
+  }
+
+  &--finished {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__live-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  &__live-dot {
+    width: 10px;
+    height: 10px;
+    background: vars.$color-red;
+    border-radius: 50%;
+    animation: live-pulse 1.5s infinite;
+  }
+
+  &__live-label {
+    color: vars.$white;
+    font-weight: 900;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+  }
+
+  &__archived {
+    color: vars.$color-yellow;
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: vars.$transition-fast;
+
+    &:hover {
+      color: vars.$white;
+    }
+  }
+}
+
+@keyframes live-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(vars.$color-red, 0.7);
+    transform: scale(1);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(vars.$color-red, 0);
+    transform: scale(1.1);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(vars.$color-red, 0);
+    transform: scale(1);
+  }
+}

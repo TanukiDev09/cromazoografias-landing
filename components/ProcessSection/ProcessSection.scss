@@ -1,0 +1,158 @@
+@use 'sass:color';
+@use '../../styles/base/variables' as vars;
+
+.process-section {
+  background: vars.$black;
+  padding: vars.$space-xl vars.$space-md;
+  color: vars.$white;
+
+  &__container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  &__header {
+    margin-bottom: vars.$space-lg;
+    text-align: left;
+  }
+
+  &__log-badge {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.75rem;
+    color: vars.$color-yellow;
+    letter-spacing: 0.2em;
+    margin-bottom: vars.$space-sm;
+    opacity: 0.8;
+  }
+
+  &__title {
+    font-family: vars.$font-primary;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 0.95;
+    margin-bottom: vars.$space-sm;
+    text-transform: uppercase;
+  }
+
+  &__subtitle {
+    font-size: 1.125rem;
+    opacity: 0.6;
+    max-width: 600px;
+    line-height: 1.4;
+  }
+
+  &__video-container {
+    position: relative;
+    max-width: 800px;
+  }
+
+  &__video-frame {
+    position: relative;
+    border: 1px solid rgba(vars.$white, 0.1);
+    background: #050505;
+    padding: vars.$space-xs;
+    box-shadow:
+      20px 20px 0 vars.$black,
+      20px 20px 0 1px rgba(vars.$white, 0.1);
+  }
+
+  &__video {
+    width: 100%;
+    display: block;
+    aspect-ratio: 1;
+    object-fit: cover;
+    filter: contrast(1.1) brightness(0.9);
+  }
+
+  &__video-overlay {
+    position: absolute;
+    inset: vars.$space-sm;
+    pointer-events: none;
+  }
+
+  &__corner {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-color: vars.$color-yellow;
+    border-style: solid;
+    opacity: 0.6;
+
+    &--tl {
+      top: 0;
+      left: 0;
+      border-width: 2px 0 0 2px;
+    }
+    &--tr {
+      top: 0;
+      right: 0;
+      border-width: 2px 2px 0 0;
+    }
+    &--bl {
+      bottom: 0;
+      left: 0;
+      border-width: 0 0 2px 2px;
+    }
+    &--br {
+      bottom: 0;
+      right: 0;
+      border-width: 0 2px 2px 0;
+    }
+  }
+
+  &__rec-indicator {
+    position: absolute;
+    top: vars.$space-sm;
+    right: vars.$space-sm;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: vars.$color-red;
+  }
+
+  &__rec-dot {
+    width: 8px;
+    height: 8px;
+    background: vars.$color-red;
+    border-radius: 50%;
+    animation: blink 1s infinite;
+  }
+
+  &__caption {
+    margin-top: vars.$space-lg;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    border-left: 2px solid vars.$color-yellow;
+    padding-left: 1rem;
+  }
+
+  &__step {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.875rem;
+    font-weight: 900;
+  }
+
+  &__detail {
+    font-size: 0.8125rem;
+    opacity: 0.4;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  @media (max-width: 768px) {
+    padding: vars.$space-lg vars.$space-sm;
+
+    &__video-frame {
+      box-shadow:
+        10px 10px 0 vars.$black,
+        10px 10px 0 1px rgba(vars.$white, 0.1);
+    }
+
+    &__title {
+      font-size: 2.25rem;
+    }
+  }
+}

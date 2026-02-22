@@ -1,3 +1,6 @@
+@use 'sass:map';
+@use 'sass:color';
+
 // 1. DESIGN TOKENS
 $black: #000;
 $white: #fff;
@@ -36,3 +39,22 @@ $shadow-brutalist: $shadow-offset $shadow-offset 0 rgba($white, 0.1);
 $shadow-brutalist-hover: $shadow-offset $shadow-offset 0 rgba($white, 0.2);
 $transition-standard: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 $transition-fast: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+// 4. Z-INDEX SYSTEM
+$z-index: (
+  'below': -1,
+  'base': 1,
+  'content': 10,
+  'sticky': 100,
+  'nav': 1000,
+  'modal': 2000,
+  'toast': 3000,
+);
+
+@function z($layer) {
+  @if not map.has-key($z-index, $layer) {
+    @error "Invalid z-index layer: #{$layer}.";
+  }
+
+  @return map.get($z-index, $layer);
+}

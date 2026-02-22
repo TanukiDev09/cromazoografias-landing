@@ -1,338 +1,264 @@
-@import '../../styles/base/variables';
+@use 'sass:color';
+@use '../../styles/base/variables' as vars;
 
 .hero {
+  // --- MOBILE FIRST STRUCTURE (375px Base) ---
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: $space-md;
-  text-align: center;
+  background: vars.$black;
+  color: vars.$white;
   position: relative;
+  overflow-x: hidden;
+  overflow-y: visible;
 
-  @media (max-width: 768px) {
-    padding: $space-sm;
-    min-height: auto;
-    padding-top: $space-lg;
-    padding-bottom: $space-lg;
+  // Visual Half
+  &__visual {
+    height: 30vh; // Reduced from 40vh to pull content up
+    position: relative;
+    background: color.adjust(vars.$black, $lightness: 2%);
+    z-index: vars.z('base');
+
+    &-img {
+      object-fit: cover;
+      object-position: center 20%;
+      filter: grayscale(1) contrast(1.1);
+    }
+
+    &-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, vars.$black 100%);
+    }
   }
 
-  &__impact {
-    margin-bottom: $space-md;
+  // Content Half
+  &__content {
+    flex: 1; // Take remaining 70%
+    background: vars.$black;
+    position: relative;
+    z-index: vars.z('content');
+    display: flex;
+    flex-direction: column;
+    padding: vars.$space-sm vars.$space-md; // Reduced vertical padding
 
-    @media (max-width: 768px) {
-      margin-bottom: $space-sm;
+    &-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: vars.$space-sm; // Reduced from md
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
     }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: vars.$space-xs; // Tightened
+  }
+
+  &__branding-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  &__main-logo {
+    filter: invert(1) brightness(2);
+    width: 150px;
+    height: auto;
+  }
+
+  &__motto {
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(vars.$white, 0.4);
+  }
+
+  &__status-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.55rem;
+    font-weight: 900;
+    color: vars.$color-yellow;
+    border: 1px solid rgba(vars.$color-yellow, 0.3);
+    padding: 0.25rem 0.5rem;
+    letter-spacing: 0.1em;
+  }
+
+  &__live-dot {
+    width: 6px;
+    height: 6px;
+    background: vars.$color-red;
+    border-radius: 50%;
+    animation: blink 1s infinite;
+  }
+
+  &__event {
+    display: flex;
+    flex-direction: column;
+    gap: vars.$space-sm; // Reduced from md
+    text-align: center;
   }
 
   &__title {
-    font-family: $font-primary;
-    font-size: clamp(2.5rem, 10vw, 10rem);
-    font-weight: 700;
-    line-height: 0.85;
-    margin-bottom: $space-xs;
-    letter-spacing: -0.05em;
+    font-family: vars.$font-primary;
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+    line-height: 1;
     text-transform: uppercase;
+    letter-spacing: -0.04em;
 
-    @media (min-width: 1024px) {
-      font-size: 8rem;
-    }
-
-    @media (max-width: 768px) {
-      font-size: clamp(2.5rem, 12vw, 4rem);
-      line-height: 0.9;
-    }
-
-    &--text {
+    strong {
+      color: vars.$color-yellow;
       display: block;
-
-      @media (max-width: 1023px) {
-        display: none;
-      }
     }
+  }
 
-    &--svg {
-      display: none;
+  &__countdown-box {
+    padding: vars.$space-xs; // Reduced from vars.$space-sm
+    background: rgba(vars.$white, 0.05);
+    border: 1px solid rgba(vars.$white, 0.1);
 
-      @media (max-width: 1023px) {
-        display: block;
-        width: 100%;
-        max-width: 440px;
-        max-height: 340px;
-        overflow: hidden;
-        margin: 0 auto 0.5rem;
+    .countdown {
+      &__number {
+        font-size: 1.75rem; // Slightly smaller
+        color: vars.$white;
       }
-
-      @media (max-width: 768px) {
-        max-width: 320px;
-        max-height: 250px;
-        margin: 0 auto 0.25rem;
+      &__label {
+        font-size: 0.5rem;
+        color: rgba(vars.$white, 0.5);
       }
-
-      @media (max-width: 480px) {
-        max-width: 250px;
-        max-height: 190px;
-        margin: 0 auto 0.15rem;
+      &__divider {
+        opacity: 0.1;
       }
     }
   }
 
-  &__logo {
-    width: 100%;
-    height: auto;
-    display: block;
-    // Force the image to start from top to crop bottom whitespace
-    object-position: top;
-    margin-bottom: 0;
+  &__meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: vars.$space-xs; // Reduced gap
   }
 
-  &__tagline {
-    font-family: $font-primary;
-    font-size: clamp(1rem, 3vw, 2.5rem);
-    font-weight: 700;
-    font-style: italic;
-    opacity: 0.8;
-    letter-spacing: -0.01em;
-    position: relative;
-    z-index: 2;
-
-    @media (max-width: 768px) {
-      font-size: clamp(1rem, 4vw, 1.5rem);
-      margin-top: 0.5rem;
-    }
-  }
-
-  &__main-concept {
+  &__meta-data {
     display: flex;
-    gap: 0;
-    max-width: 1200px;
-    width: 100%;
-    margin-bottom: $space-lg;
+    flex-direction: column;
     text-align: left;
-    border: 12px solid $color-yellow;
-    background: $color-yellow;
-
-    @media (max-width: 768px) {
-      flex-direction: column;
-      border-width: 6px;
-      margin-bottom: $space-md;
-    }
+    border-left: 2px solid vars.$color-yellow;
+    padding-left: 0.5rem;
   }
 
-  &__illus-box {
-    flex: 1.5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: $black;
-    overflow: hidden;
-    padding: $space-md;
-    min-height: 400px;
-
-    @media (min-width: 1024px) {
-      min-height: 550px;
-      padding: $space-lg;
-    }
-
-    @media (max-width: 768px) {
-      min-height: 300px;
-      padding: $space-sm;
-    }
+  &__meta-label {
+    font-size: 0.6rem;
+    font-weight: 900;
+    opacity: 0.4;
+    letter-spacing: 0.1em;
   }
 
-  &__image {
-    z-index: 1;
-    filter: contrast(1.15) brightness(0.95) saturate(1.1);
-    max-width: 100%;
-  }
-
-  &__poem-box {
-    flex: 1;
-    padding: $space-md;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background: $white;
-
-    @media (max-width: 768px) {
-      padding: $space-sm;
-      min-height: 250px;
-    }
-  }
-
-  &__poem-text {
-    font-family: $font-primary;
-    font-style: italic;
-    font-size: clamp(1rem, 2.5vw, 1.75rem);
-    line-height: 1.4;
-    color: $black;
-    font-weight: 400;
-    flex: 1;
-    display: flex;
-    align-items: center;
-
-    @media (max-width: 768px) {
-      font-size: clamp(1rem, 4vw, 1.25rem);
-      line-height: 1.5;
-    }
-  }
-
-  &__poem-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: $space-sm;
-    border-top: 2px solid $black;
-    margin-top: $space-sm;
-    gap: $space-xs;
-
-    @media (max-width: 768px) {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.25rem;
-    }
-  }
-
-  &__poem-animal {
-    font-size: clamp(0.625rem, 1.5vw, 1rem);
+  &__meta-value {
+    font-size: 0.8rem;
     font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
+    white-space: nowrap;
   }
 
-  &__poem-author {
-    font-size: clamp(0.625rem, 1.2vw, 0.875rem);
-    opacity: 0.5;
-    font-style: italic;
-  }
-
-  &__cta-zone {
-    max-width: 1200px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: $space-md;
-
-    @media (max-width: 768px) {
-      gap: $space-sm;
+  &__cta-group {
+    .btn--hero {
+      width: 100%;
+      background: vars.$color-yellow;
+      color: vars.$black;
+      padding: 1rem;
+      font-weight: 900;
+      font-size: 0.875rem;
+      border: none;
+      box-shadow: 0 4px 0 color.adjust(vars.$color-yellow, $lightness: -20%);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 
-  &__value-prop {
+  &__quick-status {
     display: flex;
-    gap: $space-lg;
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    gap: vars.$space-sm; // Reduced from md
+    border-top: 1px solid rgba(vars.$white, 0.1);
+    padding-top: vars.$space-sm; // Reduced from md
+    margin-top: vars.$space-sm; // Reduced from md
+  }
 
-    @media (max-width: 768px) {
-      gap: $space-md;
+  &__sales-mini {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  // --- DESKTOP ENHANCEMENTS (1025px+) ---
+  @media (min-width: 1025px) {
+    flex-direction: row;
+
+    &__visual {
+      flex: 1.2;
+      height: 100%;
+      border-right: 1px solid rgba(vars.$white, 0.1);
+    }
+
+    &__content {
+      flex: 1;
+      padding: vars.$space-xl;
+      display: flex;
+      align-items: center; // Ensure content centers vertically when there is extra height
+
+      &-container {
+        max-width: 500px;
+        justify-content: center;
+        gap: vars.$space-xl;
+      }
+    }
+
+    &__header {
+      width: 100%;
+      margin-bottom: vars.$space-md;
+    }
+
+    &__title {
+      font-size: 3.5rem; // Slightly smaller to gain space
+    }
+
+    &__quick-status {
+      border-top: 1px solid rgba(vars.$white, 0.1);
+      margin-top: vars.$space-md;
+      padding-top: vars.$space-md;
       width: 100%;
     }
   }
 
-  &__stat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.25rem;
-
-    @media (max-width: 768px) {
-      flex: 1;
-      min-width: 80px;
+  // Wide screen refinements (1440px+)
+  @media (min-width: 1440px) {
+    &__content {
+      padding: vars.$space-lg; // Tighten padding to reduce "black block" effect
     }
   }
+}
 
-  &__stat-number {
-    font-family: $font-primary;
-    font-size: clamp(2.5rem, 6vw, 5rem);
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -0.02em;
-
-    @media (max-width: 768px) {
-      font-size: clamp(2rem, 8vw, 3rem);
-    }
+@keyframes blink {
+  0% {
+    opacity: 1;
   }
-
-  &__stat-label {
-    font-size: clamp(0.625rem, 1.2vw, 1rem);
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    opacity: 0.5;
-    font-weight: 700;
-
-    @media (max-width: 768px) {
-      font-size: 0.625rem;
-      letter-spacing: 0.15em;
-    }
+  50% {
+    opacity: 0.3;
   }
-
-  &__cta-note {
-    font-size: clamp(0.75rem, 1.5vw, 1.125rem);
-    opacity: 0.6;
-    font-style: italic;
-
-    @media (max-width: 768px) {
-      font-size: 0.875rem;
-    }
-  }
-
-  &__preorder-counter {
-    width: 100%;
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
-    gap: $space-xs;
-    margin: $space-sm 0;
-
-    @media (max-width: 768px) {
-      max-width: 100%;
-      padding: 0 $space-sm;
-    }
-  }
-
-  &__preorder-display {
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: $space-xs $space-sm;
-    background: $black;
-    border: 3px solid $color-yellow;
-    margin-bottom: 0.5rem;
-  }
-
-  &__preorder-number {
-    font-family: $font-primary;
-    font-size: clamp(3rem, 8vw, 5rem);
-    font-weight: 800;
-    line-height: 1;
-    color: $color-yellow;
-    letter-spacing: 0.05em;
-  }
-
-  &__preorder-divider {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-    font-weight: 300;
-    opacity: 0.4;
-    color: $white;
-  }
-
-  &__preorder-goal {
-    font-family: $font-primary;
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-    font-weight: 700;
-    color: $white;
-    opacity: 0.6;
-  }
-
-  &__preorder-label {
-    font-size: clamp(0.7rem, 1vw, 0.875rem);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.3em;
-    color: $white;
-    opacity: 0.8;
+  100% {
+    opacity: 1;
   }
 }
