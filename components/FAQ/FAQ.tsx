@@ -1,92 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
+import './FAQ.scss';
 
-interface Product {
-  name: string;
-  price: string;
-  productId: number;
-}
+export default function FAQ() {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-interface FAQProps {
-  onPurchase: (product: Product) => void;
-}
-
-export default function FAQ({ onPurchase }: FAQProps) {
   const faqs = [
     {
-      q: '¿Puedo comprar solo un volumen?',
-      a: 'Sí, puedes comprar Vol. 1 o Vol. 2 por separado a $85.000 cada uno.',
+      q: '¿Es un libro infantil?',
+      a: 'No. Es poesía existencial ilustrada para adultos. Los animales no son personajes — son espejos.',
     },
     {
-      q: '¿Cuánto cuesta el envío?',
-      a: 'Bogotá: $10.000. Resto de Colombia: $20.000. El costo exacto se calcula al finalizar tu compra.',
+      q: '¿Cuál volumen compro primero?',
+      a: 'El que te llame más: cálido o frío. Cada uno funciona solo. El set completo tiene sentido como obra total.',
     },
     {
-      q: '¿Cuál es el formato físico?',
-      a: 'Cada volumen mide 14×17cm. Encuadernación rústica. 200 páginas a todo color con papel de alta calidad.',
+      q: '¿Qué es el halftone?',
+      a: 'Una técnica que construye la imagen a partir de puntos de distintos tamaños. Sobre fondo negro genera una textura densa y profunda. No se parece a la ilustración digital convencional.',
     },
     {
-      q: '¿Cuándo llega mi libro?',
-      a: 'Los envíos se realizan de 2 a 5 días hábiles después de tu compra. Recibirás un número de guía para rastrear tu pedido.',
+      q: '¿Cuándo llega mi pedido?',
+      a: 'Los pedidos se despachan en los 5 días hábiles siguientes a la compra.',
     },
     {
-      q: '¿Hay stock disponible?',
-      a: 'Sí, hay ejemplares disponibles de ambos volúmenes.',
-    },
-    {
-      q: '¿Necesito leer en orden?',
-      a: 'No. Cada animal es una doble página independiente. Abre donde quieras y lee.',
-    },
-    {
-      q: '¿Es libro infantil?',
-      a: 'Es poesía ilustrada para adultos. Los animales funcionan como espejos de estados emocionales humanos. Los poemas son contemplativos y filosóficos, diseñados para lectura nocturna o momentos de pausa.',
+      q: '¿Solo envían a Colombia?',
+      a: 'Por ahora sí. Estamos trabajando en envíos internacionales.',
     },
   ];
 
-  return (
-    <section className="section section--faq" id="faq">
-      <div className="faq">
-        <div className="faq__header">
-          <h2 className="section__title">Preguntas frecuentes</h2>
-          <p className="section__subtitle">Todo lo que necesitas saber antes de comprar.</p>
-        </div>
+  const toggleFAQ = (index: number) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
 
-        <div className="faq__list">
+  return (
+    <section className="faq-section" id="faq">
+      <div className="faq-section__container">
+        <div className="faq-section__list">
           {faqs.map((f, idx) => (
-            <div key={idx} className="faq__item">
-              <div className="faq__q">{f.q}</div>
-              <div className="faq__a">{f.a}</div>
+            <div key={idx} className={`faq-section__item ${activeIndex === idx ? 'faq-section__item--open' : ''}`}>
+              <button className="faq-section__question" onClick={() => toggleFAQ(idx)}>
+                <span className="faq-section__symbol">{activeIndex === idx ? '−' : '+'}</span>
+                {f.q}
+              </button>
+              <div className="faq-section__answer">
+                <div className="faq-section__answer-inner">
+                  <p>{f.a}</p>
+                </div>
+              </div>
             </div>
           ))}
-        </div>
-
-        <div className="faq__final-cta">
-          <h3 className="faq__final-title">Elige tu volumen</h3>
-          <div className="faq__cta-group">
-            <button
-              className="btn btn--buy-mini"
-              onClick={() =>
-                onPurchase({
-                  name: 'Cromazoografías Vol. 1',
-                  price: '$85.000',
-                  productId: 3431,
-                })
-              }
-            >
-              <span>COMPRAR VOL.1 — $85.000</span>
-            </button>
-            <button
-              className="btn btn--buy-mini"
-              onClick={() =>
-                onPurchase({
-                  name: 'Cromazoografías Vol. 2',
-                  price: '$85.000',
-                  productId: 3432,
-                })
-              }
-            >
-              <span>COMPRAR VOL.2 — $85.000</span>
-            </button>
-          </div>
         </div>
       </div>
     </section>

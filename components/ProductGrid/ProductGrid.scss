@@ -1,376 +1,172 @@
 @use 'sass:color';
-@use '../../styles/base/variables' as vars;
+@use '../../styles/base/variables' as v;
 
-.section--products {
-  background: vars.$black;
-  padding: vars.$space-xl 0;
-  position: relative;
-  overflow: hidden;
+.product-section {
+  background: v.$black;
+  color: v.$white;
+  padding: 15vh 0;
 
-  @media (max-width: 768px) {
-    padding: vars.$space-lg 0;
-  }
-
-  // TECHNICAL GRID OVERLAY
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(vars.$white, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(vars.$white, 0.05) 1px, transparent 1px);
-    background-size: 40px 40px;
-    mask-image: radial-gradient(circle at center, black, transparent 80%);
-    pointer-events: none;
-  }
-}
-
-.products {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-  position: relative;
-  z-index: 10;
-
-  &__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-
-    @media (min-width: 768px) {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
-
-    @media (min-width: 1200px) {
-      gap: 4rem;
-    }
-  }
-}
-
-.vol-section {
-  position: relative;
-  height: 100%;
-
-  &__layout {
+  &__container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 v.$space-md;
     display: flex;
     flex-direction: column;
-    background: #0d0d0d;
-    border: 1px solid rgba(vars.$white, 0.1);
-    position: relative;
-    overflow: hidden;
-    height: 100%;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-
-    &:hover {
-      border-color: rgba(vars.$white, 0.3);
-      box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5);
-
-      .vol-section__cover {
-        transform: translateY(-8px) scale(1.02);
-      }
-
-      .vol-section__serial {
-        opacity: 0.6;
-        letter-spacing: 0.3em;
-      }
-    }
-
-    @media (min-width: 1200px) {
-      display: grid;
-      grid-template-columns: 50px 0.9fr 1.1fr; // Desktop horizontal proportions
-      grid-template-rows: auto;
-    }
-  }
-
-  // ACCENT BAR: Vertical typography & color tabs
-  &__accent-bar {
-    width: 100%;
-    height: 40px;
-    background: #111;
-    display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 1rem;
-    border-bottom: 1px solid rgba(vars.$white, 0.1);
-    position: relative;
-    z-index: 30;
-
-    @media (min-width: 1200px) {
-      width: 50px;
-      height: 100%;
-      flex-direction: column;
-      padding: 1.5rem 0;
-      border-bottom: none;
-      border-right: 1px solid rgba(vars.$white, 0.1);
-    }
+    gap: v.$space-xl;
   }
 
-  &__color-tabs {
-    display: flex;
-    gap: 4px;
-
-    @media (min-width: 1200px) {
-      flex-direction: column;
-      gap: 6px;
-    }
-  }
-
-  &__color-tab {
-    width: 4px;
-    height: 12px;
-
-    @media (min-width: 1200px) {
-      width: 8px;
-      height: 12px;
-    }
-  }
-
-  &__vertical-tag {
-    font-size: 0.6rem;
-    font-weight: 900;
-    color: vars.$color-yellow;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    white-space: nowrap;
-
-    @media (min-width: 1200px) {
-      transform: rotate(-90deg);
-      margin-top: auto;
-    }
-  }
-
-  // SHOWCASE: Technical Archivist Look
-  &__showcase {
-    width: 100%;
-    background: #151515;
-    position: relative;
-    padding: 2.5rem;
-    aspect-ratio: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 1px solid rgba(vars.$white, 0.05);
-
-    @media (min-width: 768px) {
-      aspect-ratio: 1; // Square showcase on tablet stack
-      height: auto;
-      min-height: 350px;
-      padding: 2.5rem;
-      border-bottom: 1px solid rgba(vars.$white, 0.05);
-      border-right: none;
-    }
-
-    @media (min-width: 1200px) {
-      aspect-ratio: auto;
-      height: 100%;
-      min-height: 400px;
-      min-width: 300px;
-      padding: 3.5rem;
-      border-bottom: none;
-      border-right: 1px solid rgba(vars.$white, 0.05);
-    }
-  }
-
-  &__serial {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-family: monospace;
-    font-size: 0.5rem;
-    color: vars.$white;
-    opacity: 0.2;
-    letter-spacing: 0.1em;
-    transition: all 0.4s ease;
-    pointer-events: none;
-  }
-
-  &__cover {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    z-index: 10;
-    filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.5));
-    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-
-    max-width: 220px;
-    max-height: 300px;
-
-    @media (min-width: 768px) {
-      max-width: 240px;
-      max-height: 340px;
-    }
-
-    @media (min-width: 1024px) {
-      max-width: 300px;
-      max-height: 400px;
-    }
-  }
-
-  // INFO: Editorial Compact Layout
-  &__info {
-    flex: 1;
-    padding: 2rem 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    background: #0d0d0d;
-
-    @media (min-width: 768px) {
-      padding: 1.5rem;
-      gap: 1.25rem;
-    }
-
-    @media (min-width: 1200px) {
-      padding: 3rem 2.5rem;
-      gap: 2.5rem;
-    }
-  }
-
-  &__header {
-    border-left: 2px solid vars.$color-yellow;
-    padding-left: 1rem;
-  }
-
-  &__name {
-    font-family: vars.$font-primary;
-    font-size: clamp(1.75rem, 4vw, 3rem);
-    font-weight: 800;
-    line-height: 0.95;
-    color: vars.$white;
+  &__heading {
+    font-family: v.$font-primary; // Arvo
+    font-size: 28px;
+    color: v.$white;
     margin: 0;
-    text-transform: uppercase;
-    letter-spacing: -0.02em;
-
-    @media (min-width: 768px) and (max-width: 1199px) {
-      font-size: clamp(1.5rem, 3.5vw, 2rem);
-    }
+    font-weight: 400;
   }
 
-  &__data-sheet {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-
-    @media (max-width: 480px) {
-      gap: 1rem;
-    }
-
-    @media (min-width: 768px) and (max-width: 1023px) {
-      gap: 0.75rem;
-    }
-  }
-
-  &__data-item {
+  &__volumes {
     display: flex;
     flex-direction: column;
-    gap: 0.15rem;
-    border-top: 1px solid rgba(vars.$white, 0.05);
-    padding-top: 0.5rem;
-  }
+    gap: v.$space-xl;
+    width: 100%;
 
-  &__data-label {
-    font-size: 0.55rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    color: rgba(vars.$white, 0.4);
-    letter-spacing: 0.15em;
-  }
-
-  &__data-value {
-    font-size: 0.75rem;
-    color: vars.$white;
-    font-weight: 700;
-    line-height: 1.2;
-
-    @media (min-width: 768px) and (max-width: 1023px) {
-      font-size: 0.65rem;
+    @media (min-width: 768px) {
+      flex-direction: row;
+      justify-content: center;
+      gap: v.$space-lg;
     }
   }
+}
 
-  &__action-zone {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 1.25rem;
-    margin-top: auto;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(vars.$white, 0.1);
+.product-vol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: v.$space-md;
+  flex: 1;
 
-    @media (min-width: 1024px) {
-      gap: 1.5rem;
-      padding-top: 2rem;
-    }
+  &__image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    max-width: 280px;
   }
 
-  &__price-box {
+  &__info {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
     gap: 0.25rem;
-    border-bottom: 1px solid rgba(vars.$white, 0.05);
-    padding-bottom: 0.75rem;
-    margin-bottom: 0.25rem;
-
-    @media (min-width: 768px) and (max-width: 1023px) {
-      padding-bottom: 0.5rem;
-    }
   }
 
-  &__price-label {
-    font-size: 0.55rem;
-    font-weight: 900;
-    color: vars.$color-yellow;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
+  &__title {
+    font-family: v.$font-primary; // Arvo
+    font-size: 16px;
+    color: v.$white;
+    margin: 0;
+  }
+
+  &__subtitle {
+    font-family: v.$font-sans; // Sans
+    font-size: 13px;
+    color: v.$gray;
+    margin: 0;
+  }
+
+  &__colors {
+    font-family: v.$font-sans; // Sans
+    font-size: 12px;
+    color: v.$gray;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 0.25rem 0;
   }
 
   &__price {
-    font-family: vars.$font-primary;
-    font-size: 1.75rem;
-    font-weight: 950;
-    color: vars.$white;
-    line-height: 1;
+    font-family: v.$font-primary; // Arvo
+    font-size: 20px;
+    color: v.$white;
+    margin: 0.5rem 0;
+  }
 
-    @media (min-width: 1024px) {
-      font-size: 2.5rem;
+  &__btn {
+    background: transparent;
+    border: 1px solid v.$accent;
+    color: v.$white;
+    padding: 0.6rem 2rem;
+    font-family: v.$font-sans;
+    font-size: 14px;
+    cursor: pointer;
+    transition: v.$transition-standard;
+
+    &:hover {
+      background: rgba(v.$accent, 0.1);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.product-set {
+  width: 100%;
+  border: 1px solid v.$accent;
+  padding: v.$space-lg v.$space-md;
+  display: flex;
+  justify-content: center;
+  margin-top: v.$space-lg;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    text-align: center;
+    max-width: 320px;
+  }
+
+  &__title {
+    font-family: v.$font-primary;
+    font-size: 20px;
+    color: v.$white;
+    margin: 0;
+  }
+
+  &__subtitle {
+    font-family: v.$font-sans;
+    font-size: 14px;
+    color: v.$gray;
+  }
+
+  &__price {
+    font-family: v.$font-primary; // Arvo
+    font-size: 24px;
+    color: v.$white;
+    margin: 0.75rem 0;
+  }
+
+  &__btn {
+    background: v.$accent;
+    color: v.$text-on-yellow;
+    border: none;
+    padding: 1rem 2rem;
+    font-family: v.$font-sans;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: v.$transition-standard;
+    width: 100%;
+
+    &:hover {
+      background: color.adjust(v.$accent, $lightness: -5%);
+      transform: translateY(-2px);
     }
   }
 
-  .btn--buy {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: vars.$color-yellow;
-    color: vars.$black !important;
-    padding: 1.125rem 2rem;
-    font-size: 0.9rem;
-    font-weight: 950;
-    letter-spacing: 0.1em;
-    border: none;
-    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-    box-shadow: 4px 4px 0 vars.$white;
-    white-space: nowrap;
-
-    @media (min-width: 1024px) {
-      padding: 1.25rem 2.5rem;
-      font-size: 1rem;
-      box-shadow: 8px 8px 0 vars.$white;
-    }
-
-    &:hover {
-      background: vars.$white;
-      transform: translate(-4px, -4px);
-      box-shadow: 6px 6px 0 vars.$color-yellow;
-
-      @media (min-width: 1024px) {
-        box-shadow: 10px 10px 0 vars.$color-yellow;
-      }
-    }
-
-    &:active {
-      transform: translate(0, 0);
-      box-shadow: none;
-    }
+  &__meta {
+    font-family: v.$font-sans;
+    font-size: 12px;
+    color: v.$gray;
+    margin-top: v.$space-sm;
   }
 }

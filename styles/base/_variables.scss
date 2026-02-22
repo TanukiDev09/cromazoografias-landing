@@ -2,23 +2,26 @@
 @use 'sass:color';
 
 // 1. DESIGN TOKENS
-$black: #000;
-$white: #fff;
-$gray: #dadada;
+$black: #0a0a0a;
+$white: #f5f0e8;
+$gray: #6b6b6b;
+$accent: #f5c842;
 
 // The Spectrum
-$color-yellow: #e6b905;
+$color-yellow: #f5c842;
 $color-orange: #ff6b00;
 $color-red: #e30613;
 $color-pink: #e91e8c;
 $color-purple: #9b5a9e;
 $color-blue: #2e5a99;
 $color-green: #4caf50;
-$color-gray: #dadada;
+$color-gray: #6b6b6b;
+$text-on-yellow: #0a0a0a;
 
 // 2. TYPOGRAPHY
 $font-primary: 'Arvo', serif;
-$font-secondary: 'Lato', sans-serif;
+$font-secondary: 'Lato', sans-serif; // Using Lato as the "Sans" system font
+$font-sans: 'Lato', sans-serif;
 
 // 3. SPACING & BORDERS
 $border-thickness: 2px;

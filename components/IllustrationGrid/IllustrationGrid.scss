@@ -1,216 +1,48 @@
-@use 'sass:color';
-@use '../../styles/base/variables' as vars;
+@use '../../styles/base/variables' as v;
 
-.section {
-  padding: vars.$space-xl 0;
-
-  @media (max-width: 768px) {
-    padding: vars.$space-lg 0;
-  }
-
-  &--products {
-    background: vars.$black;
-  }
-
-  &--illustrations {
-    background: vars.$black;
-    border-top: 4px solid vars.$white;
-
-    @media (max-width: 768px) {
-      border-top-width: 2px;
-    }
-  }
-
-  &__title {
-    font-family: vars.$font-primary;
-    font-size: clamp(2rem, 6vw, 5rem);
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: vars.$space-sm;
-    letter-spacing: -0.03em;
-    line-height: 1;
-
-    @media (max-width: 768px) {
-      font-size: clamp(2rem, 8vw, 3rem);
-      padding: 0 vars.$space-sm;
-    }
-  }
-
-  &__subtitle {
-    font-size: clamp(0.875rem, 2vw, 1.25rem);
-    text-align: center;
-    opacity: 0.7;
-    max-width: 700px;
-    margin: 0 auto vars.$space-lg;
-    line-height: 1.6;
-    padding: 0 vars.$space-sm;
-
-    @media (max-width: 768px) {
-      font-size: 1rem;
-      margin-bottom: vars.$space-md;
-    }
-  }
-}
-
-.illustrations {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 vars.$space-md;
-
-  @media (max-width: 768px) {
-    padding: 0 vars.$space-sm;
-  }
-
-  &__header {
-    margin-bottom: vars.$space-lg;
-
-    @media (max-width: 768px) {
-      margin-bottom: vars.$space-md;
-    }
-  }
+.gallery {
+  background: v.$black;
+  padding: 10vh 0;
+  min-height: auto;
+  display: flex;
+  align-items: center;
 
   &__grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: vars.$space-sm;
-    margin-bottom: vars.$space-lg;
-
-    @media (min-width: 768px) {
-      grid-template-columns: repeat(3, 1fr);
-    }
+    gap: v.$space-lg v.$space-sm;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 v.$space-md;
 
     @media (min-width: 1024px) {
       grid-template-columns: repeat(3, 1fr);
-      gap: vars.$space-md;
-    }
-
-    @media (max-width: 480px) {
-      grid-template-columns: 1fr;
-      gap: vars.$space-xs;
+      gap: v.$space-xl v.$space-md;
     }
   }
 
-  &__frame {
-    aspect-ratio: 1;
-    border: 3px solid vars.$white;
-    background: vars.$black;
-    position: relative;
-    overflow: hidden;
+  &__item {
     display: flex;
     flex-direction: column;
-    transition: vars.$transition-standard;
-    cursor: pointer;
-
-    &:hover {
-      transform: scale(1.02);
-      z-index: 10;
-      box-shadow: 0 20px 40px rgba(vars.$black, 0.4);
-
-      .illustrations__image {
-        filter: contrast(1.2) brightness(1.1);
-        transform: scale(1.05);
-      }
-    }
-
-    &--yellow {
-      border-color: vars.$color-yellow;
-    }
-    &--orange {
-      border-color: vars.$color-orange;
-    }
-    &--red {
-      border-color: vars.$color-red;
-    }
-    &--pink {
-      border-color: vars.$color-pink;
-    }
-    &--purple {
-      border-color: vars.$color-purple;
-    }
-    &--blue {
-      border-color: vars.$color-blue;
-    }
-    &--green {
-      border-color: vars.$color-green;
-    }
+    align-items: flex-start;
+    gap: 0.5rem;
+    transition:
+      opacity 1s ease-out,
+      transform 1s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  &__image-wrapper {
-    flex: 1;
+  &__image-container {
+    width: 100%;
+    aspect-ratio: 4/5; // slightly vertical for animals
     position: relative;
-    padding: vars.$space-sm;
-
-    @media (max-width: 768px) {
-      padding: vars.$space-xs;
-    }
-  }
-
-  &__image {
-    filter: contrast(1.1) brightness(0.95);
-  }
-
-  &__label {
-    background: vars.$white;
-    color: vars.$black;
-    padding: vars.$space-xs;
-    text-align: center;
-    border-top: 3px solid currentColor;
-
-    @media (max-width: 768px) {
-      border-top-width: 2px;
-      padding: 0.5rem 0.25rem;
-    }
+    background: rgba(v.$white, 0.03);
   }
 
   &__name {
-    font-size: clamp(0.5rem, 1vw, 0.75rem);
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-
-    @media (max-width: 768px) {
-      font-size: 0.625rem;
-      letter-spacing: 0.1em;
-    }
-  }
-
-  &__cta-group {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    justify-content: center;
-
-    @media (min-width: 600px) {
-      flex-direction: row;
-    }
-
-    .btn--buy-mini {
-      width: 100%;
-      max-width: 300px;
-
-      &-secondary {
-        background: vars.$white;
-        color: vars.$black;
-        box-shadow: 4px 4px 0 vars.$color-yellow;
-
-        &:hover {
-          background: vars.$color-yellow;
-          color: vars.$black;
-          box-shadow: 4px 4px 0 vars.$white;
-        }
-      }
-    }
-  }
-
-  &__frame--filler {
-    display: none;
-    border: none;
-    background: transparent;
-    pointer-events: none;
-
-    @media (min-width: 768px) {
-      display: block; // Shows as the 9th item in 3x3 grid
-    }
+    font-family: v.$font-sans;
+    font-size: 11px;
+    color: v.$gray;
+    text-transform: lowercase;
+    letter-spacing: 0.02em;
   }
 }

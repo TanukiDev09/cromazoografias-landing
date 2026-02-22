@@ -1,57 +1,37 @@
 import React from 'react';
 import Image from 'next/image';
+import './Author.scss';
 
 export default function Author() {
   return (
-    <section className="section section--author" id="autor">
-      <div className="author">
-        <div className="author__header">
-          <h2 className="section__title">El autor</h2>
-          <p className="section__subtitle">
-            Juan Dávila es poeta, ilustrador y diseñador editorial. Durante tres años documentó 192
-            animales como estados emocionales humanos — un proyecto que siguieron más de 9.000
-            personas antes de convertirse en libro.
-          </p>
+    <section className="author" id="autor">
+      <div className="author__container">
+        <div className="author__visual">
+          <div className="author__image-wrapper">
+            <Image
+              src="/foto-autor.png"
+              alt="Juan Dávila"
+              fill
+              style={{ objectFit: 'cover', filter: 'contrast(1.5) grayscale(1) brightness(0.6)' }}
+              className="author__img"
+            />
+          </div>
         </div>
 
         <div className="author__content">
-          <div className="author__bio-box">
-            <h3 className="author__name">
-              Juan Dávila <span className="author__handle">(@filozoofia)</span>
-            </h3>
-            <p className="author__followers">+9.000 seguidores</p>
-            <p className="author__bio">
-              Artista colombiano radicado en España. 15 años documentando el reino animal con la mirada de un
-              poeta.
-            </p>
-            <p className="author__bio">
-              Cromazoografías es el resultado de 3 años de trabajo entre la palabra y la imagen.
-            </p>
-            <div className="author__credentials">
-              <div className="author__credential">
-                <span className="author__credential-label">Publicado por</span>
-                <span className="author__credential-value">Tanuki Libros</span>
-              </div>
-              <div className="author__credential">
-                <span className="author__credential-label">Año</span>
-                <span className="author__credential-value">2026</span>
-              </div>
-              <div className="author__credential">
-                <span className="author__credential-label">Edición</span>
-                <span className="author__credential-value">Primera</span>
-              </div>
-            </div>
-          </div>
+          <header className="author__header">
+            <h2 className="author__name">Juan Dávila</h2>
+            <p className="author__handle">@filozoofi.a</p>
+          </header>
 
-          <div className="author__image-box">
-            <Image
-              src="/foto-autor.png"
-              alt="Juan Dávila — Autor de Cromazoografías"
-              width={600}
-              height={800}
-              style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
-              className="author__img"
-            />
+          <div className="author__bio">
+            <p>
+              Juan Dávila trabaja en la intersección entre naturaleza, filosofía y arte visual. Desde 2015 ha construido
+              un lenguaje propio centrado en fauna — cuervos ibéricos, aves alpinas, mariposas andaluzas, invertebrados —
+              con ilustraciones que equilibran precisión y expresividad.
+            </p>
+            <p className="author__quote">Su obra no describe los animales. Los habita.</p>
+            <p className="author__footnote">Cromazoografías es su primera publicación editorial.</p>
           </div>
         </div>
       </div>

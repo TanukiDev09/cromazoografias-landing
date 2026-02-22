@@ -1,16 +1,15 @@
 'use client';
 import React, { useState } from 'react';
-import Hero from '../components/Hero';
-import FeaturedPoem from '../components/Hero/FeaturedPoem';
-import ProductGrid from '../components/ProductGrid';
-import IllustrationGrid from '../components/IllustrationGrid';
-import Author from '../components/Author';
-import FAQ from '../components/FAQ';
-import Footer from '../components/Footer';
-import Navigation from '../components/Navigation';
-import PurchaseModal from '../components/PurchaseModal';
-import LiveEventBanner from '../components/LiveEventBanner/LiveEventBanner';
-import ProcessSection from '../components/ProcessSection/ProcessSection';
+import Hero from '../components/Hero/Hero';
+import IllustrationGrid from '../components/IllustrationGrid/IllustrationGrid';
+import ConceptSection from '../components/ConceptSection/ConceptSection';
+import TechniqueSection from '../components/TechniqueSection/TechniqueSection';
+import LiveSection from '../components/LiveSection/LiveSection';
+import Author from '../components/Author/Author';
+import ProductGrid from '../components/ProductGrid/ProductGrid';
+import FAQ from '../components/FAQ/FAQ';
+import ClosureSection from '../components/ClosureSection/ClosureSection';
+import PurchaseModal from '../components/PurchaseModal/PurchaseModal';
 
 interface Product {
   name: string;
@@ -18,11 +17,7 @@ interface Product {
   productId: number;
 }
 
-interface HomeClientProps {
-  initialSalesCount: number;
-}
-
-export default function HomeClient({ initialSalesCount }: HomeClientProps) {
+export default function HomeClient() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
@@ -39,30 +34,34 @@ export default function HomeClient({ initialSalesCount }: HomeClientProps) {
 
   return (
     <>
-      <Navigation onPurchase={openModal} />
+      <main>
+        {/* S1 — HERO */}
+        <Hero />
 
-      {/* 1. Impact & Live Event Context */}
-      <Hero initialSalesCount={initialSalesCount} />
-      <LiveEventBanner />
+        {/* S2 — GALERÍA MUDA */}
+        <IllustrationGrid />
 
-      {/* 2. Argument Visual */}
-      <IllustrationGrid onPurchase={openModal} />
+        {/* S3 — EL CONCEPTO */}
+        <ConceptSection />
 
-      {/* 3. Emotional Hook */}
-      <FeaturedPoem />
+        {/* S4 — LA TÉCNICA */}
+        <TechniqueSection />
 
-      {/* 4. Product & Conversion */}
-      <ProductGrid onPurchase={openModal} />
+        {/* S5 — EL LIVE */}
+        <LiveSection />
 
-      {/* 5. Deep Dive / Process */}
-      <ProcessSection />
+        {/* S6 — EL AUTOR */}
+        <Author />
 
-      {/* 6. Authority & Trust */}
-      <Author />
+        {/* S7 — EL PRODUCTO */}
+        <ProductGrid onPurchase={openModal} />
 
-      {/* 7. Objection Handling */}
-      <FAQ onPurchase={openModal} />
-      <Footer />
+        {/* S8 — FAQS */}
+        <FAQ />
+
+        {/* S9 — CIERRE */}
+        <ClosureSection />
+      </main>
 
       <PurchaseModal isOpen={isModalOpen} onClose={closeModal} product={selectedProduct} />
     </>
