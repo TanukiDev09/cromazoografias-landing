@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import Hero from '../components/Hero';
+import FeaturedPoem from '../components/Hero/FeaturedPoem';
 import ProductGrid from '../components/ProductGrid';
 import IllustrationGrid from '../components/IllustrationGrid';
 import Author from '../components/Author';
@@ -8,6 +9,8 @@ import FAQ from '../components/FAQ';
 import Footer from '../components/Footer';
 import Navigation from '../components/Navigation';
 import PurchaseModal from '../components/PurchaseModal';
+import LiveEventBanner from '../components/LiveEventBanner/LiveEventBanner';
+import ProcessSection from '../components/ProcessSection/ProcessSection';
 
 interface Product {
   name: string;
@@ -36,22 +39,29 @@ export default function HomeClient({ initialSalesCount }: HomeClientProps) {
 
   return (
     <>
-      <Navigation
-        onPurchase={() =>
-          openModal({ name: 'Set Completo (Vol. 1 + Vol. 2)', price: '$160.000', productId: 3440 })
-        }
-      />
+      <Navigation onPurchase={openModal} />
 
-      {/* 1. Header & Main UX (Based on Wireframe) */}
-      <Hero onPurchase={openModal} initialSalesCount={initialSalesCount} />
+      {/* 1. Impact & Live Event Context */}
+      <Hero initialSalesCount={initialSalesCount} />
+      <LiveEventBanner />
 
-      {/* 2. Volumes UX (Based on Wireframe) */}
+      {/* 2. Argument Visual */}
+      <IllustrationGrid onPurchase={openModal} />
+
+      {/* 3. Emotional Hook */}
+      <FeaturedPoem />
+
+      {/* 4. Product & Conversion */}
       <ProductGrid onPurchase={openModal} />
 
-      {/* 3. Redistribution of remaining sections */}
-      <IllustrationGrid />
+      {/* 5. Deep Dive / Process */}
+      <ProcessSection />
+
+      {/* 6. Authority & Trust */}
       <Author />
-      <FAQ />
+
+      {/* 7. Objection Handling */}
+      <FAQ onPurchase={openModal} />
       <Footer />
 
       <PurchaseModal isOpen={isModalOpen} onClose={closeModal} product={selectedProduct} />

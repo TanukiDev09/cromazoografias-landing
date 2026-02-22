@@ -8,8 +8,9 @@ export default function Author() {
         <div className="author__header">
           <h2 className="section__title">El autor</h2>
           <p className="section__subtitle">
-            Juan Dávila es poeta, ilustrador y diseñador editorial. Cromazoografías es su primera
-            obra publicada.
+            Juan Dávila es poeta, ilustrador y diseñador editorial. Durante tres años documentó 192
+            animales como estados emocionales humanos — un proyecto que siguieron más de 9.000
+            personas antes de convertirse en libro.
           </p>
         </div>
 
@@ -18,7 +19,7 @@ export default function Author() {
             <h3 className="author__name">
               Juan Dávila <span className="author__handle">(@filozoofia)</span>
             </h3>
-            <p className="author__followers">+400,000 seguidores</p>
+            <p className="author__followers">+9.000 seguidores</p>
             <p className="author__bio">
               Artista colombiano radicado en España. 15 años documentando el reino animal con la mirada de un
               poeta.

@@ -17,7 +17,7 @@ const OrderSchema = z.object({
   city: z.string().min(2).max(100),
   state: z.string().min(2).max(100),
   postcode: z.string().min(3, 'El código postal es requerido').max(20),
-  productId: z.number().int().positive(),
+  productId: z.number().int().min(0),
   utmData: z.record(z.string(), z.string()).optional(),
   privacyPolicy: z.boolean().refine((val) => val === true, {
     message: 'Debes aceptar la política de privacidad',
@@ -41,6 +41,19 @@ export async function createOrderAction(input: OrderInput): Promise<WCOrder> {
     const lastName = nameParts.slice(1).join(' ') || nameParts[0];
 
     // 3. Prepare WooCommerce Data
+    const line_items =
+      validatedData.productId === 0
+        ? [
+            { product_id: 3431, quantity: 1 },
+            { product_id: 3432, quantity: 1 },
+          ]
+        : [
+            {
+              product_id: validatedData.productId,
+              quantity: 1,
+            },
+          ];
+
     const orderData: CreateOrderData = {
       billing: {
         first_name: firstName,
@@ -53,12 +66,7 @@ export async function createOrderAction(input: OrderInput): Promise<WCOrder> {
         postcode: validatedData.postcode,
         country: 'CO',
       },
-      line_items: [
-        {
-          product_id: validatedData.productId,
-          quantity: 1,
-        },
-      ],
+      line_items,
       payment_method: 'woo-mercado-pago-basic',
       payment_method_title: 'MercadoPago',
       meta_data: [
@@ -116,6 +124,6 @@ export async function createOrderAction(input: OrderInput): Promise<WCOrder> {
  * Server Action to get total sales for the main products
  */
 export async function getTotalSalesAction(): Promise<number> {
-  const PRODUCT_IDS = [3440, 3431, 3432]; // Set, Vol 1, Vol 2
+  const PRODUCT_IDS = [3431, 3432]; // Vol 1, Vol 2
   return await getPaidOrdersCount(PRODUCT_IDS);
 }

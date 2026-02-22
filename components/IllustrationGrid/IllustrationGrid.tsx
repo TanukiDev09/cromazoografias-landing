@@ -1,7 +1,17 @@
 import React from 'react';
 import Image from 'next/image';
 
-export default function IllustrationGrid() {
+interface Product {
+  name: string;
+  price: string;
+  productId: number;
+}
+
+interface IllustrationGridProps {
+  onPurchase: (product: Product) => void;
+}
+
+export default function IllustrationGrid({ onPurchase }: IllustrationGridProps) {
   const illustrations = [
     {
       name: 'CANGREJO FANTASMA',
@@ -69,6 +79,8 @@ export default function IllustrationGrid() {
                   fill
                   style={{ objectFit: 'contain' }}
                   className="illustrations__image"
+                  sizes="(max-width: 480px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  priority={idx < 3}
                 />
               </div>
               <div className="illustrations__label">
@@ -76,15 +88,40 @@ export default function IllustrationGrid() {
               </div>
             </div>
           ))}
+          {/* Fill the remaining grid slots to maintain the 3-column structure at wide screens */}
+          <div className="illustrations__frame illustrations__frame--filler"></div>
         </div>
 
         <div className="illustrations__cta">
           <p className="illustrations__cta-text">
-            Estas son solo 8 de las 192 ilustraciones que encontrarás en la colección completa.
+            Estas son solo 8 de las 192 ilustraciones que encontrarás en ambos volúmenes.
           </p>
-          <a href="#productos" className="btn btn--secondary">
-            <span>Ver volúmenes disponibles</span>
-          </a>
+          <div className="illustrations__cta-group">
+            <button
+              className="btn btn--buy-mini"
+              onClick={() =>
+                onPurchase({
+                  name: 'Cromazoografías Vol. 1',
+                  price: '$85.000',
+                  productId: 3431,
+                })
+              }
+            >
+              <span>COMPRAR VOL.1 — $85.000</span>
+            </button>
+            <button
+              className="btn btn--buy-mini"
+              onClick={() =>
+                onPurchase({
+                  name: 'Cromazoografías Vol. 2',
+                  price: '$85.000',
+                  productId: 3432,
+                })
+              }
+            >
+              <span>COMPRAR VOL.2 — $85.000</span>
+            </button>
+          </div>
         </div>
       </div>
     </section>

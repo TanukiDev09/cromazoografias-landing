@@ -1,10 +1,11 @@
-@import '../../styles/base/variables';
+@use 'sass:color';
+@use '../../styles/base/variables' as vars;
 
 .poem {
   &__intro {
     text-align: center;
     max-width: 800px;
-    margin: 0 auto $space-sm;
+    margin: 0 auto vars.$space-sm;
     font-size: clamp(0.75rem, 1.2vw, 0.875rem);
     opacity: 0.4;
     text-transform: uppercase;
@@ -14,14 +15,14 @@
   &__container {
     max-width: 800px;
     margin: 0 auto;
-    border: $border-thickness solid $white;
-    padding: $space-md;
-    background: rgba($white, 0.01);
+    border: vars.$border-thickness solid vars.$white;
+    padding: vars.$space-md;
+    background: rgba(vars.$white, 0.01);
     position: relative;
-    transition: $transition-standard;
+    transition: vars.$transition-standard;
 
     &:hover {
-      background: rgba($white, 0.03);
+      background: rgba(vars.$white, 0.03);
     }
 
     &::before,
@@ -30,7 +31,7 @@
       position: absolute;
       width: 30px;
       height: 30px;
-      border: 4px solid $white;
+      border: 4px solid vars.$white;
       z-index: 2;
     }
 
@@ -54,25 +55,25 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    margin-bottom: $space-sm;
+    margin-bottom: vars.$space-sm;
     text-align: center;
-    color: $white;
+    color: vars.$white;
   }
 
   &__text {
-    font-family: $font-primary;
+    font-family: vars.$font-primary;
     font-size: clamp(1.25rem, 3vw, 2.5rem);
     line-height: 1.3;
     font-style: italic;
     text-align: center;
-    color: rgba($white, 0.9);
+    color: rgba(vars.$white, 0.9);
     letter-spacing: -0.01em;
   }
 
   &__source {
-    margin-top: $space-md;
-    padding-top: $space-sm;
-    border-top: 1px solid rgba($white, 0.2);
+    margin-top: vars.$space-md;
+    padding-top: vars.$space-sm;
+    border-top: 1px solid rgba(vars.$white, 0.2);
     text-align: center;
     font-size: clamp(0.625rem, 1vw, 0.75rem);
     opacity: 0.35;

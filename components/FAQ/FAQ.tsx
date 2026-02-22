@@ -1,10 +1,20 @@
 import React from 'react';
 
-export default function FAQ() {
+interface Product {
+  name: string;
+  price: string;
+  productId: number;
+}
+
+interface FAQProps {
+  onPurchase: (product: Product) => void;
+}
+
+export default function FAQ({ onPurchase }: FAQProps) {
   const faqs = [
     {
       q: '¿Puedo comprar solo un volumen?',
-      a: 'Sí, puedes comprar Vol. 1 o Vol. 2 por separado a $85.000 cada uno, o el set completo a $160.000 (ahorro de $10.000).',
+      a: 'Sí, puedes comprar Vol. 1 o Vol. 2 por separado a $85.000 cada uno.',
     },
     {
       q: '¿Cuánto cuesta el envío?',
@@ -15,12 +25,12 @@ export default function FAQ() {
       a: 'Cada volumen mide 14×17cm. Encuadernación rústica. 200 páginas a todo color con papel de alta calidad.',
     },
     {
-      q: '¿Qué volumen compro primero?',
-      a: 'El que te llame más. Vol. 1 es paleta cálida (amarillo → rosa), Vol. 2 es paleta fría (púrpura → blanco). Ambos funcionan independientes.',
+      q: '¿Cuándo llega mi libro?',
+      a: 'Los envíos se realizan de 2 a 5 días hábiles después de tu compra. Recibirás un número de guía para rastrear tu pedido.',
     },
     {
-      q: '¿Hacen envíos?',
-      a: 'Sí, enviamos a toda Colombia. El costo de envío se calcula al finalizar la compra según tu ciudad.',
+      q: '¿Hay stock disponible?',
+      a: 'Sí, hay ejemplares disponibles de ambos volúmenes.',
     },
     {
       q: '¿Necesito leer en orden?',
@@ -51,9 +61,32 @@ export default function FAQ() {
 
         <div className="faq__final-cta">
           <h3 className="faq__final-title">Elige tu volumen</h3>
-          <a href="#productos" className="btn btn--hero">
-            <span>Ver opciones de compra</span>
-          </a>
+          <div className="faq__cta-group">
+            <button
+              className="btn btn--buy-mini"
+              onClick={() =>
+                onPurchase({
+                  name: 'Cromazoografías Vol. 1',
+                  price: '$85.000',
+                  productId: 3431,
+                })
+              }
+            >
+              <span>COMPRAR VOL.1 — $85.000</span>
+            </button>
+            <button
+              className="btn btn--buy-mini"
+              onClick={() =>
+                onPurchase({
+                  name: 'Cromazoografías Vol. 2',
+                  price: '$85.000',
+                  productId: 3432,
+                })
+              }
+            >
+              <span>COMPRAR VOL.2 — $85.000</span>
+            </button>
+          </div>
         </div>
       </div>
     </section>
