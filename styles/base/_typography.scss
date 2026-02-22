@@ -4,6 +4,11 @@
   font-family: vars.$font-primary;
 }
 
+.u-serif-italic {
+  font-family: vars.$font-primary;
+  font-style: italic;
+}
+
 .u-uppercase {
   text-transform: uppercase;
 }

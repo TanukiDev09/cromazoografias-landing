@@ -2,16 +2,5 @@
 @use 'base/reset';
 @use 'base/typography';
 
-// Components
-@use '../components/Navigation/Navigation';
-@use '../components/Hero/Hero';
-@use 'components/section';
-@use '../components/PoemSample/PoemSample';
-@use '../components/IllustrationGrid/IllustrationGrid';
-@use '../components/ColorSpectrum/ColorSpectrum';
-@use '../components/Author/Author';
-@use '../components/ProductGrid/ProductGrid';
-@use '../components/FAQ/FAQ';
-@use '../components/PurchaseModal/PurchaseModal';
-@use 'components/button';
-@use '../components/Footer/Footer';
+// Base styles only.
+// Component styles are imported directly in their respective .tsx files.
