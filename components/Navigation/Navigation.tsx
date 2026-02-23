@@ -35,7 +35,7 @@ export default function Navigation({ onPurchase }: NavigationProps) {
             Libros
           </a>
           <button onClick={onPurchase} className="btn btn--buy nav__cta">
-            <span>Comprar Set</span>
+            <span>Comprar ambos</span>
           </button>
         </div>
       </div>

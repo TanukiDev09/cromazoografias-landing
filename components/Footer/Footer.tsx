@@ -36,11 +36,6 @@ export default function Footer() {
                     Volumen 2
                   </a>
                 </li>
-                <li>
-                  <a href="#productos" className="footer__link">
-                    Set Completo
-                  </a>
-                </li>
               </ul>
             </div>
             <div className="footer__column">

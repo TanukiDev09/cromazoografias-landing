@@ -1,0 +1,83 @@
+@use '../../styles/base/variables' as v;
+
+.live-section {
+  background: v.$black;
+  position: relative;
+  text-align: center;
+  padding: 0;
+}
+
+.live-band {
+  height: 4px;
+  background: v.$accent;
+  width: 100%;
+}
+
+.live {
+  padding: v.$space-xl v.$space-md;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: v.$space-md;
+
+  &__title {
+    font-family: v.$font-primary;
+    font-size: 24px;
+    color: v.$white;
+    margin: 0;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  &__date,
+  &__time {
+    font-family: v.$font-sans;
+    font-size: 16px;
+    color: v.$white;
+    margin: 0;
+  }
+
+  &__handle {
+    font-family: v.$font-sans;
+    font-size: 14px;
+    color: v.$accent;
+    text-decoration: none;
+    font-weight: 700;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__description {
+    font-family: v.$font-sans;
+    font-size: 14px;
+    color: v.$gray;
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+// Button Outline Style
+.btn--outline {
+  border: 2px solid v.$accent;
+  background: transparent;
+  color: v.$accent;
+  padding: v.$space-sm v.$space-md;
+  font-family: v.$font-sans;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: v.$transition-standard;
+
+  &:hover {
+    background: v.$accent;
+    color: v.$black;
+  }
+}

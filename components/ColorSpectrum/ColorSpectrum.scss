@@ -6,10 +6,10 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 4px;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgb(255 255 255 / 3%);
   padding: 4px;
 
-  @media (max-width: 1024px) {
+  @media (width <= 1024px) {
     grid-template-columns: 1fr;
   }
 
@@ -48,7 +48,7 @@
 
     &:hover {
       transform: translateX(-8px);
-      box-shadow: 8px 8px 0 rgba(255, 255, 255, 0.1);
+      box-shadow: 8px 8px 0 rgb(255 255 255 / 10%);
     }
 
     &--purple,
@@ -77,24 +77,31 @@
 .strip--yellow {
   background: $color-yellow;
 }
+
 .strip--orange {
   background: $color-orange;
 }
+
 .strip--red {
   background: $color-red;
 }
+
 .strip--pink {
   background: $color-pink;
 }
+
 .strip--purple {
   background: $color-purple;
 }
+
 .strip--blue {
   background: $color-blue;
 }
+
 .strip--green {
   background: $color-green;
 }
+
 .strip--gray {
   background: $color-gray;
 }

@@ -1,338 +1,157 @@
-@import '../../styles/base/variables';
+@use '../../styles/base/variables' as v;
 
 .hero {
-  min-height: 100vh;
+  height: 100vh;
+  background: v.$black;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: $space-md;
+  justify-content: center;
+  padding: v.$space-md v.$space-md; // Reduced vertical padding
+  color: v.$white;
   text-align: center;
   position: relative;
+  overflow: hidden; // Ensure no overflow
 
-  @media (max-width: 768px) {
-    padding: $space-sm;
-    min-height: auto;
-    padding-top: $space-lg;
-    padding-bottom: $space-lg;
-  }
-
-  &__impact {
-    margin-bottom: $space-md;
-
-    @media (max-width: 768px) {
-      margin-bottom: $space-sm;
-    }
-  }
-
-  &__title {
-    font-family: $font-primary;
-    font-size: clamp(2.5rem, 10vw, 10rem);
-    font-weight: 700;
-    line-height: 0.85;
-    margin-bottom: $space-xs;
-    letter-spacing: -0.05em;
-    text-transform: uppercase;
-
-    @media (min-width: 1024px) {
-      font-size: 8rem;
-    }
-
-    @media (max-width: 768px) {
-      font-size: clamp(2.5rem, 12vw, 4rem);
-      line-height: 0.9;
-    }
-
-    &--text {
-      display: block;
-
-      @media (max-width: 1023px) {
-        display: none;
-      }
-    }
-
-    &--svg {
-      display: none;
-
-      @media (max-width: 1023px) {
-        display: block;
-        width: 100%;
-        max-width: 440px;
-        max-height: 340px;
-        overflow: hidden;
-        margin: 0 auto 0.5rem;
-      }
-
-      @media (max-width: 768px) {
-        max-width: 320px;
-        max-height: 250px;
-        margin: 0 auto 0.25rem;
-      }
-
-      @media (max-width: 480px) {
-        max-width: 250px;
-        max-height: 190px;
-        margin: 0 auto 0.15rem;
-      }
-    }
-  }
-
-  &__logo {
+  &__container {
+    max-width: 800px;
     width: 100%;
-    height: auto;
-    display: block;
-    // Force the image to start from top to crop bottom whitespace
-    object-position: top;
-    margin-bottom: 0;
-  }
-
-  &__tagline {
-    font-family: $font-primary;
-    font-size: clamp(1rem, 3vw, 2.5rem);
-    font-weight: 700;
-    font-style: italic;
-    opacity: 0.8;
-    letter-spacing: -0.01em;
-    position: relative;
-    z-index: 2;
-
-    @media (max-width: 768px) {
-      font-size: clamp(1rem, 4vw, 1.5rem);
-      margin-top: 0.5rem;
-    }
-  }
-
-  &__main-concept {
-    display: flex;
-    gap: 0;
-    max-width: 1200px;
-    width: 100%;
-    margin-bottom: $space-lg;
-    text-align: left;
-    border: 12px solid $color-yellow;
-    background: $color-yellow;
-
-    @media (max-width: 768px) {
-      flex-direction: column;
-      border-width: 6px;
-      margin-bottom: $space-md;
-    }
-  }
-
-  &__illus-box {
-    flex: 1.5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: $black;
-    overflow: hidden;
-    padding: $space-md;
-    min-height: 400px;
-
-    @media (min-width: 1024px) {
-      min-height: 550px;
-      padding: $space-lg;
-    }
-
-    @media (max-width: 768px) {
-      min-height: 300px;
-      padding: $space-sm;
-    }
-  }
-
-  &__image {
-    z-index: 1;
-    filter: contrast(1.15) brightness(0.95) saturate(1.1);
-    max-width: 100%;
-  }
-
-  &__poem-box {
-    flex: 1;
-    padding: $space-md;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background: $white;
-
-    @media (max-width: 768px) {
-      padding: $space-sm;
-      min-height: 250px;
-    }
-  }
-
-  &__poem-text {
-    font-family: $font-primary;
-    font-style: italic;
-    font-size: clamp(1rem, 2.5vw, 1.75rem);
-    line-height: 1.4;
-    color: $black;
-    font-weight: 400;
-    flex: 1;
-    display: flex;
-    align-items: center;
-
-    @media (max-width: 768px) {
-      font-size: clamp(1rem, 4vw, 1.25rem);
-      line-height: 1.5;
-    }
-  }
-
-  &__poem-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: $space-sm;
-    border-top: 2px solid $black;
-    margin-top: $space-sm;
-    gap: $space-xs;
-
-    @media (max-width: 768px) {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.25rem;
-    }
-  }
-
-  &__poem-animal {
-    font-size: clamp(0.625rem, 1.5vw, 1rem);
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-  }
-
-  &__poem-author {
-    font-size: clamp(0.625rem, 1.2vw, 0.875rem);
-    opacity: 0.5;
-    font-style: italic;
-  }
-
-  &__cta-zone {
-    max-width: 1200px;
-    width: 100%;
+    height: 100%; // Take full height
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: $space-md;
-
-    @media (max-width: 768px) {
-      gap: $space-sm;
-    }
+    justify-content: center; // Center content vertically
+    gap: clamp(0.75rem, 2vh, 1.5rem); // Tighter, viewport-aware gaps
+    padding: 0;
   }
 
-  &__value-prop {
-    display: flex;
-    gap: $space-lg;
-    justify-content: center;
-    flex-wrap: wrap;
-
-    @media (max-width: 768px) {
-      gap: $space-md;
-      width: 100%;
-    }
-  }
-
-  &__stat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.25rem;
-
-    @media (max-width: 768px) {
-      flex: 1;
-      min-width: 80px;
-    }
-  }
-
-  &__stat-number {
-    font-family: $font-primary;
-    font-size: clamp(2.5rem, 6vw, 5rem);
+  &__headline {
+    font-family: v.$font-primary;
+    font-size: clamp(2rem, 8vh, 4rem);
+    line-height: 1.1;
     font-weight: 700;
-    line-height: 1;
     letter-spacing: -0.02em;
+    margin: 0;
+    color: v.$white;
 
-    @media (max-width: 768px) {
-      font-size: clamp(2rem, 8vw, 3rem);
+    @media (width <= 480px) {
+      font-size: clamp(1.8rem, 10vw, 2.5rem); // Width-based on mobile
+      line-height: 1;
     }
   }
 
-  &__stat-label {
-    font-size: clamp(0.625rem, 1.2vw, 1rem);
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    opacity: 0.5;
-    font-weight: 700;
-
-    @media (max-width: 768px) {
-      font-size: 0.625rem;
-      letter-spacing: 0.15em;
-    }
-  }
-
-  &__cta-note {
-    font-size: clamp(0.75rem, 1.5vw, 1.125rem);
-    opacity: 0.6;
+  &__signature {
+    font-family: v.$font-primary;
     font-style: italic;
+    font-size: clamp(1rem, 3vh, 1.25rem);
+    color: v.$accent;
+    margin: 0;
+    font-weight: 400;
 
-    @media (max-width: 768px) {
-      font-size: 0.875rem;
+    @media (width <= 480px) {
+      font-size: 1.1rem;
     }
   }
 
-  &__preorder-counter {
-    width: 100%;
-    max-width: 500px;
+  &__description {
+    font-family: v.$font-sans;
+    font-size: clamp(0.85rem, 2vh, 1rem);
+    color: v.$gray;
+    line-height: 1.4;
+    margin: 0;
+    max-width: 280px; // Limit width on mobile for better wrapping
+  }
+
+  &__separator {
+    color: v.$gray;
+    letter-spacing: 0.5rem;
+    font-size: 1rem;
+    opacity: 0.5;
+  }
+
+  &__counter-box {
     display: flex;
     flex-direction: column;
-    gap: $space-xs;
-    margin: $space-sm 0;
+    gap: 0.1rem;
+  }
 
-    @media (max-width: 768px) {
-      max-width: 100%;
-      padding: 0 $space-sm;
+  &__counter-number {
+    font-family: v.$font-sans;
+    font-size: clamp(1rem, 3vh, 1.5rem);
+    font-weight: 700;
+    color: v.$white;
+  }
+
+  &__counter-label {
+    font-family: v.$font-sans;
+    font-size: 0.65rem;
+    color: v.$gray;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(0.5rem, 2vh, 1rem);
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  &__purchase-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 320px;
+
+    @media (width >= 768px) {
+      flex-direction: row;
+      max-width: 600px;
+      justify-content: center;
     }
   }
 
-  &__preorder-display {
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: $space-xs $space-sm;
-    background: $black;
-    border: 3px solid $color-yellow;
-    margin-bottom: 0.5rem;
+  &__scroll-link {
+    font-family: v.$font-primary;
+    font-size: 1rem;
+    color: v.$accent;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: v.$transition-fast;
+    padding: 0.25rem 1rem;
+
+    &:hover {
+      transform: translateY(4px);
+      opacity: 0.8;
+    }
+  }
+}
+
+// Button Overrides for Hero
+.btn--hero {
+  background: v.$accent !important;
+  color: v.$black !important;
+  border: none !important;
+  padding: v.$space-sm v.$space-md;
+  font-family: v.$font-sans;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  width: 100%;
+  transition: v.$transition-standard;
+  border-radius: 0;
+
+  @media (width <= 480px) {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
   }
 
-  &__preorder-number {
-    font-family: $font-primary;
-    font-size: clamp(3rem, 8vw, 5rem);
-    font-weight: 800;
-    line-height: 1;
-    color: $color-yellow;
-    letter-spacing: 0.05em;
-  }
-
-  &__preorder-divider {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-    font-weight: 300;
-    opacity: 0.4;
-    color: $white;
-  }
-
-  &__preorder-goal {
-    font-family: $font-primary;
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-    font-weight: 700;
-    color: $white;
-    opacity: 0.6;
-  }
-
-  &__preorder-label {
-    font-size: clamp(0.7rem, 1vw, 0.875rem);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.3em;
-    color: $white;
-    opacity: 0.8;
+  &:hover {
+    background: v.$white !important;
+    transform: scale(1.02);
   }
 }

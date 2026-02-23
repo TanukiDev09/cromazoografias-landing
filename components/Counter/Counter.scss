@@ -1,23 +1,16 @@
 @import '../../styles/base/variables';
 
 .counter {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  overflow: hidden;
-  height: clamp(3rem, 8vw, 5rem);
-  // Should match or fit within .hero__preorder-number's font-size
-
-  &__limit {
-    color: $color-gray;
-    margin-left: 0.2em;
-    font-size: 0.8em;
-    opacity: 0.8;
-  }
+  height: 1.2em; // Relative to parent font-size
+  line-height: 1;
+  vertical-align: middle;
 }
 
 .counter-digit {
   height: 100%;
-  width: 0.6em; // Adjust based on font width
+  width: 0.65em; // Standard width for Arvo/Sans digits
   position: relative;
   overflow: hidden;
   display: inline-block;
@@ -25,21 +18,20 @@
   &__track {
     display: flex;
     flex-direction: column;
+    width: 100%;
     transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
-    // "Odometer" style easing
   }
 
   &__num {
-    height: 100%; // 100% of the parent container height
+    height: 1.2em; // Must match .counter height
     display: flex;
     align-items: center;
     justify-content: center;
-
-    // Inherit font styles from parent context (Hero)
     font-family: inherit;
     font-size: inherit;
     font-weight: inherit;
     color: inherit;
     line-height: 1;
+    flex-shrink: 0;
   }
 }

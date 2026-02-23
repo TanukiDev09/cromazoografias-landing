@@ -6,7 +6,7 @@
   padding: $space-xl 0 $space-lg;
   border-top: 8px solid $white;
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     padding: $space-lg 0;
     border-top-width: 4px;
   }
@@ -23,7 +23,7 @@
     gap: $space-lg;
     margin-bottom: $space-xl;
 
-    @media (max-width: 1023px) {
+    @media (width <= 1023px) {
       grid-template-columns: 1fr;
       gap: $space-md;
       margin-bottom: $space-lg;
@@ -52,7 +52,7 @@
     grid-template-columns: repeat(3, 1fr);
     gap: $space-md;
 
-    @media (max-width: 640px) {
+    @media (width <= 640px) {
       grid-template-columns: 1fr;
       gap: $space-sm;
     }
@@ -97,7 +97,7 @@
     flex-wrap: wrap;
     gap: $space-sm;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       flex-direction: column;
       text-align: center;
     }

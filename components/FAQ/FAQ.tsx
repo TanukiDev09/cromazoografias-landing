@@ -1,59 +1,40 @@
+'use client';
 import React from 'react';
+import './FAQ.scss';
 
 export default function FAQ() {
   const faqs = [
     {
-      q: '¿Puedo comprar solo un volumen?',
-      a: 'Sí, puedes comprar Vol. 1 o Vol. 2 por separado a $85.000 cada uno, o el set completo a $160.000 (ahorro de $10.000).',
-    },
-    {
-      q: '¿Cuánto cuesta el envío?',
-      a: 'Bogotá: $10.000. Resto de Colombia: $20.000. El costo exacto se calcula al finalizar tu compra.',
-    },
-    {
-      q: '¿Cuál es el formato físico?',
-      a: 'Cada volumen mide 14×17cm. Encuadernación rústica. 200 páginas a todo color con papel de alta calidad.',
-    },
-    {
-      q: '¿Qué volumen compro primero?',
-      a: 'El que te llame más. Vol. 1 es paleta cálida (amarillo → rosa), Vol. 2 es paleta fría (púrpura → blanco). Ambos funcionan independientes.',
-    },
-    {
       q: '¿Hacen envíos?',
-      a: 'Sí, enviamos a toda Colombia. El costo de envío se calcula al finalizar la compra según tu ciudad.',
+      a: 'Sí, enviamos a toda Colombia. Bogotá $10.000, resto del país $20.000. Los libros viajan muy protegidos.',
     },
     {
       q: '¿Necesito leer en orden?',
-      a: 'No. Cada animal es una doble página independiente. Abre donde quieras y lee.',
+      a: 'No. Cada animal es una doble página independiente. Abre el libro en cualquier lugar, contempla la ilustración y lee el poema. Es un libro de consulta emocional.',
     },
     {
-      q: '¿Es libro infantil?',
-      a: 'Es poesía ilustrada para adultos. Los animales funcionan como espejos de estados emocionales humanos. Los poemas son contemplativos y filosóficos, diseñados para lectura nocturna o momentos de pausa.',
+      q: '¿Es un libro infantil?',
+      a: 'Es poesía ilustrada para adultos. Aunque a los niños les atraen las ilustraciones, los poemas están escritos para ser habitados desde la experiencia adulta.',
+    },
+    {
+      q: '¿Qué volumen compro primero?',
+      a: 'No hay un orden. El Vol. 1 explora el espectro cálido (amarillo a rosa) y el Vol. 2 el espectro frío (púrpura a blanco). Compra el que primero te llame por el color.',
     },
   ];
 
   return (
-    <section className="section section--faq" id="faq">
+    <section className="faq-section" id="faq">
       <div className="faq">
-        <div className="faq__header">
-          <h2 className="section__title">Preguntas frecuentes</h2>
-          <p className="section__subtitle">Todo lo que necesitas saber antes de comprar.</p>
-        </div>
+        <h2 className="faq__title">Preguntas.</h2>
+        <p className="faq__subtitle">Todo lo que necesitas saber.</p>
 
         <div className="faq__list">
           {faqs.map((f, idx) => (
-            <div key={idx} className="faq__item">
-              <div className="faq__q">{f.q}</div>
+            <details key={idx} className="faq__item">
+              <summary className="faq__q">{f.q}</summary>
               <div className="faq__a">{f.a}</div>
-            </div>
+            </details>
           ))}
-        </div>
-
-        <div className="faq__final-cta">
-          <h3 className="faq__final-title">Elige tu volumen</h3>
-          <a href="#productos" className="btn btn--hero">
-            <span>Ver opciones de compra</span>
-          </a>
         </div>
       </div>
     </section>

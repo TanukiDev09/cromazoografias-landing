@@ -1,21 +1,23 @@
 // 1. DESIGN TOKENS
-$black: #000;
-$white: #fff;
-$gray: #dadada;
+$black: #0a0a0a;
+$white: #f5f0e8;
+$gray: #6b6b6b;
+$accent: #f5c842;
+$text-on-accent: #0a0a0a;
 
-// The Spectrum
-$color-yellow: #e6b905;
+// The Spectrum (Keep for utility, but primary brand is Noir)
+$color-yellow: #f5c842;
 $color-orange: #ff6b00;
 $color-red: #e30613;
 $color-pink: #e91e8c;
 $color-purple: #9b5a9e;
 $color-blue: #2e5a99;
 $color-green: #4caf50;
-$color-gray: #dadada;
+$color-gray: #6b6b6b;
 
 // 2. TYPOGRAPHY
 $font-primary: 'Arvo', serif;
-$font-secondary: 'Lato', sans-serif;
+$font-sans: 'Lato', sans-serif;
 
 // 3. SPACING & BORDERS
 $border-thickness: 2px;
@@ -29,10 +31,6 @@ $space-md: clamp(2rem, 4vw, 3rem);
 $space-lg: clamp(4rem, 8vw, 6rem);
 $space-xl: clamp(6rem, 12vw, 10rem);
 
-// Shadows (Shifted Brutalist style)
-$shadow-offset: 8px;
-$shadow-offset-lg: 12px;
-$shadow-brutalist: $shadow-offset $shadow-offset 0 rgba($white, 0.1);
-$shadow-brutalist-hover: $shadow-offset $shadow-offset 0 rgba($white, 0.2);
+// Transitions
 $transition-standard: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 $transition-fast: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);

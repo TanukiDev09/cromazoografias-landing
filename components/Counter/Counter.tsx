@@ -33,7 +33,6 @@ export default function Counter({ value }: CounterProps) {
       {digits.map((digit, index) => (
         <Digit key={index} value={digit} />
       ))}
-      <span className="counter__limit">/ 015</span>
     </div>
   );
 }

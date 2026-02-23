@@ -1,190 +1,71 @@
-@import '../../styles/base/variables';
+@use '../../styles/base/variables' as v;
 
-.section {
-  padding: $space-xl 0;
+.gallery-section {
+  background: v.$black;
+  padding: v.$space-xl 0;
+  color: v.$white;
 
-  @media (max-width: 768px) {
-    padding: $space-lg 0;
-  }
-
-  &--products {
-    background: $black;
-  }
-
-  &--illustrations {
-    background: $black;
-    border-top: 4px solid $white;
-
-    @media (max-width: 768px) {
-      border-top-width: 2px;
-    }
-  }
-
-  &__title {
-    font-family: $font-primary;
-    font-size: clamp(2rem, 6vw, 5rem);
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: $space-sm;
-    letter-spacing: -0.03em;
-    line-height: 1;
-
-    @media (max-width: 768px) {
-      font-size: clamp(2rem, 8vw, 3rem);
-      padding: 0 $space-sm;
-    }
-  }
-
-  &__subtitle {
-    font-size: clamp(0.875rem, 2vw, 1.25rem);
-    text-align: center;
-    opacity: 0.7;
-    max-width: 700px;
-    margin: 0 auto $space-lg;
-    line-height: 1.6;
-    padding: 0 $space-sm;
-
-    @media (max-width: 768px) {
-      font-size: 1rem;
-      margin-bottom: $space-md;
-    }
+  @media (width <= 768px) {
+    padding: v.$space-lg v.$space-md;
   }
 }
 
-.illustrations {
-  max-width: 1400px;
+.gallery {
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 0 $space-md;
-
-  @media (max-width: 768px) {
-    padding: 0 $space-sm;
-  }
-
-  &__header {
-    margin-bottom: $space-lg;
-
-    @media (max-width: 768px) {
-      margin-bottom: $space-md;
-    }
-  }
 
   &__grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: $space-sm;
-    margin-bottom: $space-lg;
+    gap: v.$space-md;
 
-    @media (min-width: 768px) {
+    @media (width >= 768px) {
       grid-template-columns: repeat(3, 1fr);
-    }
-
-    @media (min-width: 1024px) {
-      grid-template-columns: repeat(3, 1fr);
-      gap: $space-md;
-    }
-
-    @media (max-width: 480px) {
-      grid-template-columns: 1fr;
-      gap: $space-xs;
+      gap: v.$space-lg;
     }
   }
 
-  &__frame {
-    aspect-ratio: 1;
-    border: 3px solid $white;
-    background: $black;
-    position: relative;
-    overflow: hidden;
+  &__item {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: v.$space-xs;
 
-    @media (max-width: 768px) {
-      border-width: 2px;
-    }
+    // Animation placeholder - staggered fade
+    opacity: 0;
+    animation: fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 
-    &--yellow {
-      border-color: $color-yellow;
-    }
-    &--orange {
-      border-color: $color-orange;
-    }
-    &--red {
-      border-color: $color-red;
-    }
-    &--pink {
-      border-color: $color-pink;
-    }
-    &--purple {
-      border-color: $color-purple;
-    }
-    &--blue {
-      border-color: $color-blue;
-    }
-    &--green {
-      border-color: $color-green;
+    @for $i from 1 through 6 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * 100}ms;
+      }
     }
   }
 
   &__image-wrapper {
-    flex: 1;
+    width: 100%;
+    aspect-ratio: 1;
     position: relative;
-    padding: $space-sm;
-
-    @media (max-width: 768px) {
-      padding: $space-xs;
-    }
-  }
-
-  &__image {
-    filter: contrast(1.1) brightness(0.95);
-  }
-
-  &__label {
-    background: $white;
-    color: $black;
-    padding: $space-xs;
-    text-align: center;
-    border-top: 3px solid currentColor;
-
-    @media (max-width: 768px) {
-      border-top-width: 2px;
-      padding: 0.5rem 0.25rem;
-    }
+    background: transparent;
   }
 
   &__name {
-    font-size: clamp(0.5rem, 1vw, 0.75rem);
-    font-weight: 700;
-    letter-spacing: 0.15em;
+    font-family: v.$font-sans;
+    font-size: 11px;
+    color: v.$gray;
     text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+}
 
-    @media (max-width: 768px) {
-      font-size: 0.625rem;
-      letter-spacing: 0.1em;
-    }
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
 
-  &__cta {
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
-    padding-top: $space-lg;
-    border-top: 2px solid rgba($white, 0.2);
-
-    @media (max-width: 768px) {
-      padding-top: $space-md;
-    }
-  }
-
-  &__cta-text {
-    font-size: clamp(0.875rem, 2vw, 1.25rem);
-    margin-bottom: $space-md;
-    opacity: 0.8;
-    line-height: 1.5;
-
-    @media (max-width: 768px) {
-      font-size: 1rem;
-      margin-bottom: $space-sm;
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

@@ -1,6 +1,10 @@
 'use client';
 import React, { useState } from 'react';
 import Hero from '../components/Hero';
+import ConceptSection from '../components/ConceptSection';
+import TechniqueSection from '../components/TechniqueSection';
+import LiveSection from '../components/LiveSection';
+import ClosureSection from '../components/ClosureSection';
 import ProductGrid from '../components/ProductGrid';
 import IllustrationGrid from '../components/IllustrationGrid';
 import Author from '../components/Author';
@@ -38,12 +42,16 @@ export default function HomeClient({ initialSalesCount }: HomeClientProps) {
     <>
       <Navigation
         onPurchase={() =>
-          openModal({ name: 'Set Completo (Vol. 1 + Vol. 2)', price: '$160.000', productId: 3440 })
+          openModal({ name: 'Volumen 1 + Volumen 2', price: '$170.000', productId: 3440 })
         }
       />
 
       {/* 1. Header & Main UX (Based on Wireframe) */}
       <Hero onPurchase={openModal} initialSalesCount={initialSalesCount} />
+
+      <ConceptSection />
+      <TechniqueSection />
+      <LiveSection />
 
       {/* 2. Volumes UX (Based on Wireframe) */}
       <ProductGrid onPurchase={openModal} />
@@ -52,6 +60,7 @@ export default function HomeClient({ initialSalesCount }: HomeClientProps) {
       <IllustrationGrid />
       <Author />
       <FAQ />
+      <ClosureSection onPurchase={openModal} />
       <Footer />
 
       <PurchaseModal isOpen={isModalOpen} onClose={closeModal} product={selectedProduct} />

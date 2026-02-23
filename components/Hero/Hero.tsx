@@ -1,6 +1,5 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
 import { getTotalSalesAction } from '../../app/actions';
 import Counter from '../Counter/Counter';
 
@@ -19,9 +18,6 @@ export default function Hero({ onPurchase, initialSalesCount = 0 }: HeroProps) {
   const [salesCount, setSalesCount] = useState<number>(initialSalesCount);
 
   useEffect(() => {
-    // We can skip the fetch if we already have a likely-accurate count from SSR, 
-    // or keep it to ensure the counter animates if it changed since build/cache.
-    // For now, we'll keep it but it will start from initialSalesCount instead of 0.
     async function fetchSales() {
       try {
         const total = await getTotalSalesAction();
@@ -33,82 +29,69 @@ export default function Hero({ onPurchase, initialSalesCount = 0 }: HeroProps) {
     fetchSales();
   }, []);
 
-  const setProduct: Product = {
-    name: 'Set Completo (Vol. 1 + Vol. 2)',
-    price: '$160.000',
-    productId: 3440,
+  const vol1: Product = {
+    name: 'Cromazoografías Vol. 1',
+    price: '$85.000',
+    productId: 3431,
+  };
+
+  const vol2: Product = {
+    name: 'Cromazoografías Vol. 2',
+    price: '$85.000',
+    productId: 3432,
+  };
+
+  const scrollToProducts = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const element = document.getElementById('productos');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
     <section className="hero" id="inicio">
-      <div className="hero__impact">
-        <h1 className="hero__title hero__title--text">CROMAZOOGRAFÍAS</h1>
-        <div className="hero__title hero__title--svg">
-          <img src="/cromazoografias-svg.svg" alt="Cromazoografías" className="hero__logo" />
-        </div>
-        <p className="hero__tagline">Los animales nos devuelven lo humano</p>
-      </div>
+      <div className="hero__container">
+        <h1 className="hero__headline">
+          No todos los días
+          <br />
+          eres la misma
+          <br />
+          persona.
+        </h1>
 
-      <div className="hero__main-concept">
-        <div className="hero__illus-box">
-          <Image
-            src="/cangrejo-fantasma.jpg"
-            alt="Cromazoografía de Cangrejo Fantasma"
-            width={800}
-            height={800}
-            className="hero__image"
-            style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
-          />
-        </div>
-        <div className="hero__poem-box">
-          <p className="hero__poem-text">
-            Tocar con la carne viva,
-            <br />
-            dejarse afectar,
-            <br />
-            refugiarse ante el miedo
-            <br />y levantar otra coraza.
-          </p>
-          <div className="hero__poem-meta">
-            <span className="hero__poem-animal">CANGREJO FANTASMA</span>
-            <span className="hero__poem-author">Juan Dávila</span>
-          </div>
-        </div>
-      </div>
+        <p className="hero__signature">Cromazoografías.</p>
 
-      <div className="hero__cta-zone">
-        <div className="hero__value-prop">
-          <div className="hero__stat">
-            <span className="hero__stat-number">192</span>
-            <span className="hero__stat-label">Poemas</span>
-          </div>
-          <div className="hero__stat">
-            <span className="hero__stat-number">2</span>
-            <span className="hero__stat-label">Volúmenes</span>
-          </div>
-          <div className="hero__stat">
-            <span className="hero__stat-number">8</span>
-            <span className="hero__stat-label">Colores</span>
-          </div>
-        </div>
+        <p className="hero__description">
+          192 animales organizados
+          <br />
+          por color, no por
+          <br />
+          zoología.
+        </p>
 
-        <div className="hero__preorder-counter">
-          <div className="hero__preorder-display">
-            <span className="hero__preorder-number">
-              <Counter value={salesCount} />
-            </span>
-          </div>
-          <p className="hero__preorder-label">EJEMPLARES PEDIDOS EN PREVENTA</p>
-        </div>
+        <div className="hero__separator">· · · · · · · · ·</div>
 
-        <button className="btn btn--hero" onClick={() => onPurchase(setProduct)}>
-          <span>CONSEGUIR LA COLECCIÓN COMPLETA — $160.000</span>
-          <span style={{ display: 'block', fontSize: '0.8em', marginTop: '0.2rem' }}>
-            (ahorra $10.000)
+        <div className="hero__counter-box">
+          <span className="hero__counter-number">
+            <Counter value={salesCount} />
           </span>
-        </button>
+          <p className="hero__counter-label">ejemplares en manos de lectores.</p>
+        </div>
 
-        <p className="hero__cta-note">O elige volúmenes individuales abajo ↓</p>
+        <div className="hero__actions">
+          <div className="hero__purchase-buttons">
+            <button className="btn btn--hero" onClick={() => onPurchase(vol1)}>
+              <span>Comprar Vol. 1 — $85.000</span>
+            </button>
+            <button className="btn btn--hero" onClick={() => onPurchase(vol2)}>
+              <span>Comprar Vol. 2 — $85.000</span>
+            </button>
+          </div>
+          <a href="#productos" className="hero__scroll-link" onClick={scrollToProducts}>
+            <span>Ver el libro ↓</span>
+          </a>
+        </div>
       </div>
     </section>
   );
