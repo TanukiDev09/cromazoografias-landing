@@ -1,104 +1,157 @@
-@use 'sass:color';
 @use '../../styles/base/variables' as v;
 
 .hero {
   height: 100vh;
-  min-height: 100vh;
   background: v.$black;
-  color: v.$white;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: v.$space-md v.$space-md; // Reduced vertical padding
+  color: v.$white;
   text-align: center;
-  opacity: 0;
-  transition: opacity 1.5s ease;
-
-  &--visible {
-    opacity: 1;
-  }
+  position: relative;
+  overflow: hidden; // Ensure no overflow
 
   &__container {
-    max-width: 600px;
+    max-width: 800px;
     width: 100%;
-    padding: v.$space-md;
+    height: 100%; // Take full height
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: v.$space-sm;
+    justify-content: center; // Center content vertically
+    gap: clamp(0.75rem, 2vh, 1.5rem); // Tighter, viewport-aware gaps
+    padding: 0;
   }
 
-  &__title {
+  &__headline {
     font-family: v.$font-primary;
-    font-size: 40px;
+    font-size: clamp(2rem, 8vh, 4rem);
     line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.02em;
     margin: 0;
-    font-weight: 400;
+    color: v.$white;
 
-    @media (min-width: 1024px) {
-      font-size: 72px;
+    @media (width <= 480px) {
+      font-size: clamp(1.8rem, 10vw, 2.5rem); // Width-based on mobile
+      line-height: 1;
     }
   }
 
   &__signature {
     font-family: v.$font-primary;
     font-style: italic;
-    font-size: 20px;
+    font-size: clamp(1rem, 3vh, 1.25rem);
     color: v.$accent;
-    margin-top: v.$space-sm;
+    margin: 0;
+    font-weight: 400;
+
+    @media (width <= 480px) {
+      font-size: 1.1rem;
+    }
   }
 
   &__description {
     font-family: v.$font-sans;
-    font-size: 15px;
-    line-height: 1.4;
+    font-size: clamp(0.85rem, 2vh, 1rem);
     color: v.$gray;
-    margin-top: v.$space-xs;
-
-    p {
-      margin: 0;
-    }
+    line-height: 1.4;
+    margin: 0;
+    max-width: 280px; // Limit width on mobile for better wrapping
   }
 
   &__separator {
     color: v.$gray;
-    font-size: 15px;
-    margin: v.$space-sm 0;
-    user-select: none;
-    letter-spacing: 0.2rem;
+    letter-spacing: 0.5rem;
+    font-size: 1rem;
+    opacity: 0.5;
   }
 
-  &__counter {
-    font-family: v.$font-sans;
-    font-size: 12px;
-    line-height: 1.4;
-    color: v.$gray;
-    margin-bottom: v.$space-sm;
+  &__counter-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
 
-    p {
-      margin: 0;
+  &__counter-number {
+    font-family: v.$font-sans;
+    font-size: clamp(1rem, 3vh, 1.5rem);
+    font-weight: 700;
+    color: v.$white;
+  }
+
+  &__counter-label {
+    font-family: v.$font-sans;
+    font-size: 0.65rem;
+    color: v.$gray;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(0.5rem, 2vh, 1rem);
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  &__purchase-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 320px;
+
+    @media (width >= 768px) {
+      flex-direction: row;
+      max-width: 600px;
+      justify-content: center;
     }
   }
 
-  &__cta {
-    background: v.$accent;
-    color: v.$text-on-yellow;
+  &__scroll-link {
+    font-family: v.$font-primary;
+    font-size: 1rem;
+    color: v.$accent;
+    text-decoration: none;
+    background: transparent;
     border: none;
-    padding: 1rem 2.5rem;
-    font-family: v.$font-sans;
-    font-size: 16px;
-    font-weight: 700;
     cursor: pointer;
-    transition: v.$transition-standard;
-    border-radius: 0;
-    margin-top: v.$space-xs;
+    transition: v.$transition-fast;
+    padding: 0.25rem 1rem;
 
     &:hover {
-      background: color.adjust(v.$accent, $lightness: -5%);
-      transform: translateY(-2px);
+      transform: translateY(4px);
+      opacity: 0.8;
     }
+  }
+}
 
-    &:active {
-      transform: translateY(0);
-    }
+// Button Overrides for Hero
+.btn--hero {
+  background: v.$accent !important;
+  color: v.$black !important;
+  border: none !important;
+  padding: v.$space-sm v.$space-md;
+  font-family: v.$font-sans;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  width: 100%;
+  transition: v.$transition-standard;
+  border-radius: 0;
+
+  @media (width <= 480px) {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  &:hover {
+    background: v.$white !important;
+    transform: scale(1.02);
   }
 }

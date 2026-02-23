@@ -1,48 +1,71 @@
 @use '../../styles/base/variables' as v;
 
-.gallery {
+.gallery-section {
   background: v.$black;
-  padding: 10vh 0;
-  min-height: auto;
-  display: flex;
-  align-items: center;
+  padding: v.$space-xl 0;
+  color: v.$white;
+
+  @media (width <= 768px) {
+    padding: v.$space-lg v.$space-md;
+  }
+}
+
+.gallery {
+  max-width: 1000px;
+  margin: 0 auto;
 
   &__grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: v.$space-lg v.$space-sm;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 v.$space-md;
+    gap: v.$space-md;
 
-    @media (min-width: 1024px) {
+    @media (width >= 768px) {
       grid-template-columns: repeat(3, 1fr);
-      gap: v.$space-xl v.$space-md;
+      gap: v.$space-lg;
     }
   }
 
   &__item {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-    transition:
-      opacity 1s ease-out,
-      transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    align-items: center;
+    gap: v.$space-xs;
+
+    // Animation placeholder - staggered fade
+    opacity: 0;
+    animation: fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+    @for $i from 1 through 6 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * 100}ms;
+      }
+    }
   }
 
-  &__image-container {
+  &__image-wrapper {
     width: 100%;
-    aspect-ratio: 4/5; // slightly vertical for animals
+    aspect-ratio: 1;
     position: relative;
-    background: rgba(v.$white, 0.03);
+    background: transparent;
   }
 
   &__name {
     font-family: v.$font-sans;
     font-size: 11px;
     color: v.$gray;
-    text-transform: lowercase;
-    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

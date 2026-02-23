@@ -1,11 +1,10 @@
-@use 'sass:color';
-@use '../../styles/base/variables' as vars;
+@import '../../styles/base/variables';
 
 .modal {
   display: flex;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.98);
+  background: rgb(0 0 0 / 98%);
   z-index: 10000;
   padding: 2rem;
   align-items: center;
@@ -14,7 +13,7 @@
   pointer-events: none;
   transition: opacity 0.3s ease;
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     padding: 1rem;
   }
 
@@ -24,14 +23,14 @@
   }
 
   &__content {
-    background: vars.$white;
-    color: vars.$black;
+    background: $white;
+    color: $black;
     max-width: 700px;
     width: 100%;
     max-height: calc(100vh - 4rem);
     padding: 3.5rem;
     position: relative;
-    border: 5px solid vars.$black;
+    border: 5px solid $black;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -40,20 +39,22 @@
     &::-webkit-scrollbar {
       width: 8px;
     }
+
     &::-webkit-scrollbar-track {
-      background: vars.$white;
-    }
-    &::-webkit-scrollbar-thumb {
-      background: vars.$black;
+      background: $white;
     }
 
-    @media (max-width: 768px) {
+    &::-webkit-scrollbar-thumb {
+      background: $black;
+    }
+
+    @media (width <= 768px) {
       padding: 2.5rem 1.5rem;
       border-width: 3px;
       max-height: calc(100vh - 2rem);
     }
 
-    @media (max-width: 480px) {
+    @media (width <= 480px) {
       padding: 2rem 1rem;
     }
   }
@@ -63,7 +64,7 @@
     top: 1.5rem;
     right: 1.5rem;
     font-size: 3.5rem;
-    color: vars.$black;
+    color: $black;
     line-height: 1;
     font-weight: 700;
     transition: transform 0.3s ease;
@@ -71,7 +72,7 @@
     padding: 0.5rem;
     margin: -0.5rem;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       top: 1rem;
       right: 1rem;
       font-size: 2.5rem;
@@ -87,9 +88,9 @@
   &__header {
     margin-bottom: 2.5rem;
     padding-bottom: 2rem;
-    border-bottom: 4px solid vars.$black;
+    border-bottom: 4px solid $black;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       margin-bottom: 1.5rem;
       padding-bottom: 1.5rem;
       border-bottom-width: 3px;
@@ -105,7 +106,7 @@
   }
 
   &__price {
-    font-family: vars.$font-primary;
+    font-family: $font-primary;
     font-size: clamp(3.5rem, 6vw, 4.5rem);
     font-weight: 700;
   }
@@ -128,10 +129,10 @@
   &__input {
     width: 100%;
     padding: 1.25rem;
-    border: 3px solid vars.$black;
-    font-family: vars.$font-secondary;
+    border: 3px solid $black;
+    font-family: $font-sans;
     font-size: 1rem;
-    background: vars.$white;
+    background: $white;
     transition: all 0.2s ease;
 
     &:focus {
@@ -146,7 +147,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 1.25rem;
 
-    @media (max-width: 640px) {
+    @media (width <= 640px) {
       grid-template-columns: 1fr;
     }
   }
@@ -166,7 +167,7 @@
     display: flex;
     align-items: flex-start;
     gap: 0.75rem;
-    font-family: vars.$font-secondary;
+    font-family: $font-sans;
     font-size: 0.875rem;
     cursor: pointer;
     line-height: 1.4;
@@ -178,18 +179,17 @@
 
   &__checkbox {
     appearance: none;
-    -webkit-appearance: none;
     width: 1.25rem;
     height: 1.25rem;
-    border: 3px solid vars.$black;
-    background: vars.$white;
+    border: 3px solid $black;
+    background: $white;
     cursor: pointer;
     position: relative;
     flex-shrink: 0;
     margin-top: 0.1rem;
 
     &:checked {
-      background: vars.$black;
+      background: $black;
 
       &::after {
         content: '✓';
@@ -197,7 +197,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        color: vars.$white;
+        color: $white;
         font-size: 0.9rem;
         font-weight: 700;
       }

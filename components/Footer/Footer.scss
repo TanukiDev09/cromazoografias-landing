@@ -1,33 +1,32 @@
-@use 'sass:color';
-@use '../../styles/base/variables' as vars;
+@import '../../styles/base/variables';
 
 .footer {
-  background: vars.$black;
-  color: vars.$white;
-  padding: vars.$space-xl 0 vars.$space-lg;
-  border-top: 8px solid vars.$white;
+  background: $black;
+  color: $white;
+  padding: $space-xl 0 $space-lg;
+  border-top: 8px solid $white;
 
-  @media (max-width: 768px) {
-    padding: vars.$space-lg 0;
+  @media (width <= 768px) {
+    padding: $space-lg 0;
     border-top-width: 4px;
   }
 
   &__container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 vars.$space-md;
+    padding: 0 $space-md;
   }
 
   &__top {
     display: grid;
     grid-template-columns: 1.5fr 2fr;
-    gap: vars.$space-lg;
-    margin-bottom: vars.$space-xl;
+    gap: $space-lg;
+    margin-bottom: $space-xl;
 
-    @media (max-width: 1023px) {
+    @media (width <= 1023px) {
       grid-template-columns: 1fr;
-      gap: vars.$space-md;
-      margin-bottom: vars.$space-lg;
+      gap: $space-md;
+      margin-bottom: $space-lg;
     }
   }
 
@@ -36,7 +35,7 @@
   }
 
   &__logo-box {
-    margin-bottom: vars.$space-sm;
+    margin-bottom: $space-sm;
     opacity: 0.9;
     filter: invert(1); // Make it white if it's black
   }
@@ -51,11 +50,11 @@
   &__nav {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: vars.$space-md;
+    gap: $space-md;
 
-    @media (max-width: 640px) {
+    @media (width <= 640px) {
       grid-template-columns: 1fr;
-      gap: vars.$space-sm;
+      gap: $space-sm;
     }
   }
 
@@ -64,8 +63,8 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    margin-bottom: vars.$space-sm;
-    color: vars.$color-yellow;
+    margin-bottom: $space-sm;
+    color: $color-yellow;
   }
 
   &__list {
@@ -79,7 +78,7 @@
     text-decoration: none;
     font-size: 0.875rem;
     opacity: 0.5;
-    transition: vars.$transition-fast;
+    transition: $transition-fast;
     display: inline-block;
     padding: 0.25rem 0;
 
@@ -90,15 +89,15 @@
   }
 
   &__bottom {
-    padding-top: vars.$space-md;
-    border-top: 1px solid rgba(vars.$white, 0.1);
+    padding-top: $space-md;
+    border-top: 1px solid rgba($white, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: vars.$space-sm;
+    gap: $space-sm;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       flex-direction: column;
       text-align: center;
     }

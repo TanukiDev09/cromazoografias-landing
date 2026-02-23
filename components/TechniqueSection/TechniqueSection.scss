@@ -1,72 +1,71 @@
 @use '../../styles/base/variables' as v;
 
-.technique {
-  background: #111111;
+.technique-section {
+  background: #111;
+  padding: v.$space-xl v.$space-md;
   color: v.$white;
-  padding: 10vh 0;
+}
 
-  &__container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 v.$space-md;
-    display: grid;
-    gap: v.$space-lg;
+.technique {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-lg;
 
-    @media (min-width: 1024px) {
-      grid-template-columns: 1fr 1fr;
-      align-items: flex-start;
-      gap: v.$space-xl;
-    }
+  @media (width >= 768px) {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: v.$space-xl;
   }
 
   &__content {
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: v.$space-md;
-    max-width: 480px;
   }
 
   &__title {
-    font-family: v.$font-primary; // Arvo
+    font-family: v.$font-primary;
     font-size: 28px;
     line-height: 1.2;
     margin: 0;
-    font-weight: 400;
   }
 
   &__text {
-    font-family: v.$font-sans; // Sans
+    font-family: v.$font-sans;
     font-size: 16px;
     line-height: 1.6;
     color: v.$white;
     display: flex;
     flex-direction: column;
-    gap: v.$space-md;
+    gap: v.$space-sm;
 
     p {
       margin: 0;
     }
   }
 
-  &__visuals {
+  &__images {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: v.$space-sm;
-
-    @media (min-width: 1024px) {
-      gap: v.$space-md;
-    }
+    gap: v.$space-md;
   }
 
-  &__crop-wrapper {
-    position: relative;
+  &__image-wrapper {
     width: 100%;
-    aspect-ratio: 16 / 7;
-    background: v.$black;
+    aspect-ratio: 16 / 9;
+    position: relative;
     overflow: hidden;
+    filter: brightness(0.8) contrast(1.2);
+    border: 1px solid rgba(v.$white, 0.1);
+  }
 
-    @media (min-width: 1024px) {
-      aspect-ratio: 16 / 9;
-    }
+  &__image {
+    // Zoomed in effect to show "halftone" dots
+    transform: scale(2);
+    object-position: center;
   }
 }

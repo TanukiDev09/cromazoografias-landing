@@ -1,52 +1,39 @@
-import React, { useState } from 'react';
+'use client';
+import React from 'react';
 import './FAQ.scss';
 
 export default function FAQ() {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
   const faqs = [
     {
+      q: '¿Hacen envíos?',
+      a: 'Sí, enviamos a toda Colombia. Bogotá $10.000, resto del país $20.000. Los libros viajan muy protegidos.',
+    },
+    {
+      q: '¿Necesito leer en orden?',
+      a: 'No. Cada animal es una doble página independiente. Abre el libro en cualquier lugar, contempla la ilustración y lee el poema. Es un libro de consulta emocional.',
+    },
+    {
       q: '¿Es un libro infantil?',
-      a: 'No. Es poesía existencial ilustrada para adultos. Los animales no son personajes — son espejos.',
+      a: 'Es poesía ilustrada para adultos. Aunque a los niños les atraen las ilustraciones, los poemas están escritos para ser habitados desde la experiencia adulta.',
     },
     {
-      q: '¿Cuál volumen compro primero?',
-      a: 'El que te llame más: cálido o frío. Cada uno funciona solo. El set completo tiene sentido como obra total.',
-    },
-    {
-      q: '¿Qué es el halftone?',
-      a: 'Una técnica que construye la imagen a partir de puntos de distintos tamaños. Sobre fondo negro genera una textura densa y profunda. No se parece a la ilustración digital convencional.',
-    },
-    {
-      q: '¿Cuándo llega mi pedido?',
-      a: 'Los pedidos se despachan en los 5 días hábiles siguientes a la compra.',
-    },
-    {
-      q: '¿Solo envían a Colombia?',
-      a: 'Por ahora sí. Estamos trabajando en envíos internacionales.',
+      q: '¿Qué volumen compro primero?',
+      a: 'No hay un orden. El Vol. 1 explora el espectro cálido (amarillo a rosa) y el Vol. 2 el espectro frío (púrpura a blanco). Compra el que primero te llame por el color.',
     },
   ];
 
-  const toggleFAQ = (index: number) => {
-    setActiveIndex(activeIndex === index ? null : index);
-  };
-
   return (
     <section className="faq-section" id="faq">
-      <div className="faq-section__container">
-        <div className="faq-section__list">
+      <div className="faq">
+        <h2 className="faq__title">Preguntas.</h2>
+        <p className="faq__subtitle">Todo lo que necesitas saber.</p>
+
+        <div className="faq__list">
           {faqs.map((f, idx) => (
-            <div key={idx} className={`faq-section__item ${activeIndex === idx ? 'faq-section__item--open' : ''}`}>
-              <button className="faq-section__question" onClick={() => toggleFAQ(idx)}>
-                <span className="faq-section__symbol">{activeIndex === idx ? '−' : '+'}</span>
-                {f.q}
-              </button>
-              <div className="faq-section__answer">
-                <div className="faq-section__answer-inner">
-                  <p>{f.a}</p>
-                </div>
-              </div>
-            </div>
+            <details key={idx} className="faq__item">
+              <summary className="faq__q">{f.q}</summary>
+              <div className="faq__a">{f.a}</div>
+            </details>
           ))}
         </div>
       </div>

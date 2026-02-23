@@ -1,19 +1,18 @@
-@use 'sass:color';
-@use '../base/variables' as vars;
+@import '../base/variables';
 
 .btn {
   display: inline-block;
-  background: vars.$white;
-  color: vars.$black;
+  background: $white;
+  color: $black;
   padding: 1rem 2rem;
-  font-family: vars.$font-secondary;
+  font-family: $font-sans;
   font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   text-decoration: none;
-  border: vars.$border-thickness solid vars.$black;
-  transition: vars.$transition-fast;
+  border: $border-thickness solid $black;
+  transition: $transition-fast;
   cursor: pointer;
   position: relative;
 
@@ -24,20 +23,20 @@
   }
 
   &:hover {
-    background: vars.$black;
-    color: vars.$white;
-    border-color: vars.$white;
+    background: $black;
+    color: $white;
+    border-color: $white;
   }
 
   &--hero {
-    background: vars.$white;
-    color: vars.$black;
-    border: 4px solid vars.$black;
+    background: $white;
+    color: $black;
+    border: 4px solid $black;
     padding: 1.5rem 3rem;
     font-size: clamp(0.875rem, 1.5vw, 1.125rem);
     font-weight: 900;
     letter-spacing: 0.1em;
-    box-shadow: 8px 8px 0 rgba(vars.$white, 0.1);
+    box-shadow: 8px 8px 0 rgba($white, 0.1);
     transition: all 0.2s ease;
 
     @media (width <= 768px) {
@@ -45,28 +44,28 @@
       padding: 1.125rem 2rem;
       font-size: 0.875rem;
       border-width: 3px;
-      box-shadow: 4px 4px 0 rgba(vars.$white, 0.1);
+      box-shadow: 4px 4px 0 rgba($white, 0.1);
     }
 
     &:hover {
       transform: translate(-2px, -2px);
-      box-shadow: 10px 10px 0 rgba(vars.$white, 0.2);
-      background: vars.$color-yellow;
-      border-color: vars.$color-yellow;
-      color: vars.$black;
+      box-shadow: 10px 10px 0 rgba($white, 0.2);
+      background: $color-yellow;
+      border-color: $color-yellow;
+      color: $black;
 
       @media (width <= 768px) {
         transform: none;
-        box-shadow: 4px 4px 0 rgba(vars.$white, 0.1);
+        box-shadow: 4px 4px 0 rgba($white, 0.1);
       }
     }
   }
 
   &--buy {
     width: 100%;
-    background: vars.$black;
-    color: vars.$white;
-    border-color: vars.$white;
+    background: $black;
+    color: $white;
+    border-color: $white;
     padding: 1rem;
     font-size: 0.75rem;
 
@@ -76,16 +75,16 @@
     }
 
     &:hover {
-      background: vars.$white;
-      color: vars.$black;
-      border-color: vars.$black;
+      background: $white;
+      color: $black;
+      border-color: $black;
     }
   }
 
   &--secondary {
     background: transparent;
-    color: vars.$white;
-    border: 2px solid vars.$white;
+    color: $white;
+    border: 2px solid $white;
     padding: 1rem 2rem;
     font-size: 0.875rem;
 
@@ -96,8 +95,8 @@
     }
 
     &:hover {
-      background: vars.$white;
-      color: vars.$black;
+      background: $white;
+      color: $black;
     }
   }
 
@@ -105,9 +104,9 @@
     width: 100%;
     padding: 1rem;
     font-size: 0.875rem;
-    background: vars.$white;
-    color: vars.$black;
-    border: vars.$border-thickness solid vars.$black;
+    background: $white;
+    color: $black;
+    border: $border-thickness solid $black;
 
     @media (width <= 768px) {
       padding: 0.875rem;
@@ -115,9 +114,9 @@
     }
 
     &:hover {
-      background: vars.$black;
-      color: vars.$white;
-      border-color: vars.$white;
+      background: $black;
+      color: $white;
+      border-color: $white;
     }
   }
 }

@@ -2,14 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-interface Product {
-  name: string;
-  price: string;
-  productId: number;
-}
-
 interface NavigationProps {
-  onPurchase: (product: Product) => void;
+  onPurchase: () => void;
 }
 
 export default function Navigation({ onPurchase }: NavigationProps) {
@@ -37,33 +31,11 @@ export default function Navigation({ onPurchase }: NavigationProps) {
         </a>
 
         <div className="nav__menu">
-          <button
-            className="btn btn--buy nav__cta"
-            onClick={() =>
-              onPurchase({ name: 'Cromazoografías Vol. 1', price: '$85.000', productId: 3431 })
-            }
-          >
-            <span>Tomo 1</span>
-          </button>
-          <button
-            className="btn btn--buy nav__cta"
-            onClick={() =>
-              onPurchase({ name: 'Cromazoografías Vol. 2', price: '$85.000', productId: 3432 })
-            }
-          >
-            <span>Tomo 2</span>
-          </button>
-          <button
-            className="btn btn--buy nav__cta btn--set"
-            onClick={() =>
-              onPurchase({
-                name: 'Combo: Tomo 1 + Tomo 2',
-                price: '$170.000',
-                productId: 0,
-              })
-            }
-          >
-            <span>Set Completo</span>
+          <a href="#productos" className="nav__link">
+            Libros
+          </a>
+          <button onClick={onPurchase} className="btn btn--buy nav__cta">
+            <span>Comprar ambos</span>
           </button>
         </div>
       </div>

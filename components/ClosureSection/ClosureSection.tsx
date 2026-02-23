@@ -1,34 +1,48 @@
+'use client';
 import React from 'react';
 import './ClosureSection.scss';
 
-export default function ClosureSection() {
-  const scrollToProducts = () => {
-    const products = document.getElementById('productos');
-    if (products) {
-      products.scrollIntoView({ behavior: 'smooth' });
-    }
+interface Product {
+  name: string;
+  price: string;
+  productId: number;
+}
+
+interface ClosureSectionProps {
+  onPurchase: (product: Product) => void;
+}
+
+export default function ClosureSection({ onPurchase }: ClosureSectionProps) {
+  const vol1: Product = {
+    name: 'Cromazoografías Vol. 1',
+    price: '$85.000',
+    productId: 3431,
+  };
+
+  const vol2: Product = {
+    name: 'Cromazoografías Vol. 2',
+    price: '$85.000',
+    productId: 3432,
   };
 
   return (
-    <section className="closure" id="cierre">
-      <div className="closure__container">
-        <h2 className="closure__title">
-          No todos los días
-          <br />
-          eres la misma
-          <br />
-          persona.
-        </h2>
+    <section className="closure-section" id="cierre">
+      <div className="closure">
+        <h2 className="closure__title">Los animales nos devuelven lo humano.</h2>
+        <p className="closure__description">Elige tu volumen y comienza la lectura.</p>
 
-        <p className="closure__copy">Alguno de los 192 es tuyo.</p>
+        <div className="closure__actions">
+          <button className="btn btn--hero" onClick={() => onPurchase(vol1)}>
+            <span>Comprar Vol. 1 — $85.000</span>
+          </button>
+          <button className="btn btn--hero" onClick={() => onPurchase(vol2)}>
+            <span>Comprar Vol. 2 — $85.000</span>
+          </button>
+        </div>
 
-        <button className="closure__cta" onClick={scrollToProducts}>
-          Comprar Cromazoografías
-        </button>
-
-        <footer className="closure__footer">
-          <p>Tanuki Libros · 2026</p>
-        </footer>
+        <div className="closure__footer">
+          <p className="closure__signature">Cromazoografías.</p>
+        </div>
       </div>
     </section>
   );

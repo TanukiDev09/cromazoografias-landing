@@ -1,15 +1,17 @@
 'use client';
 import React, { useState } from 'react';
-import Hero from '../components/Hero/Hero';
-import IllustrationGrid from '../components/IllustrationGrid/IllustrationGrid';
-import ConceptSection from '../components/ConceptSection/ConceptSection';
-import TechniqueSection from '../components/TechniqueSection/TechniqueSection';
-import LiveSection from '../components/LiveSection/LiveSection';
-import Author from '../components/Author/Author';
-import ProductGrid from '../components/ProductGrid/ProductGrid';
-import FAQ from '../components/FAQ/FAQ';
-import ClosureSection from '../components/ClosureSection/ClosureSection';
-import PurchaseModal from '../components/PurchaseModal/PurchaseModal';
+import Hero from '../components/Hero';
+import ConceptSection from '../components/ConceptSection';
+import TechniqueSection from '../components/TechniqueSection';
+import LiveSection from '../components/LiveSection';
+import ClosureSection from '../components/ClosureSection';
+import ProductGrid from '../components/ProductGrid';
+import IllustrationGrid from '../components/IllustrationGrid';
+import Author from '../components/Author';
+import FAQ from '../components/FAQ';
+import Footer from '../components/Footer';
+import Navigation from '../components/Navigation';
+import PurchaseModal from '../components/PurchaseModal';
 
 interface Product {
   name: string;
@@ -17,7 +19,11 @@ interface Product {
   productId: number;
 }
 
-export default function HomeClient() {
+interface HomeClientProps {
+  initialSalesCount: number;
+}
+
+export default function HomeClient({ initialSalesCount }: HomeClientProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
@@ -34,34 +40,28 @@ export default function HomeClient() {
 
   return (
     <>
-      <main>
-        {/* S1 — HERO */}
-        <Hero />
+      <Navigation
+        onPurchase={() =>
+          openModal({ name: 'Volumen 1 + Volumen 2', price: '$170.000', productId: 3440 })
+        }
+      />
 
-        {/* S2 — GALERÍA MUDA */}
-        <IllustrationGrid />
+      {/* 1. Header & Main UX (Based on Wireframe) */}
+      <Hero onPurchase={openModal} initialSalesCount={initialSalesCount} />
 
-        {/* S3 — EL CONCEPTO */}
-        <ConceptSection />
+      <ConceptSection />
+      <TechniqueSection />
+      <LiveSection />
 
-        {/* S4 — LA TÉCNICA */}
-        <TechniqueSection />
+      {/* 2. Volumes UX (Based on Wireframe) */}
+      <ProductGrid onPurchase={openModal} />
 
-        {/* S5 — EL LIVE */}
-        <LiveSection />
-
-        {/* S6 — EL AUTOR */}
-        <Author />
-
-        {/* S7 — EL PRODUCTO */}
-        <ProductGrid onPurchase={openModal} />
-
-        {/* S8 — FAQS */}
-        <FAQ />
-
-        {/* S9 — CIERRE */}
-        <ClosureSection />
-      </main>
+      {/* 3. Redistribution of remaining sections */}
+      <IllustrationGrid />
+      <Author />
+      <FAQ />
+      <ClosureSection onPurchase={openModal} />
+      <Footer />
 
       <PurchaseModal isOpen={isModalOpen} onClose={closeModal} product={selectedProduct} />
     </>

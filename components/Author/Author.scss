@@ -1,91 +1,84 @@
 @use '../../styles/base/variables' as v;
 
-.author {
+.author-section {
   background: v.$black;
+  padding: v.$space-xl v.$space-md;
   color: v.$white;
-  padding: 15vh 0;
+}
 
-  &__container {
-    max-width: 900px;
+.author {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-lg;
+
+  @media (width >= 768px) {
+    flex-direction: row;
+    align-items: center;
+    gap: v.$space-xl;
+  }
+
+  &__image-box {
+    flex: 1;
+    max-width: 400px;
     margin: 0 auto;
-    padding: 0 v.$space-md;
-    display: flex;
-    flex-direction: column;
-    gap: v.$space-lg;
+    filter: grayscale(1) contrast(1.2) brightness(0.8);
+    position: relative;
 
-    @media (min-width: 1024px) {
-      flex-direction: row;
-      align-items: flex-start;
-      gap: v.$space-xl;
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, v.$black);
     }
   }
 
-  &__visual {
-    flex: 1;
-    width: 100%;
-    max-width: 400px;
-  }
-
-  &__image-wrapper {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    background: #000;
-  }
-
-  &__content {
-    flex: 1.5;
+  &__info {
+    flex: 1.2;
     display: flex;
     flex-direction: column;
     gap: v.$space-md;
-  }
-
-  &__header {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
+    text-align: left;
   }
 
   &__name {
-    font-family: v.$font-primary; // Arvo
+    font-family: v.$font-primary;
     font-size: 24px;
-    color: v.$white;
     margin: 0;
-    font-weight: 400;
+    color: v.$white;
   }
 
   &__handle {
-    font-family: v.$font-sans; // Sans
+    font-family: v.$font-sans;
     font-size: 13px;
     color: v.$gray;
-    margin: 0;
+    margin: -1rem 0 0;
   }
 
   &__bio {
-    font-family: v.$font-sans; // Sans
+    font-family: v.$font-sans;
     font-size: 16px;
     line-height: 1.6;
     color: v.$white;
-    display: flex;
-    flex-direction: column;
-    gap: v.$space-md;
 
     p {
       margin: 0;
     }
   }
 
-  &__quote {
-    font-family: v.$font-primary; // Arvo
+  &__focus {
+    font-family: v.$font-primary;
     font-style: italic;
     font-size: 18px;
-    line-height: 1.4;
     color: v.$white;
+    margin: v.$space-sm 0;
   }
 
-  &__footnote {
-    font-family: v.$font-sans; // Sans
+  &__footer {
+    font-family: v.$font-sans;
     font-size: 14px;
     color: v.$gray;
+    margin: 0;
   }
 }

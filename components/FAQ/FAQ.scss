@@ -2,79 +2,72 @@
 
 .faq-section {
   background: v.$black;
+  padding: v.$space-xl v.$space-md;
   color: v.$white;
-  padding: 10vh 0;
+  text-align: left;
+}
 
-  &__container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 0 v.$space-md;
+.faq {
+  max-width: 600px;
+  margin: 0 auto;
+
+  &__title {
+    font-family: v.$font-primary;
+    font-size: 24px;
+    margin-bottom: 0.5rem;
+  }
+
+  &__subtitle {
+    font-family: v.$font-sans;
+    font-size: 14px;
+    color: v.$gray;
+    margin-bottom: v.$space-lg;
   }
 
   &__list {
     display: flex;
     flex-direction: column;
+    gap: v.$space-sm;
   }
 
   &__item {
-    border-bottom: 1px solid #222222;
+    border-bottom: 1px solid rgba(v.$white, 0.1);
+    padding-bottom: v.$space-sm;
 
-    &:first-child {
-      border-top: 1px solid #222222;
+    &[open] {
+      .faq__q::after {
+        content: '—';
+      }
     }
   }
 
-  &__question {
-    width: 100%;
-    background: transparent;
-    border: none;
-    color: v.$white;
-    font-family: v.$font-sans; // Sans
-    font-size: 15px;
-    text-align: left;
-    padding: 1.5rem 0;
+  &__q {
+    font-family: v.$font-primary;
+    font-size: 16px;
+    list-style: none;
     cursor: pointer;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 1rem;
-    transition: opacity 0.2s ease;
+    padding: v.$space-sm 0;
 
-    &:hover {
-      opacity: 0.8;
+    &::after {
+      content: '+';
+      font-family: v.$font-sans;
+      color: v.$accent;
+      font-size: 1.25rem;
+    }
+
+    &::-webkit-details-marker {
+      display: none;
     }
   }
 
-  &__symbol {
-    color: v.$white;
-    font-family: monospace;
-    font-size: 18px;
-    width: 20px;
-    display: flex;
-    justify-content: center;
-  }
-
-  &__answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  &__answer-inner {
-    padding-bottom: 1.5rem;
-    padding-left: 2.25rem;
-    font-family: v.$font-sans; // Sans
+  &__a {
+    font-family: v.$font-sans;
     font-size: 14px;
-    line-height: 1.6;
     color: v.$gray;
-
-    p {
-      margin: 0;
-    }
-  }
-
-  &__item--open {
-    .faq-section__answer {
-      max-height: 200px;
-    }
+    line-height: 1.6;
+    padding-bottom: v.$space-sm;
   }
 }

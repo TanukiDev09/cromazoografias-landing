@@ -1,4 +1,4 @@
-@use 'variables' as vars;
+@import 'variables';
 
 * {
   margin: 0;
@@ -7,10 +7,10 @@
 }
 
 body {
-  font-family: vars.$font-secondary;
+  font-family: $font-sans;
   font-weight: 400;
-  background: vars.$black;
-  color: vars.$white;
+  background: $black;
+  color: $white;
   overflow-x: hidden;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
