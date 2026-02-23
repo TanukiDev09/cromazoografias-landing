@@ -82,16 +82,19 @@
       left: 0;
       border-width: 2px 0 0 2px;
     }
+
     &--tr {
       top: 0;
       right: 0;
       border-width: 2px 2px 0 0;
     }
+
     &--bl {
       bottom: 0;
       left: 0;
       border-width: 0 0 2px 2px;
     }
+
     &--br {
       bottom: 0;
       right: 0;
@@ -142,7 +145,7 @@
     letter-spacing: 0.1em;
   }
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     padding: vars.$space-lg vars.$space-sm;
 
     &__video-frame {
