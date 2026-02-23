@@ -86,7 +86,7 @@
     }
   }
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     padding: vars.$space-md vars.$space-sm;
 
     &__description {
@@ -98,7 +98,7 @@
     }
   }
 
-  @media (min-width: 1440px) {
+  @media (width >= 1440px) {
     padding: vars.$space-md vars.$space-md;
 
     &__content {

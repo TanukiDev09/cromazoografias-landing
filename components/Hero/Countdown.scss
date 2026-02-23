@@ -8,7 +8,7 @@
   gap: vars.$space-md;
   width: 100%;
 
-  @media (max-width: 768px) {
+  @media (width <= 768px) {
     gap: vars.$space-xs;
   }
 
@@ -35,7 +35,7 @@
     font-weight: 700;
     margin-top: 0.25rem;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       font-size: 0.55rem;
     }
   }
@@ -108,10 +108,12 @@
     box-shadow: 0 0 0 0 rgba(vars.$color-red, 0.7);
     transform: scale(1);
   }
+
   70% {
     box-shadow: 0 0 0 10px rgba(vars.$color-red, 0);
     transform: scale(1.1);
   }
+
   100% {
     box-shadow: 0 0 0 0 rgba(vars.$color-red, 0);
     transform: scale(1);

@@ -15,7 +15,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "lint:scss": "stylelint \"styles/**/*.scss\"",
+    "lint:scss": "stylelint \"{styles,components}/**/*.scss\"",
     "format": "prettier --write ."
   },
   "dependencies": {
