@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 
 /**
  * UTMCapture Component
- * 
+ *
  * Captures UTM parameters from the URL and stores them in sessionStorage
  * to be included as metadata in WooCommerce orders.
  */
@@ -19,7 +19,7 @@ function UTMTracker() {
       'utm_campaign',
       'utm_content',
       'utm_term',
-      'fbclid'
+      'fbclid',
     ];
 
     const capturedData: Record<string, string> = {};
@@ -37,7 +37,7 @@ function UTMTracker() {
       // Check if we already have some UTM data stored to merge
       const existingDataRaw = sessionStorage.getItem('utm_metadata');
       const existingData = existingDataRaw ? JSON.parse(existingDataRaw) : {};
-      
+
       const newData = { ...existingData, ...capturedData };
       sessionStorage.setItem('utm_metadata', JSON.stringify(newData));
       console.log('UTM Metadata captured:', newData);

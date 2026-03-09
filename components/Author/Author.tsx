@@ -25,8 +25,8 @@ export default function Author() {
           <div className="author__bio">
             <p>
               Juan Dávila trabaja en la intersección entre naturaleza, filosofía y arte visual.
-              Desde 2015 ha construido un lenguaje propio centrado en fauna — cuervos ibéricos,
-              aves alpinas, mariposas andaluzas, invertebrados — con ilustraciones que equilibran
+              Desde 2015 ha construido un lenguaje propio centrado en fauna — cuervos ibéricos, aves
+              alpinas, mariposas andaluzas, invertebrados — con ilustraciones que equilibran
               precisión y expresividad.
             </p>
           </div>

@@ -1,7 +1,9 @@
 'use client';
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { getTotalSalesAction } from '../../app/actions';
 import Counter from '../Counter/Counter';
+import './hero-styles.scss';
 
 interface Product {
   name: string;
@@ -29,21 +31,15 @@ export default function Hero({ onPurchase, initialSalesCount = 0 }: HeroProps) {
     fetchSales();
   }, []);
 
-  const vol1: Product = {
-    name: 'Cromazoografías Vol. 1',
-    price: '$85.000',
-    productId: 3431,
+  const comboProduct: Product = {
+    name: 'Cromazoografías Vol. 1 + 2',
+    price: '$170.000',
+    productId: 0,
   };
 
-  const vol2: Product = {
-    name: 'Cromazoografías Vol. 2',
-    price: '$85.000',
-    productId: 3432,
-  };
-
-  const scrollToProducts = (e: React.MouseEvent) => {
+  const scrollToConcept = (e: React.MouseEvent) => {
     e.preventDefault();
-    const element = document.getElementById('productos');
+    const element = document.getElementById('concepto');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
@@ -51,46 +47,69 @@ export default function Hero({ onPurchase, initialSalesCount = 0 }: HeroProps) {
 
   return (
     <section className="hero" id="inicio">
-      <div className="hero__container">
-        <h1 className="hero__headline">
-          No todos los días
-          <br />
-          eres la misma
-          <br />
-          persona.
-        </h1>
+      <div className="hero__grid-container">
+        {/* Left Column (Content) */}
+        <div className="hero__content">
+          {/* ZONE A: THE HOOK */}
+          <header className="hero__header">
+            <h1 className="hero__headline">NO TODOS LOS DÍAS ERES LA MISMA PERSONA.</h1>
+            <p className="hero__subheadline">
+              Explora la taxonomía imposible a través de dos volúmenes de arte coleccionable. Una
+              obra indispensable para creativos, artistas y diseñadores.
+            </p>
+          </header>
 
-        <p className="hero__signature">Cromazoografías.</p>
-
-        <p className="hero__description">
-          192 animales organizados
-          <br />
-          por color, no por
-          <br />
-          zoología.
-        </p>
-
-        <div className="hero__separator">· · · · · · · · ·</div>
-
-        <div className="hero__counter-box">
-          <span className="hero__counter-number">
-            <Counter value={salesCount} />
-          </span>
-          <p className="hero__counter-label">ejemplares en manos de lectores.</p>
+          {/* ZONE B: TECHNICAL SPECS */}
+          <div className="hero__specs">
+            <div className="hero__spec-item">
+              <span className="hero__spec-label">COLECCIÓN</span>
+              <span className="hero__spec-value">2 VOLÚMENES</span>
+            </div>
+            <div className="hero__spec-item">
+              <span className="hero__spec-label">CATÁLOGO</span>
+              <span className="hero__spec-value">192 ANIMALES</span>
+            </div>
+            <div className="hero__spec-item">
+              <span className="hero__spec-label">ARTISTA</span>
+              <span className="hero__spec-value">JUAN DÁVILA</span>
+            </div>
+          </div>
+          {/* ZONE D: PRIMARY CTA */}
+          <div className="hero__cta-group">
+            <div className="hero__main-action">
+              <button
+                className="btn btn--hero btn--commercial"
+                onClick={() => onPurchase(comboProduct)}
+              >
+                <span>ADQUIRIR OBRA COMPLETA — $170.000</span>
+              </button>
+              <p className="hero__cta-note">INCLUYE VOL. 1 + VOL. 2 · ENVÍO NO INCLUIDO</p>
+            </div>
+            <a href="#concepto" className="hero__nav-link" onClick={scrollToConcept}>
+              EXPLORAR LA OBRA ↓
+            </a>
+          </div>
         </div>
 
-        <div className="hero__actions">
-          <div className="hero__purchase-buttons">
-            <button className="btn btn--hero" onClick={() => onPurchase(vol1)}>
-              <span>Comprar Vol. 1 — $85.000</span>
-            </button>
-            <button className="btn btn--hero" onClick={() => onPurchase(vol2)}>
-              <span>Comprar Vol. 2 — $85.000</span>
-            </button>
+        {/* Right Column (Visual) */}
+        <div className="hero__product-visual">
+          <Image
+            src="/cromazoografias-two-volumes.png"
+            alt="Cromazoografías Vol. 1 y 2"
+            width={800}
+            height={1000}
+            priority
+            className="hero__books-img"
+          />
+          {/* ZONE C: SOCIAL PROOF / COUNTER */}
+          <div className="hero__status">
+            <div className="hero__counter-display">
+              <div className="hero__counter-wrapper">
+                <Counter value={salesCount} />
+              </div>
+              <p className="hero__counter-desc">EJEMPLARES EN MANOS DE LECTORES</p>
+            </div>
           </div>
-          <a href="#productos" className="hero__scroll-link" onClick={scrollToProducts}>
-            <span>Ver el libro ↓</span>
-          </a>
         </div>
       </div>
     </section>

@@ -5,10 +5,15 @@
   padding: v.$space-xl v.$space-md;
   color: v.$white;
   text-align: center;
+  border-top: v.$border-thickness-thick solid rgba(v.$white, 0.08);
 
   &__title {
     font-family: v.$font-primary;
-    font-size: 28px;
+    font-size: clamp(1.75rem, 5vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    line-height: 0.95;
     margin-bottom: v.$space-lg;
   }
 
@@ -42,11 +47,16 @@
   gap: v.$space-md;
   background: #1a1a1a; // Dark gray background to highlight black covers
   padding: v.$space-md;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 
-  &:hover {
-    transform: translateY(-8px);
-    background: #222;
+  @media (width >= 768px) {
+    &:hover {
+      transform: translateY(-4px);
+      background: #222;
+    }
   }
 
   &__image-box {
@@ -87,5 +97,35 @@
     font-family: v.$font-primary;
     font-size: 20px;
     margin-bottom: v.$space-sm;
+  }
+}
+
+.btn--product-grid {
+  background: transparent;
+  color: v.$accent;
+  border: 2px solid v.$accent;
+  padding: 0.75rem 2rem;
+  font-family: v.$font-sans;
+  font-weight: 900;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 0;
+  cursor: pointer;
+  transition: v.$transition-fast;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: v.$accent;
+    color: v.$black;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(v.$accent, 0.2);
+  }
+
+  &:active {
+    transform: translateY(0);
   }
 }

@@ -4,68 +4,182 @@
   background: v.$black;
   padding: v.$space-xl 0;
   color: v.$white;
-
-  @media (width <= 768px) {
-    padding: v.$space-lg v.$space-md;
-  }
+  position: relative;
+  overflow: hidden;
 }
 
 .gallery {
-  max-width: 1000px;
-  margin: 0 auto;
+  &__container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
 
-  &__grid {
+  &__header {
+    margin-bottom: 4rem;
+    border-left: 4px solid v.$accent;
+    padding-left: 1.5rem;
+  }
+
+  &__title {
+    font-family: v.$font-primary;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    margin: 0;
+    line-height: 1;
+  }
+
+  &__subtitle {
+    font-family: v.$font-sans;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: v.$accent;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  &__editorial-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: v.$space-md;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 25vw;
+    gap: 1.5rem;
 
-    @media (width >= 768px) {
-      grid-template-columns: repeat(3, 1fr);
-      gap: v.$space-lg;
+    @media (width <= 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 45vw;
+    }
+
+    @media (width <= 480px) {
+      grid-template-columns: 1fr;
+      grid-auto-rows: 80vw;
+      gap: 2rem;
     }
   }
 
   &__item {
+    position: relative;
+    overflow: hidden;
+
+    &--featured {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    &--tall {
+      grid-row: span 2;
+    }
+
+    @media (width <= 480px) {
+      grid-column: span 1 !important;
+      grid-row: span 1 !important;
+    }
+  }
+
+  &__card {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: v.$space-xs;
+    background: #111;
+    border: 1px solid rgb(255 255 255 / 5%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 
-    // Animation placeholder - staggered fade
-    opacity: 0;
-    animation: fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    &:hover {
+      border-color: rgba(v.$accent, 0.3);
 
-    @for $i from 1 through 6 {
-      &:nth-child(#{$i}) {
-        animation-delay: #{$i * 100}ms;
+      .gallery__image {
+        transform: scale(1.05);
+      }
+
+      .gallery__overlay {
+        opacity: 1;
+      }
+
+      .gallery__footer {
+        background: v.$accent;
+        color: v.$black;
       }
     }
   }
 
   &__image-wrapper {
-    width: 100%;
-    aspect-ratio: 1;
-    position: relative;
-    background: transparent;
+    flex: 1;
+    position: relative !important;
+    overflow: hidden;
   }
 
-  &__name {
-    font-family: v.$font-sans;
-    font-size: 11px;
-    color: v.$gray;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+  &__image {
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    object-fit: cover;
   }
-}
 
-@keyframes fade-in {
-  from {
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgb(0 0 0 / 0%) 0%, rgb(0 0 0 / 80%) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
     opacity: 0;
-    transform: translateY(10px);
+    transition: opacity 0.3s ease;
+    pointer-events: none;
   }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  &__spec {
+    font-family: v.$font-sans;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: v.$accent;
+  }
+
+  &__item-name {
+    font-family: v.$font-primary;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 0.25rem 0;
+    line-height: 1.1;
+  }
+
+  &__artist {
+    font-family: v.$font-sans;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+  }
+
+  &__footer {
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    border-top: 1px solid rgb(255 255 255 / 5%);
+    transition: all 0.3s ease;
+  }
+
+  &__index {
+    font-family: v.$font-sans;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+    flex-shrink: 0;
+  }
+
+  &__caption {
+    font-family: v.$font-sans;
+    font-size: 0.65rem;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-align: right;
   }
 }
