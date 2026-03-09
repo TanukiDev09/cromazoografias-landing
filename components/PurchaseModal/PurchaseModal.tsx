@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import './PurchaseModal.scss';
 import { createOrderAction } from '../../app/actions';
 
 interface Product {
@@ -37,6 +38,8 @@ export default function PurchaseModal({ isOpen, onClose, product }: PurchaseModa
         city: formData.get('city') as string,
         state: formData.get('state') as string,
         postcode: formData.get('postcode') as string,
+        documentType: formData.get('documentType') as string,
+        documentNumber: formData.get('documentNumber') as string,
         productId: product.productId,
         privacyPolicy: formData.get('privacyPolicy') === 'on',
         newsletter: formData.get('newsletter') === 'on',
@@ -144,6 +147,28 @@ export default function PurchaseModal({ isOpen, onClose, product }: PurchaseModa
             <div className="form__field">
               <label className="form__label">Departamento *</label>
               <input type="text" name="state" className="form__input" required disabled={loading} />
+            </div>
+          </div>
+
+          <div className="form__row">
+            <div className="form__field">
+              <label className="form__label">Tipo de identificación *</label>
+              <select name="documentType" className="form__input" required disabled={loading}>
+                <option value="CC">Cédula de Ciudadanía</option>
+                <option value="CE">Cédula de Extranjería</option>
+                <option value="NIT">NIT</option>
+                <option value="PP">Pasaporte</option>
+              </select>
+            </div>
+            <div className="form__field">
+              <label className="form__label">Número de identificación *</label>
+              <input
+                type="text"
+                name="documentNumber"
+                className="form__input"
+                required
+                disabled={loading}
+              />
             </div>
           </div>
 

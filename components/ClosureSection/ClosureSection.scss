@@ -5,6 +5,7 @@
   padding: v.$space-xl v.$space-md;
   color: v.$white;
   text-align: center;
+  border-top: v.$border-thickness-thick solid rgba(v.$white, 0.08);
 }
 
 .closure {

@@ -6,22 +6,24 @@ export default function ConceptSection() {
   return (
     <section className="concept-section" id="concepto">
       <div className="concept">
-        <p className="concept__intro">
-          ¿Qué tienen en común
-          <br />
-          un gecko de Namib y un
-          <br />
-          cerdo de arena de mar?
-        </p>
-
-        <div className="concept__focus-container">
-          <h2 className="concept__focus">
-            El mismo rosa.
+        <header className="concept__narrative">
+          <p className="concept__question">
+            ¿Qué tienen en común
             <br />
-            Solo eso.
-          </h2>
-          <div className="concept__line"></div>
-        </div>
+            un gecko de Namib y un
+            <br />
+            cerdo de arena de mar?
+          </p>
+
+          <div className="concept__answer-reveal">
+            <h2 className="concept__focus">
+              El mismo <span className="concept__highlight">rosa</span>.
+              <br />
+              Solo eso.
+            </h2>
+            <div className="concept__accent-bar"></div>
+          </div>
+        </header>
 
         <div className="concept__body">
           <p>

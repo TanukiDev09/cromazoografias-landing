@@ -6,54 +6,82 @@
   color: v.$white;
   display: flex;
   justify-content: center;
+  border-top: v.$border-thickness-thick solid rgba(v.$white, 0.08);
 }
 
 .concept {
-  max-width: 560px;
+  max-width: calc(v.$space-xl * 8); // Wider for editorial impact
   width: 100%;
+  padding: v.$space-lg 0;
   display: flex;
   flex-direction: column;
-  gap: v.$space-md;
-  text-align: left;
+  gap: v.$space-lg;
 
-  &__intro {
+  &__narrative {
+    display: flex;
+    flex-direction: column;
+    gap: v.$space-sm;
+    border-left: v.$border-thickness-thick solid v.$color-pink;
+    padding-left: v.$space-md;
+
+    @media (width > 1024px) {
+      flex-direction: row;
+      align-items: flex-end;
+      gap: v.$space-lg;
+    }
+  }
+
+  &__question {
     font-family: v.$font-sans;
-    font-size: 13px;
+    font-size: clamp(1rem, 2vw, 1.25rem);
     color: v.$gray;
     line-height: 1.4;
     margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
   }
 
-  &__focus-container {
-    // Animation trigger placeholder
-    opacity: 0;
-    animation: fade-in 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    animation-delay: 200ms;
+  &__answer-reveal {
+    position: relative;
+
+    @media (prefers-reduced-motion: no-preference) {
+      opacity: 0;
+      animation: reveal-concept 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
   }
 
   &__focus {
     font-family: v.$font-primary;
-    font-style: italic;
-    font-size: clamp(1.5rem, 6vw, 2rem);
+    font-size: clamp(2.5rem, 10vw, 5rem);
     color: v.$white;
-    line-height: 1.2;
-    margin-bottom: v.$space-sm;
+    line-height: 0.9;
+    margin: 0;
+    font-weight: 900;
+    letter-spacing: -0.02em;
   }
 
-  &__line {
-    width: 32px;
-    height: 4px;
-    background: v.$accent;
+  &__highlight {
+    color: v.$color-pink;
+  }
+
+  &__accent-bar {
+    width: 60px;
+    height: 8px;
+    background: v.$color-pink;
+    margin-top: v.$space-sm;
   }
 
   &__body {
+    max-width: 600px;
     font-family: v.$font-sans;
-    font-size: 16px;
+    font-size: 1.1rem;
     line-height: 1.6;
-    color: v.$white;
+    color: rgba(v.$white, 0.8);
     display: flex;
     flex-direction: column;
     gap: v.$space-sm;
+    margin-left: v.$space-md;
 
     p {
       margin: 0;
@@ -62,10 +90,14 @@
 
   &__quote {
     font-family: v.$font-primary;
-    font-size: clamp(1.25rem, 4vw, 1.5rem);
-    color: v.$white;
-    line-height: 1.3;
-    margin-top: v.$space-sm;
+    font-style: italic;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    color: v.$accent;
+    line-height: 1.1;
+    margin-top: v.$space-md;
+    margin-left: v.$space-md;
+    border-top: 1px solid rgba(v.$white, 0.1);
+    padding-top: v.$space-md;
 
     p {
       margin: 0;
@@ -74,9 +106,24 @@
 
   &__footer {
     font-family: v.$font-sans;
-    font-size: 14px;
+    font-size: 0.75rem;
     color: v.$gray;
     margin: 0;
+    margin-left: v.$space-md;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+  }
+}
+
+@keyframes reveal-concept {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 

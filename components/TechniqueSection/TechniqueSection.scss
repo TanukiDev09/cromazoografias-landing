@@ -4,6 +4,7 @@
   background: #111;
   padding: v.$space-xl v.$space-md;
   color: v.$white;
+  border-top: v.$border-thickness-thick solid rgba(v.$white, 0.08);
 }
 
 .technique {
@@ -28,8 +29,11 @@
 
   &__title {
     font-family: v.$font-primary;
-    font-size: 28px;
-    line-height: 1.2;
+    font-size: clamp(1.75rem, 5vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    line-height: 0.95;
     margin: 0;
   }
 
@@ -67,5 +71,6 @@
     // Zoomed in effect to show "halftone" dots
     transform: scale(2);
     object-position: center;
+    will-change: transform;
   }
 }

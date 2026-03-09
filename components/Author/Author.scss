@@ -4,6 +4,7 @@
   background: v.$black;
   padding: v.$space-xl v.$space-md;
   color: v.$white;
+  border-top: v.$border-thickness-thick solid rgba(v.$white, 0.08);
 }
 
 .author {
@@ -44,9 +45,13 @@
 
   &__name {
     font-family: v.$font-primary;
-    font-size: 24px;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
     margin: 0;
     color: v.$white;
+    text-transform: uppercase;
   }
 
   &__handle {

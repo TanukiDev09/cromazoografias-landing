@@ -18,6 +18,8 @@ const OrderSchema = z.object({
   state: z.string().min(2).max(100),
   postcode: z.string().min(3, 'El código postal es requerido').max(20),
   productId: z.number().int().min(0),
+  documentType: z.string().min(2, 'Tipo de documento es requerido'),
+  documentNumber: z.string().min(5, 'Número de documento es requerido'),
   utmData: z.record(z.string(), z.string()).optional(),
   privacyPolicy: z.boolean().refine((val) => val === true, {
     message: 'Debes aceptar la política de privacidad',
@@ -81,6 +83,14 @@ export async function createOrderAction(input: OrderInput): Promise<WCOrder> {
         {
           key: 'Suscrito al Newsletter',
           value: validatedData.newsletter ? 'Sí' : 'No',
+        },
+        {
+          key: 'Tipo de Documento',
+          value: validatedData.documentType,
+        },
+        {
+          key: 'Número de Documento',
+          value: validatedData.documentNumber,
         },
       ],
     };

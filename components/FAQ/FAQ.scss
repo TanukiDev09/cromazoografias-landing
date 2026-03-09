@@ -5,6 +5,7 @@
   padding: v.$space-xl v.$space-md;
   color: v.$white;
   text-align: left;
+  border-top: v.$border-thickness-thick solid rgba(v.$white, 0.08);
 }
 
 .faq {
@@ -13,7 +14,11 @@
 
   &__title {
     font-family: v.$font-primary;
-    font-size: 24px;
+    font-size: clamp(1.75rem, 5vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    line-height: 0.95;
     margin-bottom: 0.5rem;
   }
 
@@ -43,19 +48,25 @@
 
   &__q {
     font-family: v.$font-primary;
-    font-size: 16px;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-weight: 700;
     list-style: none;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    min-height: 44px;
     padding: v.$space-sm 0;
+    transition: color v.$transition-fast;
 
     &::after {
       content: '+';
       font-family: v.$font-sans;
       color: v.$accent;
       font-size: 1.25rem;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+      margin-left: 1rem;
     }
 
     &::-webkit-details-marker {

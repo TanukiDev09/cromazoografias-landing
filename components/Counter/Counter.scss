@@ -35,3 +35,13 @@
     flex-shrink: 0;
   }
 }
+
+.counter {
+  &__limit {
+    font-size: 0.6em;
+    opacity: 0.5;
+    margin-left: 0.2rem;
+    align-self: flex-end;
+    margin-bottom: 0.2rem;
+  }
+}

@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import Hero from '../components/Hero';
 import ConceptSection from '../components/ConceptSection';
 import TechniqueSection from '../components/TechniqueSection';
-import LiveSection from '../components/LiveSection';
 import ClosureSection from '../components/ClosureSection';
+import LastCTA from '../components/LastCTA';
 import ProductGrid from '../components/ProductGrid';
 import IllustrationGrid from '../components/IllustrationGrid';
 import Author from '../components/Author';
@@ -38,11 +38,22 @@ export default function HomeClient({ initialSalesCount }: HomeClientProps) {
     document.body.style.overflow = '';
   };
 
+  React.useEffect(() => {
+    const handleOpenModal = (event: any) => {
+      if (event.detail?.product) {
+        openModal(event.detail.product);
+      }
+    };
+
+    window.addEventListener('open-purchase-modal', handleOpenModal);
+    return () => window.removeEventListener('open-purchase-modal', handleOpenModal);
+  }, []);
+
   return (
     <>
       <Navigation
         onPurchase={() =>
-          openModal({ name: 'Volumen 1 + Volumen 2', price: '$170.000', productId: 3440 })
+          openModal({ name: 'Volumen 1 + Volumen 2', price: '$170.000', productId: 0 })
         }
       />
 
@@ -51,7 +62,6 @@ export default function HomeClient({ initialSalesCount }: HomeClientProps) {
 
       <ConceptSection />
       <TechniqueSection />
-      <LiveSection />
 
       {/* 2. Volumes UX (Based on Wireframe) */}
       <ProductGrid onPurchase={openModal} />
@@ -61,6 +71,7 @@ export default function HomeClient({ initialSalesCount }: HomeClientProps) {
       <Author />
       <FAQ />
       <ClosureSection onPurchase={openModal} />
+      <LastCTA onPurchase={openModal} />
       <Footer />
 
       <PurchaseModal isOpen={isModalOpen} onClose={closeModal} product={selectedProduct} />

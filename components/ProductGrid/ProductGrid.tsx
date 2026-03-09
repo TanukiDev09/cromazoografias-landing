@@ -71,7 +71,7 @@ export default function ProductGrid({ onPurchase }: ProductGridProps) {
                 <p className="product-card__colors">{vol.colors}</p>
                 <div className="product-card__price">{vol.price}</div>
                 <button
-                  className="btn btn--outline"
+                  className="btn btn--product-grid"
                   onClick={() =>
                     onPurchase({ name: vol.name, price: vol.price, productId: vol.wcProductId })
                   }
@@ -83,9 +83,7 @@ export default function ProductGrid({ onPurchase }: ProductGridProps) {
           ))}
         </div>
 
-        <div className="product-section__shipping">
-          Bogotá $10.000 · Resto de Colombia $20.000
-        </div>
+        <div className="product-section__shipping">Bogotá $10.000 · Resto de Colombia $20.000</div>
       </div>
     </section>
   );
