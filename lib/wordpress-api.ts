@@ -213,7 +213,7 @@ export async function getOrder(orderId: number): Promise<WCOrder> {
 }
 
 /**
- * Get total quantity of specific products from paid orders (processing or completed)
+ * Get total quantity of specific products from all orders except failed and cancelled
  */
 export async function getPaidOrdersCount(productIds: number[]): Promise<number> {
   try {
@@ -225,34 +225,49 @@ export async function getPaidOrdersCount(productIds: number[]): Promise<number> 
       throw new Error('Missing WooCommerce API configuration');
     }
 
-    // Statuses that count as "paid/confirmed" in WooCommerce
-    // Include standard processing/completed and ePayco specific processing status + on-hold for pre-sales
-    const statuses = 'processing,completed,epayco-processing,on-hold';
-    const response = await fetch(`${apiUrl}/orders?status=${statuses}&per_page=100`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Basic ${btoa(`${consumerKey}:${consumerSecret}`)}`,
-      },
-      next: { revalidate: 300 }, // Cache for 5 minutes (300 seconds)
-    });
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(`Failed to fetch orders: ${response.status} - ${errorText}`);
-    }
-
-    const orders: WCOrder[] = await response.json();
-
-    // Count quantities of target products in these orders
     let totalQuantity = 0;
-    orders.forEach((order) => {
-      order.line_items.forEach((item: any) => {
-        if (productIds.includes(item.product_id)) {
-          totalQuantity += item.quantity || 0;
+    let page = 1;
+    let hasMore = true;
+
+    while (hasMore) {
+      const response = await fetch(`${apiUrl}/orders?per_page=100&page=${page}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Basic ${btoa(`${consumerKey}:${consumerSecret}`)}`,
+        },
+        next: { revalidate: 300 }, // Cache for 5 minutes
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Failed to fetch orders (page ${page}): ${response.status} - ${errorText}`);
+      }
+
+      const orders: WCOrder[] = await response.json();
+
+      if (orders.length === 0) {
+        hasMore = false;
+        break;
+      }
+
+      // Count quantities of target products in these orders, filtering out failed/cancelled
+      orders.forEach((order) => {
+        if (order.status !== 'failed' && order.status !== 'cancelled') {
+          order.line_items.forEach((item: any) => {
+            if (productIds.includes(item.product_id)) {
+              totalQuantity += item.quantity || 0;
+            }
+          });
         }
       });
-    });
+
+      if (orders.length < 100) {
+        hasMore = false;
+      } else {
+        page++;
+      }
+    }
 
     return totalQuantity;
   } catch (error) {
